@@ -106,7 +106,7 @@ export class Entity {
     const m = /^dbz:role_(\w+)$/.exec(e);
     if (m) {
       const r = m[1];
-      this.families = ["dbz_fighter", "mob", r === "enemy" ? "dbz_enemy" : r === "ally" ? "dbz_ally" : r === "npc" ? "dbz_npc" : r === "spar" ? "dbz_spar" : r === "dummy" ? "dbz_dummy" : "dbz_passive"];
+      this.families = ["dbz_fighter", "mob", r === "enemy" ? "dbz_enemy" : r === "ally" ? "dbz_ally" : r === "npc" ? "dbz_npc" : r === "spar" ? "dbz_spar" : r === "dummy" ? "dbz_dummy" : r === "battle" ? "dbz_battler" : "dbz_passive"];
       if (r === "enemy") this.families.push("monster");
     }
     const h = /^dbz:hp_(\d+)$/.exec(e);
@@ -197,7 +197,7 @@ class Dimension {
   getBiome() { return { id: "minecraft:plains" }; }
   getEntities(o = {}) {
     return [...entities.values()].filter((e) => e.dimension === this && e.isValid && (!o.type || e.typeId === o.type) &&
-      (!o.excludeTypes || !o.excludeTypes.includes(e.typeId)) && (!o.families || o.families.some((f) => e.families.includes(f))) &&
+      (!o.excludeTypes || !o.excludeTypes.includes(e.typeId)) && (!o.tags || o.tags.every((t) => e.tags.has(t))) && (!o.families || o.families.some((f) => e.families.includes(f))) &&
       (!o.excludeFamilies || !o.excludeFamilies.some((f) => e.families.includes(f))) &&
       (!o.location || !o.maxDistance || Math.hypot(e.location.x - o.location.x, e.location.y - o.location.y, e.location.z - o.location.z) <= o.maxDistance));
   }

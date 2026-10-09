@@ -204,6 +204,106 @@ await step("spawn eggs: every character, block click + air, sneak flips role", a
   await tickAsync(20);
 });
 
+await step("mob battle: teams, duel, group hunt, tools, menu", async () => {
+  const battle = await import("../../packs/DragonBall_BP/scripts/battle/battle.js");
+  const core = await import("../../packs/DragonBall_BP/scripts/battle/core.js");
+  const at = (dx) => ({ x: p.location.x + dx, y: p.location.y, z: p.location.z + 4 });
+  const hold = (id) => p.inv.setItem(p.selectedSlotIndex, new ItemStack(id, 1));
+  const hit = (target) => world.afterEvents.entityHitEntity.fire({ damagingEntity: p, hitEntity: target });
+  const roleOf = (e) => fighters.fighters.get(e.id)?.role;
+  // team battle: goku + zombie (red) vs frieza + cow (blue)
+  const goku = fighters.spawnFighter("goku", ow, at(0));
+  const frieza = fighters.spawnFighter("frieza1", ow, at(3));
+  const zombie = ow.spawnEntity("minecraft:zombie", at(1));
+  const cow = ow.spawnEntity("minecraft:cow", at(2));
+  hold("dbz:bt_team_red");
+  hit(goku); hit(zombie);
+  hold("dbz:bt_team_blue");
+  hit(frieza); hit(cow);
+  if (roleOf(goku) !== "battle" || roleOf(frieza) !== "battle") throw new Error("fighters not on battle role");
+  if (!zombie.nameTag.includes("[赤]") || !cow.nameTag.includes("[青]")) throw new Error("labels: " + zombie.nameTag + " / " + cow.nameTag);
+  if (!core.isBattleEnemy(goku, frieza) || core.isBattleEnemy(goku, zombie)) throw new Error("team enemy rule");
+  const cowHp = cow.hp.currentValue;
+  zombie.location = { ...cow.location, x: cow.location.x - 1 };
+  await tickAsync(60);
+  if (!(cow.hp.currentValue < cowHp) && cow.isValid) throw new Error("zombie never hit the cow");
+  // the two fighters trade ki attacks on their own
+  const fHp = frieza.hp.currentValue;
+  const gHp = goku.hp.currentValue;
+  frieza.location = at(12);
+  // ki attacks are random and the mock has no engine melee, so wait until someone lands a hit
+  for (let i = 0; i < 40 && frieza.isValid && frieza.hp.currentValue >= fHp && goku.hp.currentValue >= gHp; i++) {
+    goku.location = at(0); // nothing walks them apart again after a teleport in the mock
+    frieza.location = at(12);
+    await tickAsync(50);
+  }
+  console.log(`   goku ${Math.round(gHp)}→${Math.round(goku.hp.currentValue)}, frieza ${Math.round(fHp)}→${Math.round(frieza.isValid ? frieza.hp.currentValue : 0)}`);
+  if (frieza.isValid && frieza.hp.currentValue >= fHp && goku.hp.currentValue >= gHp) throw new Error("fighters never hurt each other");
+  // finish the blue team -> red wins
+  for (const e of [frieza, cow]) if (e.isValid) e.applyDamage(1e6, { cause: "entityAttack" });
+  await tickAsync(40);
+  if (!p.titles.some((t) => t.includes("赤チームの勝利"))) throw new Error("no team win: " + p.titles.slice(-3).join(" / "));
+  // pause via menu, then resume
+  answers.push({ selection: 0 });
+  await battle.battleMenu(p);
+  if (!core.battleSettings().paused || core.findBattleTarget(goku)) throw new Error("pause failed");
+  answers.push({ selection: 0 });
+  await battle.battleMenu(p);
+  // disband
+  answers.push({ selection: 4 });
+  await battle.battleMenu(p);
+  if (core.isBattler(goku) || roleOf(goku) !== "npc" || goku.nameTag !== "孫悟空") throw new Error("disband: " + roleOf(goku) + " " + goku.nameTag);
+  if (zombie.nameTag !== "") throw new Error("zombie name not restored: " + zombie.nameTag);
+  // duel
+  const vegeta = fighters.spawnFighter("vegeta", ow, at(5));
+  hold("dbz:bt_duel");
+  hit(goku); hit(vegeta);
+  if (!core.isBattleEnemy(goku, vegeta) || core.isBattleEnemy(goku, zombie)) throw new Error("duel rule");
+  if (core.findBattleTarget(goku)?.id !== vegeta.id) throw new Error("duel target");
+  await tickAsync(40);
+  vegeta.applyDamage(1e6, { cause: "entityAttack" });
+  await tickAsync(40);
+  if (!p.titles.some((t) => t.includes("孫悟空の勝ち"))) throw new Error("no duel result: " + p.titles.slice(-3).join(" / "));
+  if (core.isBattler(goku) || roleOf(goku) !== "npc") throw new Error("duel winner not released");
+  // group hunt: goku + 2 zombies vs a cow
+  const z2 = ow.spawnEntity("minecraft:zombie", at(6));
+  const prey = ow.spawnEntity("minecraft:cow", at(7));
+  hold("dbz:bt_group");
+  hit(goku); hit(zombie); hit(z2);
+  p.isSneaking = true;
+  hit(prey);
+  p.isSneaking = false;
+  if (core.findBattleTarget(z2)?.id !== prey.id || core.findBattleTarget(prey) === null) throw new Error("hunt targets");
+  await tickAsync(40);
+  if (prey.isValid) prey.applyDamage(1e6, { cause: "entityAttack" });
+  await tickAsync(40);
+  if (!p.titles.some((t) => t.includes("標的を倒した"))) throw new Error("no hunt result");
+  // wands
+  hold("dbz:bt_team_green");
+  hit(zombie);
+  zombie.hp.currentValue = 3;
+  hold("dbz:bt_heal");
+  hit(zombie);
+  if (zombie.hp.currentValue !== zombie.hp.effectiveMax) throw new Error("heal");
+  hold("dbz:bt_buff");
+  hit(zombie);
+  if (!zombie.effects.strength) throw new Error("buff");
+  hold("dbz:bt_kill");
+  hit(zombie);
+  if (zombie.isValid) throw new Error("kill");
+  // player joins a team with a flag used in the air
+  world.afterEvents.itemUse.fire({ source: p, itemStack: new ItemStack("dbz:bt_team_yellow", 1) });
+  if (core.teamOf(p) !== "yellow") throw new Error("player join");
+  p.isSneaking = true;
+  world.afterEvents.itemUse.fire({ source: p, itemStack: new ItemStack("dbz:bt_team_yellow", 1) });
+  p.isSneaking = false;
+  if (core.isBattler(p)) throw new Error("player leave");
+  battle.giveTools(p);
+  if (!battle.TOOLS.every((id) => p.inv.items.some((it) => it?.typeId === id))) throw new Error("tools not given");
+  for (const e of [goku, z2]) if (e.isValid) e.remove();
+  await tickAsync(20);
+});
+
 await step("long idle", async () => tickAsync(600));
 
 if (errors.length) {

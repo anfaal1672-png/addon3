@@ -8,6 +8,7 @@ import { setFighterPL, isHostile, hurt, powerOfAny } from "../combat/damage.js";
 import { fireBlast, fireBeam, explode, blastsNear, activeBeamOf } from "../combat/projectiles.js";
 import { setPose } from "../combat/forms.js";
 import { emit, on } from "../core/bus.js";
+import { findBattleTarget } from "../battle/core.js";
 
 /** id -> AI state */
 export const fighters = new Map();
@@ -156,6 +157,7 @@ function hpFrac(e) {
 function findTarget(s) {
   const e = s.e;
   const dim = e.dimension;
+  if (s.role === "battle") return findBattleTarget(e);
   if (s.role === "ally") {
     const owner = s.owner ? world.getEntity(s.owner) : null;
     const center = owner && isValid(owner) ? owner.location : e.location;

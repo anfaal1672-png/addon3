@@ -194,6 +194,36 @@
     "dbz_super_ball_7": {
       "textures": "textures/items/dbz/super_ball_7"
     },
+    "dbz_bt_duel": {
+      "textures": "textures/items/dbz/bt_duel"
+    },
+    "dbz_bt_group": {
+      "textures": "textures/items/dbz/bt_group"
+    },
+    "dbz_bt_team_red": {
+      "textures": "textures/items/dbz/bt_team_red"
+    },
+    "dbz_bt_team_blue": {
+      "textures": "textures/items/dbz/bt_team_blue"
+    },
+    "dbz_bt_team_green": {
+      "textures": "textures/items/dbz/bt_team_green"
+    },
+    "dbz_bt_team_yellow": {
+      "textures": "textures/items/dbz/bt_team_yellow"
+    },
+    "dbz_bt_heal": {
+      "textures": "textures/items/dbz/bt_heal"
+    },
+    "dbz_bt_kill": {
+      "textures": "textures/items/dbz/bt_kill"
+    },
+    "dbz_bt_buff": {
+      "textures": "textures/items/dbz/bt_buff"
+    },
+    "dbz_bt_menu": {
+      "textures": "textures/items/dbz/bt_menu"
+    },
     "dbz_egg_goku": {
       "textures": "textures/items/dbz/egg_goku"
     },

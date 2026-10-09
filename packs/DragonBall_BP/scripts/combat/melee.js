@@ -30,6 +30,7 @@ export function meleeBase(p) {
 
 /** Returns the damage the hit should have dealt. Handles combos, finishers and clashes. */
 function onPlayerMelee(p, victim, vanilla) {
+  if (heldId(p).startsWith("dbz:bt_")) return 0; // mob battle tools select, they don't hurt
   const r = rt(p);
   const now = system.currentTick;
   if (r.comboTarget !== victim.id || now - r.lastHitTick > 22) r.comboCount = 0;

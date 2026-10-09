@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:bt_group",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_bt_group",
+      "minecraft:display_name": {
+        "value": "集団戦の杖（仲間を叩いて選び、しゃがみ叩きで標的）"
+      },
+      "minecraft:max_stack_size": 1
+    }
+  }
+}

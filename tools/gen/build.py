@@ -14,6 +14,7 @@ from common import ROOT, BP, RP, write_json, write_text, stable_uuid, LANG  # no
 from model import geo_file, SCALE  # noqa: E402
 from humanoid import build_humanoid  # noqa: E402
 import eggs as EG  # noqa: E402
+import battle_icons as BI  # noqa: E402
 import characters as CH  # noqa: E402
 import player_visuals as PV  # noqa: E402
 import misc_models as MM  # noqa: E402
@@ -22,7 +23,7 @@ import particles as PT  # noqa: E402
 import sounds as SND  # noqa: E402
 
 VANILLA = os.path.join(ROOT, "tools", "vanilla")
-VERSION = [1, 0, 5]
+VERSION = [1, 0, 6]
 MIN_ENGINE = [1, 26, 30]
 # True when there is no real entity to read properties from: UI previews, and persona renders that have no
 # actor at all. query.property / query.has_property log "does not have an actor" there, while query.is_alive
@@ -557,7 +558,34 @@ def build_entities():
                                 "minecraft:movement": {"value": 0}, "minecraft:knockback_resistance": {"value": 1.0},
                                 "minecraft:damage_sensor": {"triggers": [{"cause": "fall", "deals_damage": "no"},
                                                                          {"cause": "suffocation", "deals_damage": "no"}]}}
-    roles = ["npc", "enemy", "spar", "ally", "passive", "dummy"]
+    # mob battle: a fighter on the battle role only chases what its team / duel group points it at.
+    # Teams and duel slots are tags on any entity (players and vanilla mobs too), so the filters are tag tests.
+    groups["dbz:role_battle"] = {
+        "minecraft:type_family": {"family": ["dbz_fighter", "dbz_battler", "mob"]},
+        "minecraft:behavior.hurt_by_target": {"priority": 1, "entity_types": {"filters": {"any_of": [
+            {"test": "is_family", "subject": "other", "operator": "!=", "value": "player"},
+            {"test": "has_tag", "subject": "other", "value": "dbz_bt"}]}}},
+        "minecraft:behavior.melee_box_attack": {"priority": 3, "speed_multiplier": 1.3, "track_target": True},
+        "minecraft:attack": {"damage": 3},
+        "minecraft:behavior.random_stroll": {"priority": 7, "speed_multiplier": 0.8},
+        "minecraft:behavior.look_at_player": {"priority": 8, "look_distance": 12}}
+    battle_groups = []
+    for t in BATTLE_TEAMS:
+        battle_groups.append(f"dbz:bt_{t}")
+        groups[f"dbz:bt_{t}"] = {"minecraft:behavior.nearest_attackable_target": {
+            "priority": 2, "must_see": False, "reselect_targets": True, "within_radius": 48,
+            "entity_types": [{"filters": {"all_of": [{"test": "has_tag", "subject": "other", "value": "dbz_bt"},
+                                                     {"test": "has_tag", "subject": "other", "operator": "!=", "value": f"dbz_t_{t}"}]},
+                              "max_dist": 48}]}}
+    for k in range(1, BATTLE_SLOTS + 1):
+        battle_groups.append(f"dbz:hunt_{k}")
+        groups[f"dbz:hunt_{k}"] = {"minecraft:behavior.nearest_attackable_target": {
+            "priority": 2, "must_see": False, "reselect_targets": True, "within_radius": 64,
+            "entity_types": [{"filters": {"test": "has_tag", "subject": "other", "value": f"dbz_prey_{k}"}, "max_dist": 64}]}}
+    for g in battle_groups:
+        events[g] = {"add": {"component_groups": [g]}, "remove": {"component_groups": [o for o in battle_groups if o != g]}}
+    events["dbz:bt_clear"] = {"remove": {"component_groups": battle_groups}}
+    roles = ["npc", "enemy", "spar", "ally", "passive", "dummy", "battle"]
     for r in roles:
         events[f"dbz:role_{r}"] = {"add": {"component_groups": [f"dbz:role_{r}"]},
                                    "remove": {"component_groups": [f"dbz:role_{o}" for o in roles if o != r]}}
@@ -678,6 +706,8 @@ def build_entities():
 # =============================================================================================== items & blocks
 ITEMS = []        # (id, name, icon, components, category)
 ITEM_GROUPS = {}  # id -> creative inventory group
+BATTLE_TEAMS = ["red", "blue", "green", "yellow"]
+BATTLE_SLOTS = 8  # simultaneous duels / group hunts
 EGG_ICONS = {}    # character id -> spawn egg icon (filled while building the character models)
 NO_EGG = {"training_dummy"}  # placed as a block instead
 ATTACHABLES = []  # (id, geometry_kind, texture_path, geometry_id)
@@ -843,6 +873,15 @@ def define_items():
                                 "dbz_namek_dirt": "textures/blocks/dbz/namek_dirt"}, "loot": "self", "map_color": "#5fcf9a", "hardness": 0.6, "light": 0})
     BLOCKS.append({"id": "ajisa_leaves", "name": "アジッサの葉", "full": {"*": "dbz_ajisa_leaves"}, "render": "alpha_test",
                    "textures": {"dbz_ajisa_leaves": "textures/blocks/dbz/ajisa_leaves"}, "loot": "self", "map_color": "#3aa8c0", "hardness": 0.2, "light": 0})
+    # mob battle tools (scripts/battle)
+    item("bt_duel", "一騎打ちの杖（2体を順に叩く）", BI.wand_icon("duel"), None, "equipment", 1)
+    item("bt_group", "集団戦の杖（仲間を叩いて選び、しゃがみ叩きで標的）", BI.wand_icon("group"), None, "equipment", 1)
+    for t, name in zip(BATTLE_TEAMS, ("赤", "青", "緑", "黄")):
+        item(f"bt_team_{t}", f"{name}チームの旗（叩いて加入／しゃがみ叩きで解散）", BI.flag_icon(t), None, "equipment", 1)
+    item("bt_heal", "回復の杖", BI.wand_icon("heal"), None, "equipment", 1)
+    item("bt_kill", "撃破の杖", BI.wand_icon("kill"), None, "equipment", 1)
+    item("bt_buff", "強化の杖（しゃがみ叩きで効果を消す）", BI.wand_icon("buff"), None, "equipment", 1)
+    item("bt_menu", "バトル管理", BI.battle_menu_icon(), {"minecraft:cooldown": {"category": "dbz_bt_menu", "duration": 0.4}}, "equipment", 1)
     # one spawn egg per character; the script spawns the fighter (dbz:egg_<character id>)
     for c in CH.CHARACTERS:
         if c["id"] in EGG_ICONS:

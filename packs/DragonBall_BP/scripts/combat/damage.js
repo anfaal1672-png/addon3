@@ -6,6 +6,7 @@ import { emit } from "../core/bus.js";
 import { V, clamp, isValid, chance } from "../core/util.js";
 import { particle, sound, title, msg, afterimage, shake, flash } from "../core/fx.js";
 import { grantFlag, doTransform, refreshVisuals } from "./forms.js";
+import { isBattler, isBattleEnemy } from "../battle/core.js";
 
 /* ------------------------------------------------------------------------------- power lookup */
 
@@ -65,6 +66,8 @@ export function hasFamily(e, fam) {
 export function isHostile(owner, target) {
   if (!isValid(owner) || !isValid(target)) return isValid(target);
   if (owner.id === target.id) return false;
+  // mob battle participants only hurt whoever the battle pits them against
+  if (owner.typeId !== "minecraft:player" && isBattler(owner)) return isBattleEnemy(owner, target, true);
   const tFam = families(target);
   if (tFam.includes("dbz_fx") || tFam.includes("dbz_vehicle") || tFam.includes("dbz_npc") || tFam.includes("dbz_dummy") && owner.typeId !== "minecraft:player") return false;
   if (target.typeId === "minecraft:item" || target.typeId === "minecraft:xp_orb" || target.typeId === "minecraft:armor_stand") return false;

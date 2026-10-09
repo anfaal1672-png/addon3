@@ -168,7 +168,8 @@ for ref in set(re.findall(r'"(dbz:[a-z_]+)"', script_text)):
              "dbz:pl", "dbz:cid", "dbz:melee", "dbz:role", "dbz:boss", "dbz:owner", "dbz:home", "dbz:char", "dbz:scale", "dbz:aura",
              "dbz:pose", "dbz:spark", "dbz:hair", "dbz:hair_style", "dbz:body", "dbz:model", "dbz:tail", "dbz:color", "dbz:shape",
              "dbz:size", "dbz:len", "dbz:width", "dbz:pitch", "dbz:yaw", "dbz:spiral", "dbz:variant", "dbz:freeze", "dbz:unfreeze",
-             "dbz:fly_on", "dbz:fly_off", "dbz:boss_on", "dbz:boss_off", "dbz:mob", "dbz:region", "dbz:summon"}
+             "dbz:fly_on", "dbz:fly_off", "dbz:boss_on", "dbz:boss_off", "dbz:mob", "dbz:region", "dbz:summon",
+             "dbz:bt_clear", "dbz:battle", "dbz:prev_role", "dbz:orig_name", "dbz:dbbattle"}
     if ref not in known and ref not in props and not ref.endswith("_") and not ref.startswith("dbz:role_") and not ref.startswith("dbz:size_"):
         errors.append(f"script references unknown id {ref}")
 
