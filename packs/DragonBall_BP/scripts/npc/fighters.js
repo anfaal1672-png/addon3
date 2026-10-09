@@ -4,7 +4,7 @@ import { statsFor, profileOf } from "./chars.js";
 import { settings, rt, getData } from "../core/data.js";
 import { V, clamp, isValid, chance, rand, pick } from "../core/util.js";
 import { particle, sound, title, afterimage, shakeArea, msg } from "../core/fx.js";
-import { setFighterPL, isHostile, hurt, powerOfAny } from "../combat/damage.js";
+import { setFighterPL, isHostile, hurt, powerOfAny, fighterMelee } from "../combat/damage.js";
 import { fireBlast, fireBeam, explode, blastsNear, activeBeamOf } from "../combat/projectiles.js";
 import { setPose } from "../combat/forms.js";
 import { emit, on } from "../core/bus.js";
@@ -463,8 +463,11 @@ function combatStep(s, prof, target) {
   const dist = V.dist(e.location, target.location);
   const dy = target.location.y - e.location.y;
   const now = system.currentTick;
+  const battle = s.role === "battle";
   // flying
-  if (prof.fly && (dy > 2.5 || (target.typeId === "minecraft:player" && rt(target).flying))) setFlying(s, true);
+  if (prof.fly && (dy > 2.5 || (target.typeId === "minecraft:player" && rt(target).flying) || (battle && now < (s.flyUntil ?? 0)))) {
+    setFlying(s, true);
+  }
   else if (s.flying && dy < 1 && s.tick % 10 === 0) setFlying(s, false);
   if (s.flying) moveFly(s, target);
   // dodge incoming blasts
@@ -510,11 +513,13 @@ function combatStep(s, prof, target) {
     bodyChange(s, target);
     return;
   }
+  if (battle && battleMoves(s, prof, target, dist, now)) return;
   // ranged attacks
   const atks = prof.atk ?? [];
-  if (atks.length && dist > 3.5 && dist < 34 && s.tick % 4 === 0) {
-    const ready = atks.filter((a, i) => now - (s.cd[i] ?? -999) > a.cd * (s.boss ? 0.8 : 1.2));
-    if (ready.length && chance(s.boss ? 0.4 : 0.22)) {
+  if (atks.length && dist > (battle ? 1.5 : 3.5) && dist < 34 && s.tick % 4 === 0) {
+    const cdMul = battle ? 0.7 : s.boss ? 0.8 : 1.2;
+    const ready = atks.filter((a, i) => now - (s.cd[i] ?? -999) > a.cd * cdMul);
+    if (ready.length && chance(battle ? 0.3 : s.boss ? 0.4 : 0.22)) {
       const a = pick(ready);
       s.cd[atks.indexOf(a)] = now;
       useAttack(s, target, a);
@@ -530,6 +535,67 @@ function combatStep(s, prof, target) {
       // ignore
     }
     afterimage(e.dimension, e.location, "white");
+  }
+}
+
+/* --------------------------------------------------------------------------------- mob battle */
+
+/** Extra moves for fighters pitted against each other: blows with knockback, rushes, leaps and sky fights,
+ * so a fight spreads out and the ki attacks get their turn. Returns true when it used the step. */
+function battleMoves(s, prof, target, dist, now) {
+  const e = s.e;
+  if (prof.fly && !s.flying && s.tick % 20 === 0 && chance(0.12)) s.flyUntil = now + 100 + Math.floor(rand(0, 160));
+  if (dist < 3.4 && now - (s.cd.melee ?? -99) > 16) {
+    s.cd.melee = now;
+    rushCombo(s, target, chance(0.3) ? 4 : 1);
+    return true;
+  }
+  if (dist < 5 && now - (s.cd.leap ?? -99) > 60 && chance(0.06)) {
+    s.cd.leap = now;
+    const away = V.norm({ x: e.location.x - target.location.x, y: 0, z: e.location.z - target.location.z });
+    afterimage(e.dimension, e.location, "white");
+    try {
+      e.applyImpulse({ x: away.x * 1.6, y: 0.5, z: away.z * 1.6 });
+    } catch {
+      // ignore
+    }
+    sound(e.dimension, "dbz.dash", e.location, 0.8);
+    for (const k of Object.keys(s.cd)) if (/^\d+$/.test(k)) s.cd[k] -= 40; // ki attacks come back sooner
+    return true;
+  }
+  if (!s.flying && dist > 7 && dist < 30 && chance(0.12)) {
+    const to = V.norm(V.sub(target.location, e.location));
+    afterimage(e.dimension, e.location, "white");
+    try {
+      e.applyImpulse({ x: to.x * 1.8, y: 0.3, z: to.z * 1.8 });
+    } catch {
+      // ignore
+    }
+    sound(e.dimension, "dbz.dash", e.location, 0.8);
+    return true;
+  }
+  return false;
+}
+
+/** One blow, or a rush of several; every hit knocks back and the last one sends the target flying. */
+function rushCombo(s, target, hits) {
+  const e = s.e;
+  setPose(e, hits > 1 ? "rush" : "one_hand");
+  for (let i = 0; i < hits; i++) {
+    const last = i === hits - 1;
+    system.runTimeout(() => {
+      if (!isValid(e) || !isValid(target) || V.dist(e.location, target.location) > 4.5) return;
+      face(e, V.up(target.location, 1.1));
+      const dir = V.sub(target.location, e.location);
+      hurt(target, fighterMelee(e) * (last ? 1.4 : 0.6), e,
+        { knock: { dir, h: last ? (hits > 1 ? 2.2 : 1.3) : 0.2, v: last ? 0.45 : 0.05 } });
+      const at = V.up(target.location, 1.1);
+      particle(e.dimension, "dbz:impact", at, "white", last ? 2 : 1);
+      if (last && hits > 1) particle(e.dimension, "dbz:shockwave", at, "white", 2);
+      if (!last) afterimage(e.dimension, e.location, "white");
+      sound(e.dimension, last ? "dbz.punch_heavy" : "dbz.punch", at, 1);
+      if (last) system.runTimeout(() => isValid(e) && setPose(e, s.flying ? "fly" : "none"), 6);
+    }, i * 4);
   }
 }
 
