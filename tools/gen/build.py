@@ -23,7 +23,7 @@ import particles as PT  # noqa: E402
 import sounds as SND  # noqa: E402
 
 VANILLA = os.path.join(ROOT, "tools", "vanilla")
-VERSION = [1, 0, 6]
+VERSION = [1, 0, 7]
 MIN_ENGINE = [1, 26, 30]
 # True when there is no real entity to read properties from: UI previews, and persona renders that have no
 # actor at all. query.property / query.has_property log "does not have an actor" there, while query.is_alive

@@ -253,7 +253,7 @@ await step("mob battle: teams, duel, group hunt, tools, menu", async () => {
   answers.push({ selection: 4 });
   await battle.battleMenu(p);
   if (core.isBattler(goku) || roleOf(goku) !== "npc" || goku.nameTag !== "孫悟空") throw new Error("disband: " + roleOf(goku) + " " + goku.nameTag);
-  if (zombie.nameTag !== "") throw new Error("zombie name not restored: " + zombie.nameTag);
+  if (zombie.isValid && zombie.nameTag !== "") throw new Error("zombie name not restored: " + zombie.nameTag);
   // duel
   const vegeta = fighters.spawnFighter("vegeta", ow, at(5));
   hold("dbz:bt_duel");
@@ -278,19 +278,20 @@ await step("mob battle: teams, duel, group hunt, tools, menu", async () => {
   if (prey.isValid) prey.applyDamage(1e6, { cause: "entityAttack" });
   await tickAsync(40);
   if (!p.titles.some((t) => t.includes("標的を倒した"))) throw new Error("no hunt result");
-  // wands
+  // wands (on a fresh mob: the first zombie may have fallen in the fights above)
+  const z3 = ow.spawnEntity("minecraft:zombie", at(9));
   hold("dbz:bt_team_green");
-  hit(zombie);
-  zombie.hp.currentValue = 3;
+  hit(z3);
+  z3.hp.currentValue = 3;
   hold("dbz:bt_heal");
-  hit(zombie);
-  if (zombie.hp.currentValue !== zombie.hp.effectiveMax) throw new Error("heal");
+  hit(z3);
+  if (z3.hp.currentValue !== z3.hp.effectiveMax) throw new Error("heal");
   hold("dbz:bt_buff");
-  hit(zombie);
-  if (!zombie.effects.strength) throw new Error("buff");
+  hit(z3);
+  if (!z3.effects.strength) throw new Error("buff");
   hold("dbz:bt_kill");
-  hit(zombie);
-  if (zombie.isValid) throw new Error("kill");
+  hit(z3);
+  if (z3.isValid) throw new Error("kill");
   // player joins a team with a flag used in the air
   world.afterEvents.itemUse.fire({ source: p, itemStack: new ItemStack("dbz:bt_team_yellow", 1) });
   if (core.teamOf(p) !== "yellow") throw new Error("player join");
@@ -302,6 +303,32 @@ await step("mob battle: teams, duel, group hunt, tools, menu", async () => {
   if (!battle.TOOLS.every((id) => p.inv.items.some((it) => it?.typeId === id))) throw new Error("tools not given");
   for (const e of [goku, z2]) if (e.isValid) e.remove();
   await tickAsync(20);
+});
+
+await step("mob battle: fighters side by side punch, knock back and use ki attacks", async () => {
+  const battle = await import("../../packs/DragonBall_BP/scripts/battle/battle.js");
+  const a = fighters.spawnFighter("goku", ow, { x: p.location.x + 20, y: p.location.y, z: p.location.z });
+  const b = fighters.spawnFighter("vegeta", ow, { x: p.location.x + 22.5, y: p.location.y, z: p.location.z });
+  battle.joinTeam(a, "red");
+  battle.joinTeam(b, "blue");
+  let knocked = false;
+  let kiUsed = false;
+  for (let i = 0; i < 60 && !(knocked && kiUsed); i++) {
+    a.location = { x: p.location.x + 20, y: p.location.y, z: p.location.z }; // the mock has no physics: keep them side by side
+    b.location = { x: p.location.x + 22.5, y: p.location.y, z: p.location.z };
+    a.vel = b.vel = { x: 0, y: 0, z: 0 };
+    a.hp.currentValue = a.hp.effectiveMax; // measure how they fight, not who wins
+    b.hp.currentValue = b.hp.effectiveMax;
+    await tickAsync(10);
+    if (Math.abs(a.vel.x) > 0.5 || Math.abs(b.vel.x) > 0.5) knocked = true;
+    for (const e of [a, b]) if (Object.keys(fighters.fighters.get(e.id)?.cd ?? {}).some((k) => /^\d+$/.test(k))) kiUsed = true;
+  }
+  console.log(`   knockback blows ${knocked}, ki attacks ${kiUsed}`);
+  if (!knocked) throw new Error("no knockback blows at close range");
+  if (!kiUsed) throw new Error("no ki attacks at close range");
+
+  for (const e of [a, b]) if (e.isValid) e.remove();
+  await tickAsync(10);
 });
 
 await step("long idle", async () => tickAsync(600));
