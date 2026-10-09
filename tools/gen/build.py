@@ -21,7 +21,7 @@ import particles as PT  # noqa: E402
 import sounds as SND  # noqa: E402
 
 VANILLA = os.path.join(ROOT, "tools", "vanilla")
-VERSION = [1, 0, 0]
+VERSION = [1, 0, 1]
 MIN_ENGINE = [1, 26, 30]
 ENTITY_FMT = "1.21.50"
 ITEM_FMT = "1.21.60"
@@ -82,7 +82,10 @@ def pose_animations(prefix):
     for i, name in enumerate(POSES):
         if name == "none":
             continue
-        anims[f"animation.{prefix}.pose.{name}"] = {"loop": True, "bones": A[name]}
+        bones = dict(A[name])
+        if "head" in bones:
+            bones["dbz_head"] = bones["head"]
+        anims[f"animation.{prefix}.pose.{name}"] = {"loop": True, "bones": bones}
     states = {"default": {"transitions": [{f"p{i}": f"query.property('dbz:pose') == {i}"} for i in range(1, len(POSES))],
                           "blend_transition": 0.15}}
     for i, name in enumerate(POSES):
@@ -106,6 +109,13 @@ def build_rp(data):
     char_tex = []
     for c in CH.CHARACTERS:
         m = build_humanoid(f"geometry.dbz.ch.{c['id']}", c["spec"])
+        # A bone called "head" makes the engine derive an armor locator from its pivot; with many
+        # differently sized geometries on one entity those locators clash, so fighters use "dbz_head".
+        for b in m.bones:
+            if b.name == "head":
+                b.name = "dbz_head"
+            if b.parent == "head":
+                b.parent = "dbz_head"
         img = m.render_texture()
         save_png(img, f"textures/entity/dbz/ch/{c['id']}")
         geos.append(m)
@@ -136,6 +146,8 @@ def build_rp(data):
     # ---------------------------------------------------------------- fighter client entity
     p_anims, p_ctrl, p_keys = pose_animations("dbz")
     anims.update(p_anims)
+    anims["animation.dbz.fighter.look"] = {"loop": True, "bones": {"dbz_head": {
+        "relative_to": {"rotation": "entity"}, "rotation": ["query.target_x_rotation", "query.target_y_rotation", 0.0]}}}
     ctrls.update(p_ctrl)
     rcs["controller.render.dbz.fighter"] = {
         "arrays": {"geometries": {"Array.geo": [f"Geometry.ch_{c}" for c in char_tex]},
@@ -154,10 +166,10 @@ def build_rp(data):
         "scripts": {
             "scale": "query.property('dbz:scale')",
             "pre_animation": ["variable.tcos0 = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed) * 57.3;"],
-            "animate": ["look_at_target_default", {"move": "query.property('dbz:pose') == 0"},
+            "animate": ["dbz_look", {"move": "query.property('dbz:pose') == 0"},
                         {"attack.rotations": "variable.attack_time > 0"}, "bob", "dbz_pose_ctrl"],
         },
-        "animations": dict({"look_at_target_default": "animation.humanoid.look_at_target.default",
+        "animations": dict({"dbz_look": "animation.dbz.fighter.look",
                             "move": "animation.humanoid.move", "attack.rotations": "animation.humanoid.attack.rotations",
                             "bob": "animation.humanoid.bob", "dbz_pose_ctrl": "controller.animation.dbz.pose"}, **p_keys),
         "render_controllers": ["controller.render.dbz.fighter",
@@ -393,6 +405,9 @@ def build_player_rp(p_keys, ov_ids):
     geo["dbz_aura"] = "geometry.dbz.aura"
     geo["dbz_spark"] = "geometry.dbz.spark"
     d["scripts"]["scale"] = "0.9375 * query.property('dbz:scale')"
+    pre = d["scripts"].setdefault("pre_animation", [])
+    if not any("melee_spear_equipped" in x for x in pre):
+        pre.append("variable.melee_spear_equipped = query.equipped_item_any_tag('slot.weapon.mainhand', 'minecraft:is_spear');")
     d["scripts"]["animate"].append({"dbz_pose_ctrl": "!variable.is_first_person"})
     d["animations"]["dbz_pose_ctrl"] = "controller.animation.dbz.pose"
     d["animations"].update(p_keys)
@@ -864,6 +879,7 @@ def write_items_blocks():
             comps["minecraft:selection_box"] = {"origin": [x, y, z], "size": [w, h, d]}
             terrain[b["texture"]] = {"textures": b["texture_path"]}
         else:
+            comps["minecraft:geometry"] = "minecraft:geometry.full_block"
             mi = {}
             for face, tex in b["full"].items():
                 key = {"side": "*", "up": "up", "down": "down"}.get(face, face)
@@ -900,7 +916,8 @@ def recipes():
     def shaped(rid, pattern, key, result, count=1):
         write_json(os.path.join(BP, f"recipes/{rid}.json"), {"format_version": "1.20.10", "minecraft:recipe_shaped": {
             "description": {"identifier": f"dbz:{rid}"}, "tags": ["crafting_table"], "pattern": pattern,
-            "key": {k: {"item": v} for k, v in key.items()}, "result": {"item": result, "count": count}}})
+            "key": {k: {"item": v} for k, v in key.items()}, "unlock": {"context": "AlwaysUnlocked"},
+            "result": {"item": result, "count": count}}})
 
     def furnace(rid, inp, out):
         write_json(os.path.join(BP, f"recipes/{rid}.json"), {"format_version": "1.20.10", "minecraft:recipe_furnace": {

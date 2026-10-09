@@ -122,11 +122,26 @@ for f in walk(os.path.join(BP, "blocks")):
         if mi["texture"] not in terrain:
             errors.append(f"block {b['description']['identifier']} texture {mi['texture']} missing")
     g = c.get("minecraft:geometry")
-    if g and g not in geos:
+    if g and g not in geos and not g.startswith("minecraft:"):
         errors.append(f"block geometry {g} missing")
     loot = c.get("minecraft:loot")
     if loot and not os.path.exists(os.path.join(BP, loot)):
         errors.append(f"loot {loot} missing")
+
+    if "minecraft:material_instances" in c and "minecraft:geometry" not in c:
+        errors.append(f"block {b['description']['identifier']} has material instances without geometry")
+
+# 4b. shaped/shapeless recipes need unlock data
+for f in walk(os.path.join(BP, "recipes")):
+    r = load(f)
+    for k in ("minecraft:recipe_shaped", "minecraft:recipe_shapeless"):
+        if k in r and "unlock" not in r[k]:
+            errors.append(f"recipe {os.path.basename(f)} missing unlock")
+
+# 4c. fighter geometries must not use a bone named "head" (locator clash)
+for g in load(os.path.join(RP, "models", "entity", "dbz_characters.geo.json"))["minecraft:geometry"]:
+    if any(b["name"] == "head" for b in g["bones"]):
+        errors.append(f"{g['description']['identifier']} still has a 'head' bone")
 
 # 5. sounds
 sd = load(os.path.join(RP, "sounds", "sound_definitions.json"))["sound_definitions"]
@@ -148,7 +163,7 @@ for f in walk(os.path.join(RP, "particles")):
     particles.add(load(f)["particle_effect"]["description"]["identifier"])
 for ref in set(re.findall(r'"(dbz:[a-z_]+)"', script_text)):
     known = items | blocks | particles | {"dbz:fighter", "dbz:ki_blast", "dbz:beam", "dbz:dragon", "dbz:dinosaur", "dbz:kintoun",
-                                          "dbz:aircar", "dbz:spaceship", "dbz:interact", "dbz:menu", "dbz:kit", "dbz:help"}
+                                          "dbz:aircar", "dbz:spaceship", "dbz:interact", "dbz:menu", "dbz:dbmenu", "dbz:dbkit", "dbz:dbhelp"}
     props = {"dbz:data", "dbz:settings", "dbz:sites", "dbz:balls", "dbz:namekChunks", "dbz:gravRooms", "dbz:capsuleHouses",
              "dbz:pl", "dbz:cid", "dbz:melee", "dbz:role", "dbz:boss", "dbz:owner", "dbz:home", "dbz:char", "dbz:scale", "dbz:aura",
              "dbz:pose", "dbz:spark", "dbz:hair", "dbz:hair_style", "dbz:body", "dbz:model", "dbz:tail", "dbz:color", "dbz:shape",

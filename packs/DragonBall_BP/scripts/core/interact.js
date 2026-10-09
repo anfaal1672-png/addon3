@@ -30,9 +30,9 @@ system.beforeEvents.startup.subscribe((ev) => {
   });
   const reg = ev.customCommandRegistry;
   const defs = [
-    ["dbz:menu", "ドラゴンボールのメニューを開く"],
-    ["dbz:kit", "操作アイテム一式を受け取る"],
-    ["dbz:help", "ドラゴンボールアドオンの操作説明を表示"],
+    ["dbz:dbmenu", "ドラゴンボールのメニューを開く"],
+    ["dbz:dbkit", "操作アイテム一式を受け取る"],
+    ["dbz:dbhelp", "ドラゴンボールアドオンの操作説明を表示"],
   ];
   for (const [name, description] of defs) {
     try {

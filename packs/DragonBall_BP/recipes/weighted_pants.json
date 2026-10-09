@@ -17,6 +17,9 @@
         "item": "minecraft:iron_ingot"
       }
     },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    },
     "result": {
       "item": "dbz:weighted_pants",
       "count": 1

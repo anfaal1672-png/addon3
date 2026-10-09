@@ -23,6 +23,9 @@
         "item": "minecraft:stick"
       }
     },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    },
     "result": {
       "item": "dbz:training_dummy",
       "count": 1

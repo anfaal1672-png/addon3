@@ -16,6 +16,9 @@
         "item": "minecraft:iron_block"
       }
     },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    },
     "result": {
       "item": "dbz:weighted_boots",
       "count": 1
