@@ -205,7 +205,7 @@ world.afterEvents.playerSpawn.subscribe((ev) => {
         refreshVisuals(p);
         applyPassives(p);
         giveKit(p, true);
-        msg(p, `§6[ドラゴンボール] §fおかえり！ ${RACES[d.race].name} Lv.${d.level}（メニュー：8番のアイテム / /dbz:menu）`);
+        msg(p, `§6[ドラゴンボール] §fおかえり！ ${RACES[d.race].name} Lv.${d.level}（メニュー：8番のアイテム / /dbz:dbmenu）`);
       }
     }, 40);
   } else {
@@ -245,9 +245,9 @@ world.beforeEvents.playerLeave.subscribe((ev) => {
 
 /* ===================================================================================== commands & startup */
 
-onCommand("dbz:menu", (p) => mainMenu(p));
-onCommand("dbz:kit", (p) => giveKit(p));
-onCommand("dbz:help", (p) => helpMenu(p, 0));
+onCommand("dbz:dbmenu", (p) => mainMenu(p));
+onCommand("dbz:dbkit", (p) => giveKit(p));
+onCommand("dbz:dbhelp", (p) => helpMenu(p, 0));
 
 world.afterEvents.worldLoad.subscribe(() => {
   system.runTimeout(() => {

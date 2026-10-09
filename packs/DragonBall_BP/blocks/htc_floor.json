@@ -13,6 +13,7 @@
       "minecraft:light_emission": 15,
       "minecraft:destructible_by_mining": false,
       "minecraft:destructible_by_explosion": false,
+      "minecraft:geometry": "minecraft:geometry.full_block",
       "minecraft:material_instances": {
         "*": {
           "texture": "dbz_htc_floor",

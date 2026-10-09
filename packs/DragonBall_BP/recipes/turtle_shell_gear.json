@@ -20,6 +20,9 @@
         "item": "minecraft:leather"
       }
     },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    },
     "result": {
       "item": "dbz:turtle_shell",
       "count": 1

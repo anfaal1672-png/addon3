@@ -20,6 +20,9 @@
         "item": "minecraft:blue_wool"
       }
     },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    },
     "result": {
       "item": "dbz:kame_top",
       "count": 1

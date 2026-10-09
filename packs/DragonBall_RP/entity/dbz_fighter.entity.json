@@ -188,7 +188,7 @@
           "variable.tcos0 = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed) * 57.3;"
         ],
         "animate": [
-          "look_at_target_default",
+          "dbz_look",
           {
             "move": "query.property('dbz:pose') == 0"
           },
@@ -200,7 +200,7 @@
         ]
       },
       "animations": {
-        "look_at_target_default": "animation.humanoid.look_at_target.default",
+        "dbz_look": "animation.dbz.fighter.look",
         "move": "animation.humanoid.move",
         "attack.rotations": "animation.humanoid.attack.rotations",
         "bob": "animation.humanoid.bob",

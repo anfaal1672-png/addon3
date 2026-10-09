@@ -16,6 +16,9 @@
         "item": "minecraft:blue_wool"
       }
     },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    },
     "result": {
       "item": "dbz:kame_boots",
       "count": 1

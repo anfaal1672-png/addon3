@@ -20,6 +20,9 @@
         "item": "minecraft:gray_wool"
       }
     },
+    "unlock": {
+      "context": "AlwaysUnlocked"
+    },
     "result": {
       "item": "dbz:weighted_top",
       "count": 1

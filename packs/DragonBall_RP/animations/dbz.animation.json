@@ -170,6 +170,13 @@
             0,
             0
           ]
+        },
+        "dbz_head": {
+          "rotation": [
+            -15,
+            0,
+            0
+          ]
         }
       }
     },
@@ -238,6 +245,13 @@
         "leftleg": {
           "rotation": [
             "-math.sin(query.life_time * 300) * 6",
+            0,
+            0
+          ]
+        },
+        "dbz_head": {
+          "rotation": [
+            -55,
             0,
             0
           ]
@@ -318,6 +332,13 @@
         "root": {
           "position": [
             "math.sin(query.life_time * 2600) * 0.6",
+            0,
+            0
+          ]
+        },
+        "dbz_head": {
+          "rotation": [
+            -25,
             0,
             0
           ]
@@ -468,6 +489,13 @@
             0,
             0
           ]
+        },
+        "dbz_head": {
+          "rotation": [
+            -70,
+            0,
+            0
+          ]
         }
       }
     },
@@ -486,6 +514,21 @@
             -20,
             0,
             15
+          ]
+        }
+      }
+    },
+    "animation.dbz.fighter.look": {
+      "loop": true,
+      "bones": {
+        "dbz_head": {
+          "relative_to": {
+            "rotation": "entity"
+          },
+          "rotation": [
+            "query.target_x_rotation",
+            "query.target_y_rotation",
+            0.0
           ]
         }
       }
