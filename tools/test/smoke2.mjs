@@ -25,6 +25,7 @@ async function step(label, fn) {
   }
   console.log(errors.length > before ? `✗ ${label}` : `✓ ${label}`);
 }
+const V2 = (a, b) => (a.x - b.x) ** 2 + (a.y - b.y) ** 2 + (a.z - b.z) ** 2;
 const tickAsync = async (n) => {
   for (let i = 0; i < n; i++) {
     advance(1);
@@ -161,6 +162,46 @@ await step("instant transmission menu + travel", async () => {
   await tickAsync(40);
   sites.travelTo(p, "kai");
   await tickAsync(60);
+});
+
+await step("spawn eggs: every character, block click + air, sneak flips role", async () => {
+  const { CHARS } = await import("../../packs/DragonBall_BP/scripts/gen/catalog.js");
+  const eggs = await import("../../packs/DragonBall_BP/scripts/items/eggs.js");
+  const before = fighters.fighters.size;
+  let n = 0;
+  for (const c of CHARS) {
+    if (c.id === "training_dummy") continue;
+    const e = eggs.useEgg(p, `dbz:egg_${c.id}`, { x: p.location.x + 3, y: p.location.y, z: p.location.z });
+    if (!e) throw new Error("egg did not spawn " + c.id);
+    n++;
+    await tickAsync(6);
+  }
+  if (fighters.fighters.size < before + n) throw new Error("eggs did not register fighters");
+  // role: villain hostile, hero peaceful, sneaking flips
+  const roleOf = (e) => fighters.fighters.get(e.id)?.role;
+  await tickAsync(6);
+  if (roleOf(eggs.useEgg(p, "dbz:egg_frieza1", p.location)) !== "enemy") throw new Error("frieza egg not hostile");
+  await tickAsync(6);
+  if (roleOf(eggs.useEgg(p, "dbz:egg_goku", p.location)) !== "npc") throw new Error("goku egg not peaceful");
+  await tickAsync(6);
+  p.isSneaking = true;
+  if (roleOf(eggs.useEgg(p, "dbz:egg_goku", p.location)) !== "enemy") throw new Error("sneak did not flip role");
+  p.isSneaking = false;
+  // events: block click (consumes one) then an immediate air use is de-duplicated
+  await tickAsync(6);
+  p.inv.setItem(p.selectedSlotIndex, new ItemStack("dbz:egg_vegeta", 2));
+  const size = fighters.fighters.size;
+  world.afterEvents.playerInteractWithBlock.fire({ player: p, block: ow.getBlock({ x: 2, y: 62, z: 2 }), blockFace: "Up",
+    isFirstEvent: true, itemStack: new ItemStack("dbz:egg_vegeta", 1) });
+  world.afterEvents.itemUse.fire({ source: p, itemStack: new ItemStack("dbz:egg_vegeta", 1) });
+  if (fighters.fighters.size !== size + 1) throw new Error("block click spawned " + (fighters.fighters.size - size));
+  if (p.inv.getItem(p.selectedSlotIndex)?.amount !== 1) throw new Error("egg not consumed");
+  await tickAsync(6);
+  world.afterEvents.itemUse.fire({ source: p, itemStack: new ItemStack("dbz:egg_vegeta", 1) });
+  if (fighters.fighters.size !== size + 2) throw new Error("air use did not spawn");
+  console.log(`   spawned ${n} characters from eggs`);
+  for (const s of [...fighters.fighters.values()]) if (s.e.isValid && s.e.location && V2(s.e.location, p.location) < 100) s.e.remove();
+  await tickAsync(20);
 });
 
 await step("long idle", async () => tickAsync(600));

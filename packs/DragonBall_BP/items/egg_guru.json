@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:egg_guru",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_egg_guru",
+      "minecraft:display_name": {
+        "value": "最長老のスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

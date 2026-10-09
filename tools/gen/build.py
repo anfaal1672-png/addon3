@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import ROOT, BP, RP, write_json, write_text, stable_uuid, LANG  # noqa: E402
 from model import geo_file, SCALE  # noqa: E402
 from humanoid import build_humanoid  # noqa: E402
+import eggs as EG  # noqa: E402
 import characters as CH  # noqa: E402
 import player_visuals as PV  # noqa: E402
 import misc_models as MM  # noqa: E402
@@ -21,7 +22,7 @@ import particles as PT  # noqa: E402
 import sounds as SND  # noqa: E402
 
 VANILLA = os.path.join(ROOT, "tools", "vanilla")
-VERSION = [1, 0, 4]
+VERSION = [1, 0, 5]
 MIN_ENGINE = [1, 26, 30]
 # True when there is no real entity to read properties from: UI previews, and persona renders that have no
 # actor at all. query.property / query.has_property log "does not have an actor" there, while query.is_alive
@@ -122,6 +123,8 @@ def build_rp(data):
                 b.parent = "dbz_head"
         img = m.render_texture()
         save_png(img, f"textures/entity/dbz/ch/{c['id']}")
+        if c["id"] not in NO_EGG:
+            EGG_ICONS[c["id"]] = EG.egg_icon(m, img)
         geos.append(m)
         char_tex.append(c["id"])
     write_json(os.path.join(RP, "models/entity/dbz_characters.geo.json"), geo_file(geos))
@@ -674,6 +677,9 @@ def build_entities():
 
 # =============================================================================================== items & blocks
 ITEMS = []        # (id, name, icon, components, category)
+ITEM_GROUPS = {}  # id -> creative inventory group
+EGG_ICONS = {}    # character id -> spawn egg icon (filled while building the character models)
+NO_EGG = {"training_dummy"}  # placed as a block instead
 ATTACHABLES = []  # (id, geometry_kind, texture_path, geometry_id)
 BLOCKS = []
 
@@ -837,6 +843,11 @@ def define_items():
                                 "dbz_namek_dirt": "textures/blocks/dbz/namek_dirt"}, "loot": "self", "map_color": "#5fcf9a", "hardness": 0.6, "light": 0})
     BLOCKS.append({"id": "ajisa_leaves", "name": "アジッサの葉", "full": {"*": "dbz_ajisa_leaves"}, "render": "alpha_test",
                    "textures": {"dbz_ajisa_leaves": "textures/blocks/dbz/ajisa_leaves"}, "loot": "self", "map_color": "#3aa8c0", "hardness": 0.2, "light": 0})
+    # one spawn egg per character; the script spawns the fighter (dbz:egg_<character id>)
+    for c in CH.CHARACTERS:
+        if c["id"] in EGG_ICONS:
+            item(f"egg_{c['id']}", f"{c['name']}のスポーンエッグ", EGG_ICONS[c["id"]], None, "nature")
+            ITEM_GROUPS[f"egg_{c['id']}"] = "minecraft:itemGroup.name.mobEgg"
     BLOCKS.append({"id": "htc_floor", "name": "精神と時の部屋の床", "full": {"*": "dbz_htc_floor"},
                    "textures": {"dbz_htc_floor": "textures/blocks/dbz/htc_floor"}, "loot": None, "map_color": "#ffffff", "hardness": -1, "light": 15})
     BLOCKS.append({"id": "lookout_tile", "name": "神殿のタイル", "full": {"*": "dbz_lookout_tile"},
@@ -851,7 +862,9 @@ def write_items_blocks():
         save_png(icon_img, f"textures/items/dbz/{iid}")
         item_tex[f"dbz_{iid}"] = {"textures": f"textures/items/dbz/{iid}"}
         write_json(os.path.join(BP, f"items/{iid}.json"), {"format_version": ITEM_FMT, "minecraft:item": {
-            "description": {"identifier": f"dbz:{iid}", "menu_category": {"category": cat}}, "components": comps}})
+            "description": {"identifier": f"dbz:{iid}", "menu_category": dict({"category": cat},
+                                                                             **({"group": ITEM_GROUPS[iid]} if iid in ITEM_GROUPS else {}))},
+            "components": comps}})
         LANG.add(f"item.dbz:{iid}.name", name)
         LANG.add(f"item.dbz:{iid}", name)
     write_json(os.path.join(RP, "textures/item_texture.json"),

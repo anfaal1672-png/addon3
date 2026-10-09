@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:egg_elder_kai",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_egg_elder_kai",
+      "minecraft:display_name": {
+        "value": "老界王神のスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}
