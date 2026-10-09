@@ -1,0 +1,20 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:gregory_hammer",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_gregory_hammer",
+      "minecraft:display_name": {
+        "value": "グレゴリー用ハンマー"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:damage": 2,
+      "minecraft:hand_equipped": true
+    }
+  }
+}

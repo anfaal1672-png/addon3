@@ -1,0 +1,23 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "dbz:scouter",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/models/dbz/scouter"
+      },
+      "geometry": {
+        "default": "geometry.dbz.scouter_worn"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "scripts": {
+        "parent_setup": "variable.helmet_layer_visible = 0.0;"
+      }
+    }
+  }
+}

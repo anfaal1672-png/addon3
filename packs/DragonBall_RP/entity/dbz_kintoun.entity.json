@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dbz:kintoun",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/dbz/kintoun"
+      },
+      "geometry": {
+        "default": "geometry.dbz.kintoun"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "scripts": {
+        "animate": [
+          "a"
+        ]
+      },
+      "animations": {
+        "a": "animation.dbz.kintoun.bob"
+      }
+    }
+  }
+}

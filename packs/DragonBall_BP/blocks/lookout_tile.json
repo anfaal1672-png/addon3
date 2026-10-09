@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "dbz:lookout_tile",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "神殿のタイル",
+      "minecraft:map_color": "#e8e2d8",
+      "minecraft:light_emission": 0,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 2.0
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 2
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "dbz_lookout_tile",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/dbz_lookout_tile.json"
+    }
+  }
+}

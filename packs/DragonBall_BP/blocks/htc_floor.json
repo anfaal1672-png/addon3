@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "dbz:htc_floor",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "精神と時の部屋の床",
+      "minecraft:map_color": "#ffffff",
+      "minecraft:light_emission": 15,
+      "minecraft:destructible_by_mining": false,
+      "minecraft:destructible_by_explosion": false,
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "dbz_htc_floor",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:loot": "loot_tables/empty.json"
+    }
+  }
+}

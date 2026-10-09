@@ -1,0 +1,55 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "dbz:super_ball_5",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "超ドラゴンボール（五星球）",
+      "minecraft:map_color": "#ff9a1a",
+      "minecraft:light_emission": 9,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.2
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 2
+      },
+      "dbz:interact": {},
+      "minecraft:geometry": "geometry.dbz.super_ball",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "dbz_block_super_ball_5",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -7.5,
+          0,
+          -7.5
+        ],
+        "size": [
+          15.0,
+          15.0,
+          15.0
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -7.5,
+          0,
+          -7.5
+        ],
+        "size": [
+          15.0,
+          15.0,
+          15.0
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/dbz_super_ball_5.json"
+    }
+  }
+}

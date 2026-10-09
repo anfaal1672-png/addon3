@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:weighted_boots",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_weighted_boots",
+      "minecraft:display_name": {
+        "value": "重りの道着（靴）"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "slot": "slot.armor.feet",
+        "protection": 1
+      },
+      "minecraft:enchantable": {
+        "slot": "armor_feet",
+        "value": 10
+      },
+      "minecraft:durability": {
+        "max_durability": 400
+      }
+    }
+  }
+}

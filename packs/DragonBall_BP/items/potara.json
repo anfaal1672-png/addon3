@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:potara",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_potara",
+      "minecraft:display_name": {
+        "value": "ポタラ"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:cooldown": {
+        "category": "dbz_fusion",
+        "duration": 3
+      }
+    }
+  }
+}

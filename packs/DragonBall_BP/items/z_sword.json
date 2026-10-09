@@ -1,0 +1,23 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:z_sword",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_z_sword",
+      "minecraft:display_name": {
+        "value": "Zソード"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:damage": 16,
+      "minecraft:hand_equipped": true,
+      "minecraft:durability": {
+        "max_durability": 300
+      }
+    }
+  }
+}

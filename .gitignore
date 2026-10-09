@@ -1,0 +1,6 @@
+tools/node_modules/
+tools/vanilla/*
+!tools/vanilla/player_bp.json
+!tools/vanilla/player_rp.json
+__pycache__/
+*.pyc

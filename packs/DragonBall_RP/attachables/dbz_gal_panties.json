@@ -1,0 +1,23 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "dbz:gal_panties",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/models/dbz/gal_panties"
+      },
+      "geometry": {
+        "default": "geometry.dbz.panties_worn"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "scripts": {
+        "parent_setup": "variable.helmet_layer_visible = 0.0;"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:super_ball_5",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_super_ball_5",
+      "minecraft:display_name": {
+        "value": "超ドラゴンボール（五星球）"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:block_placer": {
+        "block": "dbz:super_ball_5"
+      }
+    }
+  }
+}

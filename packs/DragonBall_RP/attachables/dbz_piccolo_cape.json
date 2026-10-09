@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "dbz:piccolo_cape",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/models/dbz/piccolo_cape"
+      },
+      "geometry": {
+        "default": "geometry.dbz.cape_worn"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}

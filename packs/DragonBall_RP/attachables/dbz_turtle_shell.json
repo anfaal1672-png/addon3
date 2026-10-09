@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "dbz:turtle_shell",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/models/dbz/turtle_shell"
+      },
+      "geometry": {
+        "default": "geometry.dbz.shell_worn"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}

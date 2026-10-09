@@ -1,0 +1,91 @@
+{
+  "format_version": [
+    1,
+    1,
+    0
+  ],
+  "dbz:dragonball_1": {
+    "sound": "stone"
+  },
+  "dbz:dragonball_2": {
+    "sound": "stone"
+  },
+  "dbz:dragonball_3": {
+    "sound": "stone"
+  },
+  "dbz:dragonball_4": {
+    "sound": "stone"
+  },
+  "dbz:dragonball_5": {
+    "sound": "stone"
+  },
+  "dbz:dragonball_6": {
+    "sound": "stone"
+  },
+  "dbz:dragonball_7": {
+    "sound": "stone"
+  },
+  "dbz:namek_ball_1": {
+    "sound": "stone"
+  },
+  "dbz:namek_ball_2": {
+    "sound": "stone"
+  },
+  "dbz:namek_ball_3": {
+    "sound": "stone"
+  },
+  "dbz:namek_ball_4": {
+    "sound": "stone"
+  },
+  "dbz:namek_ball_5": {
+    "sound": "stone"
+  },
+  "dbz:namek_ball_6": {
+    "sound": "stone"
+  },
+  "dbz:namek_ball_7": {
+    "sound": "stone"
+  },
+  "dbz:super_ball_1": {
+    "sound": "stone"
+  },
+  "dbz:super_ball_2": {
+    "sound": "stone"
+  },
+  "dbz:super_ball_3": {
+    "sound": "stone"
+  },
+  "dbz:super_ball_4": {
+    "sound": "stone"
+  },
+  "dbz:super_ball_5": {
+    "sound": "stone"
+  },
+  "dbz:super_ball_6": {
+    "sound": "stone"
+  },
+  "dbz:super_ball_7": {
+    "sound": "stone"
+  },
+  "dbz:gravity_machine": {
+    "sound": "stone"
+  },
+  "dbz:zsword_stone": {
+    "sound": "stone"
+  },
+  "dbz:namek_grass": {
+    "sound": "grass"
+  },
+  "dbz:ajisa_leaves": {
+    "sound": "stone"
+  },
+  "dbz:htc_floor": {
+    "sound": "stone"
+  },
+  "dbz:lookout_tile": {
+    "sound": "stone"
+  },
+  "dbz:kai_grass": {
+    "sound": "grass"
+  }
+}

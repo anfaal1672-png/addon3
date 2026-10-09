@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:saiyan_boots",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_saiyan_boots",
+      "minecraft:display_name": {
+        "value": "サイヤ人の戦闘服（靴）"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "slot": "slot.armor.feet",
+        "protection": 3
+      },
+      "minecraft:enchantable": {
+        "slot": "armor_feet",
+        "value": 10
+      },
+      "minecraft:durability": {
+        "max_durability": 400
+      }
+    }
+  }
+}

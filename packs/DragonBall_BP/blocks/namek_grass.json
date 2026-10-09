@@ -1,0 +1,37 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "dbz:namek_grass",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "ナメック星の草",
+      "minecraft:map_color": "#5fcf9a",
+      "minecraft:light_emission": 0,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.6
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 2
+      },
+      "minecraft:material_instances": {
+        "up": {
+          "texture": "dbz_namek_grass_top",
+          "render_method": "opaque"
+        },
+        "down": {
+          "texture": "dbz_namek_dirt",
+          "render_method": "opaque"
+        },
+        "*": {
+          "texture": "dbz_namek_grass_side",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:loot": "loot_tables/blocks/dbz_namek_grass.json"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "dbz:piccolo_turban",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/models/dbz/piccolo_turban"
+      },
+      "geometry": {
+        "default": "geometry.dbz.turban_worn"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "scripts": {
+        "parent_setup": "variable.helmet_layer_visible = 0.0;"
+      }
+    }
+  }
+}

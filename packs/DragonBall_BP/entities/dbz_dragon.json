@@ -1,0 +1,72 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "dbz:dragon",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "dbz:variant": {
+          "type": "int",
+          "range": [
+            0,
+            2
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "dbz:scale": {
+          "type": "float",
+          "range": [
+            0.1,
+            12.0
+          ],
+          "default": 1.0,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "dbz_fx",
+          "inanimate"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 1.0,
+        "height": 2.0
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": false
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      },
+      "minecraft:health": {
+        "value": 1,
+        "max": 1
+      },
+      "minecraft:body_rotation_blocked": {},
+      "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_optimized_distance": 160,
+          "max_dropped_ticks": 0,
+          "use_motion_prediction_hints": true
+        }
+      },
+      "minecraft:persistent": {},
+      "minecraft:nameable": {
+        "always_show": false
+      }
+    }
+  }
+}

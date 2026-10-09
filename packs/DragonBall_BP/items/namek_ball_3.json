@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:namek_ball_3",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_namek_ball_3",
+      "minecraft:display_name": {
+        "value": "ナメック星のドラゴンボール（三星球）"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:block_placer": {
+        "block": "dbz:namek_ball_3"
+      }
+    }
+  }
+}

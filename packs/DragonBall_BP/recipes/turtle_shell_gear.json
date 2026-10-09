@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbz:turtle_shell_gear"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "SSS",
+      "SPS",
+      "SSS"
+    ],
+    "key": {
+      "S": {
+        "item": "minecraft:turtle_scute"
+      },
+      "P": {
+        "item": "minecraft:leather"
+      }
+    },
+    "result": {
+      "item": "dbz:turtle_shell",
+      "count": 1
+    }
+  }
+}

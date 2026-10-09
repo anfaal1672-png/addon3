@@ -1,0 +1,64 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "dbz:kintoun",
+      "is_spawnable": false,
+      "is_summonable": true
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "dbz_vehicle",
+          "inanimate"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 1.4,
+        "height": 0.5
+      },
+      "minecraft:physics": {
+        "has_gravity": false
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:persistent": {},
+      "minecraft:rideable": {
+        "seat_count": 1,
+        "family_types": [
+          "player"
+        ],
+        "interact_text": "action.interact.dbz_ride",
+        "pull_in_entities": false,
+        "seats": [
+          {
+            "position": [
+              0,
+              0.25,
+              0
+            ]
+          }
+        ]
+      },
+      "minecraft:movement": {
+        "value": 0.0
+      },
+      "minecraft:knockback_resistance": {
+        "value": 1.0
+      },
+      "minecraft:nameable": {}
+    }
+  }
+}
