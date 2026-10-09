@@ -7,49 +7,49 @@
         "default": {
           "transitions": [
             {
-              "p1": "query.property('dbz:pose') == 1"
+              "p1": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 1"
             },
             {
-              "p2": "query.property('dbz:pose') == 2"
+              "p2": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 2"
             },
             {
-              "p3": "query.property('dbz:pose') == 3"
+              "p3": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 3"
             },
             {
-              "p4": "query.property('dbz:pose') == 4"
+              "p4": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 4"
             },
             {
-              "p5": "query.property('dbz:pose') == 5"
+              "p5": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 5"
             },
             {
-              "p6": "query.property('dbz:pose') == 6"
+              "p6": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 6"
             },
             {
-              "p7": "query.property('dbz:pose') == 7"
+              "p7": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 7"
             },
             {
-              "p8": "query.property('dbz:pose') == 8"
+              "p8": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 8"
             },
             {
-              "p9": "query.property('dbz:pose') == 9"
+              "p9": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 9"
             },
             {
-              "p10": "query.property('dbz:pose') == 10"
+              "p10": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 10"
             },
             {
-              "p11": "query.property('dbz:pose') == 11"
+              "p11": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 11"
             },
             {
-              "p12": "query.property('dbz:pose') == 12"
+              "p12": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 12"
             },
             {
-              "p13": "query.property('dbz:pose') == 13"
+              "p13": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 13"
             },
             {
-              "p14": "query.property('dbz:pose') == 14"
+              "p14": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 14"
             },
             {
-              "p15": "query.property('dbz:pose') == 15"
+              "p15": "query.is_in_ui ? 0.0 : query.property('dbz:pose') == 15"
             }
           ],
           "blend_transition": 0.15
@@ -60,7 +60,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 1"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 1"
             }
           ],
           "blend_transition": 0.15
@@ -71,7 +71,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 2"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 2"
             }
           ],
           "blend_transition": 0.15
@@ -82,7 +82,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 3"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 3"
             }
           ],
           "blend_transition": 0.15
@@ -93,7 +93,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 4"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 4"
             }
           ],
           "blend_transition": 0.15
@@ -104,7 +104,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 5"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 5"
             }
           ],
           "blend_transition": 0.15
@@ -115,7 +115,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 6"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 6"
             }
           ],
           "blend_transition": 0.15
@@ -126,7 +126,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 7"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 7"
             }
           ],
           "blend_transition": 0.15
@@ -137,7 +137,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 8"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 8"
             }
           ],
           "blend_transition": 0.15
@@ -148,7 +148,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 9"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 9"
             }
           ],
           "blend_transition": 0.15
@@ -159,7 +159,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 10"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 10"
             }
           ],
           "blend_transition": 0.15
@@ -170,7 +170,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 11"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 11"
             }
           ],
           "blend_transition": 0.15
@@ -181,7 +181,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 12"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 12"
             }
           ],
           "blend_transition": 0.15
@@ -192,7 +192,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 13"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 13"
             }
           ],
           "blend_transition": 0.15
@@ -203,7 +203,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 14"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 14"
             }
           ],
           "blend_transition": 0.15
@@ -214,7 +214,7 @@
           ],
           "transitions": [
             {
-              "default": "query.property('dbz:pose') != 15"
+              "default": "query.is_in_ui ? 1.0 : query.property('dbz:pose') != 15"
             }
           ],
           "blend_transition": 0.15
