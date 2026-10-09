@@ -94,7 +94,7 @@
         "dbz_spark": "geometry.dbz.spark"
       },
       "scripts": {
-        "scale": "query.is_in_ui ? 0.9375 : 0.9375 * query.property('dbz:scale')",
+        "scale": "(query.is_in_ui || !query.has_property('dbz:pose')) ? 0.9375 : 0.9375 * query.property('dbz:scale')",
         "initialize": [
           "variable.is_holding_right = 0.0;",
           "variable.is_blinking = 0.0;",
@@ -164,7 +164,7 @@
         "animate": [
           "root",
           {
-            "dbz_pose_ctrl": "query.is_in_ui ? 0.0 : !variable.is_first_person"
+            "dbz_pose_ctrl": "(query.is_in_ui || !query.has_property('dbz:pose')) ? 0.0 : !variable.is_first_person"
           }
         ],
         "variables": {
@@ -278,28 +278,28 @@
           "controller.render.player.first_person": "variable.is_first_person && !query.is_spectator"
         },
         {
-          "controller.render.player.third_person": "(!variable.is_first_person && !variable.map_face_icon && !query.is_spectator) && (query.is_in_ui ? 1.0 : query.property('dbz:model') == 0)"
+          "controller.render.player.third_person": "(!variable.is_first_person && !variable.map_face_icon && !query.is_spectator) && ((query.is_in_ui || !query.has_property('dbz:pose')) ? 1.0 : query.property('dbz:model') == 0)"
         },
         {
           "controller.render.player.map": "variable.map_face_icon"
         },
         {
-          "controller.render.dbz.overlay": "query.is_in_ui ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:body') > 0 && query.property('dbz:model') == 0)"
+          "controller.render.dbz.overlay": "(query.is_in_ui || !query.has_property('dbz:pose')) ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:body') > 0 && query.property('dbz:model') == 0)"
         },
         {
-          "controller.render.dbz.hair": "query.is_in_ui ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:hair') > 0 && query.property('dbz:model') == 0)"
+          "controller.render.dbz.hair": "(query.is_in_ui || !query.has_property('dbz:pose')) ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:hair') > 0 && query.property('dbz:model') == 0)"
         },
         {
-          "controller.render.dbz.tail": "query.is_in_ui ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:tail') && query.property('dbz:model') == 0)"
+          "controller.render.dbz.tail": "(query.is_in_ui || !query.has_property('dbz:pose')) ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:tail') && query.property('dbz:model') == 0)"
         },
         {
-          "controller.render.dbz.oozaru": "query.is_in_ui ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:model') > 0)"
+          "controller.render.dbz.oozaru": "(query.is_in_ui || !query.has_property('dbz:pose')) ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:model') > 0)"
         },
         {
-          "controller.render.dbz.aura": "query.is_in_ui ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:aura') > 0)"
+          "controller.render.dbz.aura": "(query.is_in_ui || !query.has_property('dbz:pose')) ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:aura') > 0)"
         },
         {
-          "controller.render.dbz.spark": "query.is_in_ui ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:spark'))"
+          "controller.render.dbz.spark": "(query.is_in_ui || !query.has_property('dbz:pose')) ? 0.0 : (!variable.is_first_person && !variable.map_face_icon && !query.is_spectator && query.property('dbz:spark'))"
         }
       ],
       "enable_attachables": true
