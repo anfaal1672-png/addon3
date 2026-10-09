@@ -33,6 +33,7 @@ system.beforeEvents.startup.subscribe((ev) => {
     ["dbz:dbmenu", "ドラゴンボールのメニューを開く"],
     ["dbz:dbkit", "操作アイテム一式を受け取る"],
     ["dbz:dbhelp", "ドラゴンボールアドオンの操作説明を表示"],
+    ["dbz:dbbattle", "モブバトルの道具を受け取ってメニューを開く"],
   ];
   for (const [name, description] of defs) {
     try {

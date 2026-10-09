@@ -23,6 +23,7 @@ import "./world/spawner.js";
 import { giveKit, useHandlers, KIT } from "./items/items.js";
 import "./items/vehicles.js";
 import "./items/eggs.js";
+import "./battle/battle.js";
 import "./story/sagas.js";
 import "./story/fusion.js";
 import "./story/tournament.js";

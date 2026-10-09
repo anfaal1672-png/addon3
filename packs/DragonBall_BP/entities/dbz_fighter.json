@@ -566,6 +566,307 @@
           ]
         }
       },
+      "dbz:role_battle": {
+        "minecraft:type_family": {
+          "family": [
+            "dbz_fighter",
+            "dbz_battler",
+            "mob"
+          ]
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 1,
+          "entity_types": {
+            "filters": {
+              "any_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "player"
+                },
+                {
+                  "test": "has_tag",
+                  "subject": "other",
+                  "value": "dbz_bt"
+                }
+              ]
+            }
+          }
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 3,
+          "speed_multiplier": 1.3,
+          "track_target": true
+        },
+        "minecraft:attack": {
+          "damage": 3
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 7,
+          "speed_multiplier": 0.8
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 8,
+          "look_distance": 12
+        }
+      },
+      "dbz:bt_red": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 48,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbz_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbz_t_red"
+                  }
+                ]
+              },
+              "max_dist": 48
+            }
+          ]
+        }
+      },
+      "dbz:bt_blue": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 48,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbz_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbz_t_blue"
+                  }
+                ]
+              },
+              "max_dist": 48
+            }
+          ]
+        }
+      },
+      "dbz:bt_green": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 48,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbz_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbz_t_green"
+                  }
+                ]
+              },
+              "max_dist": 48
+            }
+          ]
+        }
+      },
+      "dbz:bt_yellow": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 48,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbz_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbz_t_yellow"
+                  }
+                ]
+              },
+              "max_dist": 48
+            }
+          ]
+        }
+      },
+      "dbz:hunt_1": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbz_prey_1"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbz:hunt_2": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbz_prey_2"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbz:hunt_3": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbz_prey_3"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbz:hunt_4": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbz_prey_4"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbz:hunt_5": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbz_prey_5"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbz:hunt_6": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbz_prey_6"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbz:hunt_7": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbz_prey_7"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbz:hunt_8": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbz_prey_8"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
       "dbz:boss": {
         "minecraft:boss": {
           "should_darken_sky": false,
@@ -1263,6 +1564,288 @@
           ]
         }
       },
+      "dbz:bt_red": {
+        "add": {
+          "component_groups": [
+            "dbz:bt_red"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:bt_blue": {
+        "add": {
+          "component_groups": [
+            "dbz:bt_blue"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:bt_green": {
+        "add": {
+          "component_groups": [
+            "dbz:bt_green"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:bt_yellow": {
+        "add": {
+          "component_groups": [
+            "dbz:bt_yellow"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:hunt_1": {
+        "add": {
+          "component_groups": [
+            "dbz:hunt_1"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:hunt_2": {
+        "add": {
+          "component_groups": [
+            "dbz:hunt_2"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:hunt_3": {
+        "add": {
+          "component_groups": [
+            "dbz:hunt_3"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:hunt_4": {
+        "add": {
+          "component_groups": [
+            "dbz:hunt_4"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:hunt_5": {
+        "add": {
+          "component_groups": [
+            "dbz:hunt_5"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:hunt_6": {
+        "add": {
+          "component_groups": [
+            "dbz:hunt_6"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:hunt_7": {
+        "add": {
+          "component_groups": [
+            "dbz:hunt_7"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_8"
+          ]
+        }
+      },
+      "dbz:hunt_8": {
+        "add": {
+          "component_groups": [
+            "dbz:hunt_8"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7"
+          ]
+        }
+      },
+      "dbz:bt_clear": {
+        "remove": {
+          "component_groups": [
+            "dbz:bt_red",
+            "dbz:bt_blue",
+            "dbz:bt_green",
+            "dbz:bt_yellow",
+            "dbz:hunt_1",
+            "dbz:hunt_2",
+            "dbz:hunt_3",
+            "dbz:hunt_4",
+            "dbz:hunt_5",
+            "dbz:hunt_6",
+            "dbz:hunt_7",
+            "dbz:hunt_8"
+          ]
+        }
+      },
       "dbz:role_npc": {
         "add": {
           "component_groups": [
@@ -1275,7 +1858,8 @@
             "dbz:role_spar",
             "dbz:role_ally",
             "dbz:role_passive",
-            "dbz:role_dummy"
+            "dbz:role_dummy",
+            "dbz:role_battle"
           ]
         }
       },
@@ -1291,7 +1875,8 @@
             "dbz:role_spar",
             "dbz:role_ally",
             "dbz:role_passive",
-            "dbz:role_dummy"
+            "dbz:role_dummy",
+            "dbz:role_battle"
           ]
         }
       },
@@ -1307,7 +1892,8 @@
             "dbz:role_enemy",
             "dbz:role_ally",
             "dbz:role_passive",
-            "dbz:role_dummy"
+            "dbz:role_dummy",
+            "dbz:role_battle"
           ]
         }
       },
@@ -1323,7 +1909,8 @@
             "dbz:role_enemy",
             "dbz:role_spar",
             "dbz:role_passive",
-            "dbz:role_dummy"
+            "dbz:role_dummy",
+            "dbz:role_battle"
           ]
         }
       },
@@ -1339,7 +1926,8 @@
             "dbz:role_enemy",
             "dbz:role_spar",
             "dbz:role_ally",
-            "dbz:role_dummy"
+            "dbz:role_dummy",
+            "dbz:role_battle"
           ]
         }
       },
@@ -1355,7 +1943,25 @@
             "dbz:role_enemy",
             "dbz:role_spar",
             "dbz:role_ally",
-            "dbz:role_passive"
+            "dbz:role_passive",
+            "dbz:role_battle"
+          ]
+        }
+      },
+      "dbz:role_battle": {
+        "add": {
+          "component_groups": [
+            "dbz:role_battle"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:role_npc",
+            "dbz:role_enemy",
+            "dbz:role_spar",
+            "dbz:role_ally",
+            "dbz:role_passive",
+            "dbz:role_dummy"
           ]
         }
       },

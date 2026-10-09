@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:bt_team_red",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_bt_team_red",
+      "minecraft:display_name": {
+        "value": "赤チームの旗（叩いて加入／しゃがみ叩きで解散）"
+      },
+      "minecraft:max_stack_size": 1
+    }
+  }
+}
