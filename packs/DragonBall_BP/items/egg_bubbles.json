@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:egg_bubbles",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_egg_bubbles",
+      "minecraft:display_name": {
+        "value": "バブルスのスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

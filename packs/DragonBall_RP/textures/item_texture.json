@@ -193,6 +193,231 @@
     },
     "dbz_super_ball_7": {
       "textures": "textures/items/dbz/super_ball_7"
+    },
+    "dbz_egg_goku": {
+      "textures": "textures/items/dbz/egg_goku"
+    },
+    "dbz_egg_goku_ssj": {
+      "textures": "textures/items/dbz/egg_goku_ssj"
+    },
+    "dbz_egg_goku_ssj3": {
+      "textures": "textures/items/dbz/egg_goku_ssj3"
+    },
+    "dbz_egg_goku_god": {
+      "textures": "textures/items/dbz/egg_goku_god"
+    },
+    "dbz_egg_goku_blue": {
+      "textures": "textures/items/dbz/egg_goku_blue"
+    },
+    "dbz_egg_goku_ui": {
+      "textures": "textures/items/dbz/egg_goku_ui"
+    },
+    "dbz_egg_gohan": {
+      "textures": "textures/items/dbz/egg_gohan"
+    },
+    "dbz_egg_gohan_ssj2": {
+      "textures": "textures/items/dbz/egg_gohan_ssj2"
+    },
+    "dbz_egg_goten": {
+      "textures": "textures/items/dbz/egg_goten"
+    },
+    "dbz_egg_goten_ssj": {
+      "textures": "textures/items/dbz/egg_goten_ssj"
+    },
+    "dbz_egg_vegeta": {
+      "textures": "textures/items/dbz/egg_vegeta"
+    },
+    "dbz_egg_vegeta_ssj": {
+      "textures": "textures/items/dbz/egg_vegeta_ssj"
+    },
+    "dbz_egg_vegeta_blue": {
+      "textures": "textures/items/dbz/egg_vegeta_blue"
+    },
+    "dbz_egg_vegeta_ue": {
+      "textures": "textures/items/dbz/egg_vegeta_ue"
+    },
+    "dbz_egg_trunks": {
+      "textures": "textures/items/dbz/egg_trunks"
+    },
+    "dbz_egg_trunks_ssj": {
+      "textures": "textures/items/dbz/egg_trunks_ssj"
+    },
+    "dbz_egg_piccolo": {
+      "textures": "textures/items/dbz/egg_piccolo"
+    },
+    "dbz_egg_piccolo_orange": {
+      "textures": "textures/items/dbz/egg_piccolo_orange"
+    },
+    "dbz_egg_krillin": {
+      "textures": "textures/items/dbz/egg_krillin"
+    },
+    "dbz_egg_tien": {
+      "textures": "textures/items/dbz/egg_tien"
+    },
+    "dbz_egg_yamcha": {
+      "textures": "textures/items/dbz/egg_yamcha"
+    },
+    "dbz_egg_roshi": {
+      "textures": "textures/items/dbz/egg_roshi"
+    },
+    "dbz_egg_bulma": {
+      "textures": "textures/items/dbz/egg_bulma"
+    },
+    "dbz_egg_karin": {
+      "textures": "textures/items/dbz/egg_karin"
+    },
+    "dbz_egg_yajirobe": {
+      "textures": "textures/items/dbz/egg_yajirobe"
+    },
+    "dbz_egg_kaio": {
+      "textures": "textures/items/dbz/egg_kaio"
+    },
+    "dbz_egg_bubbles": {
+      "textures": "textures/items/dbz/egg_bubbles"
+    },
+    "dbz_egg_gregory": {
+      "textures": "textures/items/dbz/egg_gregory"
+    },
+    "dbz_egg_elder_kai": {
+      "textures": "textures/items/dbz/egg_elder_kai"
+    },
+    "dbz_egg_guru": {
+      "textures": "textures/items/dbz/egg_guru"
+    },
+    "dbz_egg_namekian": {
+      "textures": "textures/items/dbz/egg_namekian"
+    },
+    "dbz_egg_announcer": {
+      "textures": "textures/items/dbz/egg_announcer"
+    },
+    "dbz_egg_whis": {
+      "textures": "textures/items/dbz/egg_whis"
+    },
+    "dbz_egg_beerus": {
+      "textures": "textures/items/dbz/egg_beerus"
+    },
+    "dbz_egg_raditz": {
+      "textures": "textures/items/dbz/egg_raditz"
+    },
+    "dbz_egg_nappa": {
+      "textures": "textures/items/dbz/egg_nappa"
+    },
+    "dbz_egg_saibaman": {
+      "textures": "textures/items/dbz/egg_saibaman"
+    },
+    "dbz_egg_ginyu": {
+      "textures": "textures/items/dbz/egg_ginyu"
+    },
+    "dbz_egg_recoome": {
+      "textures": "textures/items/dbz/egg_recoome"
+    },
+    "dbz_egg_burter": {
+      "textures": "textures/items/dbz/egg_burter"
+    },
+    "dbz_egg_jeice": {
+      "textures": "textures/items/dbz/egg_jeice"
+    },
+    "dbz_egg_guldo": {
+      "textures": "textures/items/dbz/egg_guldo"
+    },
+    "dbz_egg_frieza1": {
+      "textures": "textures/items/dbz/egg_frieza1"
+    },
+    "dbz_egg_frieza2": {
+      "textures": "textures/items/dbz/egg_frieza2"
+    },
+    "dbz_egg_frieza3": {
+      "textures": "textures/items/dbz/egg_frieza3"
+    },
+    "dbz_egg_frieza4": {
+      "textures": "textures/items/dbz/egg_frieza4"
+    },
+    "dbz_egg_frieza_golden": {
+      "textures": "textures/items/dbz/egg_frieza_golden"
+    },
+    "dbz_egg_android17": {
+      "textures": "textures/items/dbz/egg_android17"
+    },
+    "dbz_egg_android18": {
+      "textures": "textures/items/dbz/egg_android18"
+    },
+    "dbz_egg_android16": {
+      "textures": "textures/items/dbz/egg_android16"
+    },
+    "dbz_egg_android19": {
+      "textures": "textures/items/dbz/egg_android19"
+    },
+    "dbz_egg_android20": {
+      "textures": "textures/items/dbz/egg_android20"
+    },
+    "dbz_egg_cell1": {
+      "textures": "textures/items/dbz/egg_cell1"
+    },
+    "dbz_egg_cell2": {
+      "textures": "textures/items/dbz/egg_cell2"
+    },
+    "dbz_egg_cell": {
+      "textures": "textures/items/dbz/egg_cell"
+    },
+    "dbz_egg_cell_super": {
+      "textures": "textures/items/dbz/egg_cell_super"
+    },
+    "dbz_egg_cell_jr": {
+      "textures": "textures/items/dbz/egg_cell_jr"
+    },
+    "dbz_egg_dabura": {
+      "textures": "textures/items/dbz/egg_dabura"
+    },
+    "dbz_egg_spopovich": {
+      "textures": "textures/items/dbz/egg_spopovich"
+    },
+    "dbz_egg_yamu": {
+      "textures": "textures/items/dbz/egg_yamu"
+    },
+    "dbz_egg_buu_fat": {
+      "textures": "textures/items/dbz/egg_buu_fat"
+    },
+    "dbz_egg_buu_super": {
+      "textures": "textures/items/dbz/egg_buu_super"
+    },
+    "dbz_egg_buu_gohan": {
+      "textures": "textures/items/dbz/egg_buu_gohan"
+    },
+    "dbz_egg_buu_kid": {
+      "textures": "textures/items/dbz/egg_buu_kid"
+    },
+    "dbz_egg_broly": {
+      "textures": "textures/items/dbz/egg_broly"
+    },
+    "dbz_egg_broly_lssj": {
+      "textures": "textures/items/dbz/egg_broly_lssj"
+    },
+    "dbz_egg_goku_black": {
+      "textures": "textures/items/dbz/egg_goku_black"
+    },
+    "dbz_egg_goku_black_rose": {
+      "textures": "textures/items/dbz/egg_goku_black_rose"
+    },
+    "dbz_egg_zamasu": {
+      "textures": "textures/items/dbz/egg_zamasu"
+    },
+    "dbz_egg_hit": {
+      "textures": "textures/items/dbz/egg_hit"
+    },
+    "dbz_egg_jiren": {
+      "textures": "textures/items/dbz/egg_jiren"
+    },
+    "dbz_egg_frieza_soldier": {
+      "textures": "textures/items/dbz/egg_frieza_soldier"
+    },
+    "dbz_egg_rr_soldier": {
+      "textures": "textures/items/dbz/egg_rr_soldier"
+    },
+    "dbz_egg_rr_robot": {
+      "textures": "textures/items/dbz/egg_rr_robot"
+    },
+    "dbz_egg_oozaru": {
+      "textures": "textures/items/dbz/egg_oozaru"
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:egg_cell2",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_egg_cell2",
+      "minecraft:display_name": {
+        "value": "セル(第二形態)のスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

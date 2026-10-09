@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:egg_goku_black",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_egg_goku_black",
+      "minecraft:display_name": {
+        "value": "ゴクウブラックのスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

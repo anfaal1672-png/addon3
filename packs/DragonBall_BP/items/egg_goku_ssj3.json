@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:egg_goku_ssj3",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_egg_goku_ssj3",
+      "minecraft:display_name": {
+        "value": "孫悟空(超サイヤ人3)のスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

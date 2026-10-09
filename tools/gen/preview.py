@@ -30,7 +30,8 @@ def transform_point(p, chain):
     return p
 
 
-def render(model, tex, yaw=30, pitch=10, size=360, anim=None):
+def render(model, tex, yaw=30, pitch=10, size=360, anim=None, bg=(60, 64, 80)):
+    """bg=None renders onto a transparent RGBA canvas."""
     anim = anim or {}
     bones = {b.name: b for b in model.bones}
     quads = []
@@ -91,11 +92,11 @@ def render(model, tex, yaw=30, pitch=10, size=360, anim=None):
         return x, y, z
     allp = [cam(p) for q, _ in quads for p in q]
     if not allp:
-        return Image.new("RGB", (size, size), (40, 40, 50))
+        return Image.new("RGBA", (size, size), (0, 0, 0, 0)) if bg is None else Image.new("RGB", (size, size), (40, 40, 50))
     minx = min(p[0] for p in allp); maxx = max(p[0] for p in allp)
     miny = min(p[1] for p in allp); maxy = max(p[1] for p in allp)
     sc = (size * 0.9) / max(maxx - minx, maxy - miny, 1)
-    img = Image.new("RGB", (size, size), (60, 64, 80))
+    img = Image.new("RGBA", (size, size), (0, 0, 0, 0)) if bg is None else Image.new("RGB", (size, size), bg)
     dr = ImageDraw.Draw(img)
     proj = []
     for q, col in quads:
@@ -105,7 +106,7 @@ def render(model, tex, yaw=30, pitch=10, size=360, anim=None):
         proj.append((depth, pts, col))
     proj.sort(key=lambda t: -t[0])
     for _, pts, col in proj:
-        dr.polygon(pts, fill=col[:3])
+        dr.polygon(pts, fill=col[:3] if bg is not None else tuple(col[:3]) + (255,))
     return img
 
 
