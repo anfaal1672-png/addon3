@@ -1,0 +1,261 @@
+{
+  "resource_pack_name": "dbb",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "dbb_menu": {
+      "textures": "textures/items/dbb/menu"
+    },
+    "dbb_camera": {
+      "textures": "textures/items/dbb/camera"
+    },
+    "dbb_control": {
+      "textures": "textures/items/dbb/control"
+    },
+    "dbb_team_red": {
+      "textures": "textures/items/dbb/team_red"
+    },
+    "dbb_team_blue": {
+      "textures": "textures/items/dbb/team_blue"
+    },
+    "dbb_team_green": {
+      "textures": "textures/items/dbb/team_green"
+    },
+    "dbb_team_yellow": {
+      "textures": "textures/items/dbb/team_yellow"
+    },
+    "dbb_duel": {
+      "textures": "textures/items/dbb/duel"
+    },
+    "dbb_heal": {
+      "textures": "textures/items/dbb/heal"
+    },
+    "dbb_kill": {
+      "textures": "textures/items/dbb/kill"
+    },
+    "dbb_egg_goku": {
+      "textures": "textures/items/dbb/egg_goku"
+    },
+    "dbb_egg_goku_ssj": {
+      "textures": "textures/items/dbb/egg_goku_ssj"
+    },
+    "dbb_egg_goku_ssj3": {
+      "textures": "textures/items/dbb/egg_goku_ssj3"
+    },
+    "dbb_egg_goku_god": {
+      "textures": "textures/items/dbb/egg_goku_god"
+    },
+    "dbb_egg_goku_blue": {
+      "textures": "textures/items/dbb/egg_goku_blue"
+    },
+    "dbb_egg_goku_ui": {
+      "textures": "textures/items/dbb/egg_goku_ui"
+    },
+    "dbb_egg_gohan": {
+      "textures": "textures/items/dbb/egg_gohan"
+    },
+    "dbb_egg_gohan_ssj2": {
+      "textures": "textures/items/dbb/egg_gohan_ssj2"
+    },
+    "dbb_egg_goten": {
+      "textures": "textures/items/dbb/egg_goten"
+    },
+    "dbb_egg_goten_ssj": {
+      "textures": "textures/items/dbb/egg_goten_ssj"
+    },
+    "dbb_egg_vegeta": {
+      "textures": "textures/items/dbb/egg_vegeta"
+    },
+    "dbb_egg_vegeta_ssj": {
+      "textures": "textures/items/dbb/egg_vegeta_ssj"
+    },
+    "dbb_egg_vegeta_blue": {
+      "textures": "textures/items/dbb/egg_vegeta_blue"
+    },
+    "dbb_egg_vegeta_ue": {
+      "textures": "textures/items/dbb/egg_vegeta_ue"
+    },
+    "dbb_egg_trunks": {
+      "textures": "textures/items/dbb/egg_trunks"
+    },
+    "dbb_egg_trunks_ssj": {
+      "textures": "textures/items/dbb/egg_trunks_ssj"
+    },
+    "dbb_egg_piccolo": {
+      "textures": "textures/items/dbb/egg_piccolo"
+    },
+    "dbb_egg_piccolo_orange": {
+      "textures": "textures/items/dbb/egg_piccolo_orange"
+    },
+    "dbb_egg_krillin": {
+      "textures": "textures/items/dbb/egg_krillin"
+    },
+    "dbb_egg_tien": {
+      "textures": "textures/items/dbb/egg_tien"
+    },
+    "dbb_egg_yamcha": {
+      "textures": "textures/items/dbb/egg_yamcha"
+    },
+    "dbb_egg_roshi": {
+      "textures": "textures/items/dbb/egg_roshi"
+    },
+    "dbb_egg_bulma": {
+      "textures": "textures/items/dbb/egg_bulma"
+    },
+    "dbb_egg_karin": {
+      "textures": "textures/items/dbb/egg_karin"
+    },
+    "dbb_egg_yajirobe": {
+      "textures": "textures/items/dbb/egg_yajirobe"
+    },
+    "dbb_egg_kaio": {
+      "textures": "textures/items/dbb/egg_kaio"
+    },
+    "dbb_egg_bubbles": {
+      "textures": "textures/items/dbb/egg_bubbles"
+    },
+    "dbb_egg_gregory": {
+      "textures": "textures/items/dbb/egg_gregory"
+    },
+    "dbb_egg_elder_kai": {
+      "textures": "textures/items/dbb/egg_elder_kai"
+    },
+    "dbb_egg_guru": {
+      "textures": "textures/items/dbb/egg_guru"
+    },
+    "dbb_egg_namekian": {
+      "textures": "textures/items/dbb/egg_namekian"
+    },
+    "dbb_egg_announcer": {
+      "textures": "textures/items/dbb/egg_announcer"
+    },
+    "dbb_egg_whis": {
+      "textures": "textures/items/dbb/egg_whis"
+    },
+    "dbb_egg_beerus": {
+      "textures": "textures/items/dbb/egg_beerus"
+    },
+    "dbb_egg_raditz": {
+      "textures": "textures/items/dbb/egg_raditz"
+    },
+    "dbb_egg_nappa": {
+      "textures": "textures/items/dbb/egg_nappa"
+    },
+    "dbb_egg_saibaman": {
+      "textures": "textures/items/dbb/egg_saibaman"
+    },
+    "dbb_egg_ginyu": {
+      "textures": "textures/items/dbb/egg_ginyu"
+    },
+    "dbb_egg_recoome": {
+      "textures": "textures/items/dbb/egg_recoome"
+    },
+    "dbb_egg_burter": {
+      "textures": "textures/items/dbb/egg_burter"
+    },
+    "dbb_egg_jeice": {
+      "textures": "textures/items/dbb/egg_jeice"
+    },
+    "dbb_egg_guldo": {
+      "textures": "textures/items/dbb/egg_guldo"
+    },
+    "dbb_egg_frieza1": {
+      "textures": "textures/items/dbb/egg_frieza1"
+    },
+    "dbb_egg_frieza2": {
+      "textures": "textures/items/dbb/egg_frieza2"
+    },
+    "dbb_egg_frieza3": {
+      "textures": "textures/items/dbb/egg_frieza3"
+    },
+    "dbb_egg_frieza4": {
+      "textures": "textures/items/dbb/egg_frieza4"
+    },
+    "dbb_egg_frieza_golden": {
+      "textures": "textures/items/dbb/egg_frieza_golden"
+    },
+    "dbb_egg_android17": {
+      "textures": "textures/items/dbb/egg_android17"
+    },
+    "dbb_egg_android18": {
+      "textures": "textures/items/dbb/egg_android18"
+    },
+    "dbb_egg_android16": {
+      "textures": "textures/items/dbb/egg_android16"
+    },
+    "dbb_egg_android19": {
+      "textures": "textures/items/dbb/egg_android19"
+    },
+    "dbb_egg_android20": {
+      "textures": "textures/items/dbb/egg_android20"
+    },
+    "dbb_egg_cell1": {
+      "textures": "textures/items/dbb/egg_cell1"
+    },
+    "dbb_egg_cell2": {
+      "textures": "textures/items/dbb/egg_cell2"
+    },
+    "dbb_egg_cell": {
+      "textures": "textures/items/dbb/egg_cell"
+    },
+    "dbb_egg_cell_super": {
+      "textures": "textures/items/dbb/egg_cell_super"
+    },
+    "dbb_egg_cell_jr": {
+      "textures": "textures/items/dbb/egg_cell_jr"
+    },
+    "dbb_egg_dabura": {
+      "textures": "textures/items/dbb/egg_dabura"
+    },
+    "dbb_egg_spopovich": {
+      "textures": "textures/items/dbb/egg_spopovich"
+    },
+    "dbb_egg_yamu": {
+      "textures": "textures/items/dbb/egg_yamu"
+    },
+    "dbb_egg_buu_fat": {
+      "textures": "textures/items/dbb/egg_buu_fat"
+    },
+    "dbb_egg_buu_super": {
+      "textures": "textures/items/dbb/egg_buu_super"
+    },
+    "dbb_egg_buu_gohan": {
+      "textures": "textures/items/dbb/egg_buu_gohan"
+    },
+    "dbb_egg_buu_kid": {
+      "textures": "textures/items/dbb/egg_buu_kid"
+    },
+    "dbb_egg_broly": {
+      "textures": "textures/items/dbb/egg_broly"
+    },
+    "dbb_egg_broly_lssj": {
+      "textures": "textures/items/dbb/egg_broly_lssj"
+    },
+    "dbb_egg_goku_black": {
+      "textures": "textures/items/dbb/egg_goku_black"
+    },
+    "dbb_egg_goku_black_rose": {
+      "textures": "textures/items/dbb/egg_goku_black_rose"
+    },
+    "dbb_egg_zamasu": {
+      "textures": "textures/items/dbb/egg_zamasu"
+    },
+    "dbb_egg_hit": {
+      "textures": "textures/items/dbb/egg_hit"
+    },
+    "dbb_egg_jiren": {
+      "textures": "textures/items/dbb/egg_jiren"
+    },
+    "dbb_egg_frieza_soldier": {
+      "textures": "textures/items/dbb/egg_frieza_soldier"
+    },
+    "dbb_egg_rr_soldier": {
+      "textures": "textures/items/dbb/egg_rr_soldier"
+    },
+    "dbb_egg_rr_robot": {
+      "textures": "textures/items/dbb/egg_rr_robot"
+    },
+    "dbb_egg_oozaru": {
+      "textures": "textures/items/dbb/egg_oozaru"
+    }
+  }
+}

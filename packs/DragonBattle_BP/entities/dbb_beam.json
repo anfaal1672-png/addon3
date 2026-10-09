@@ -1,0 +1,122 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "dbb:beam",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "dbb:color": {
+          "type": "int",
+          "range": [
+            0,
+            11
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "dbb:len": {
+          "type": "float",
+          "range": [
+            0.0,
+            80.0
+          ],
+          "default": 0.5,
+          "client_sync": true
+        },
+        "dbb:width": {
+          "type": "float",
+          "range": [
+            0.1,
+            8.0
+          ],
+          "default": 1.0,
+          "client_sync": true
+        },
+        "dbb:pitch": {
+          "type": "float",
+          "range": [
+            -180.0,
+            180.0
+          ],
+          "default": 0.0,
+          "client_sync": true
+        },
+        "dbb:yaw": {
+          "type": "float",
+          "range": [
+            -360.0,
+            360.0
+          ],
+          "default": 0.0,
+          "client_sync": true
+        },
+        "dbb:spiral": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "dbb_fx",
+          "inanimate"
+        ]
+      },
+      "minecraft:collision_box": {
+        "width": 0.25,
+        "height": 0.25
+      },
+      "minecraft:physics": {
+        "has_gravity": false,
+        "has_collision": false
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": false
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      },
+      "minecraft:health": {
+        "value": 1,
+        "max": 1
+      },
+      "minecraft:body_rotation_blocked": {},
+      "minecraft:timer": {
+        "looping": false,
+        "time": 75,
+        "randomInterval": false,
+        "time_down_event": {
+          "event": "dbb:expire"
+        }
+      },
+      "minecraft:conditional_bandwidth_optimization": {
+        "default_values": {
+          "max_optimized_distance": 160,
+          "max_dropped_ticks": 0,
+          "use_motion_prediction_hints": true
+        }
+      }
+    },
+    "component_groups": {
+      "dbb:despawn": {
+        "minecraft:instant_despawn": {}
+      }
+    },
+    "events": {
+      "dbb:expire": {
+        "add": {
+          "component_groups": [
+            "dbb:despawn"
+          ]
+        }
+      }
+    }
+  }
+}

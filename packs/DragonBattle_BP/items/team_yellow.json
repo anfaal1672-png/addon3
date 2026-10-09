@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbb:team_yellow",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbb_team_yellow",
+      "minecraft:display_name": {
+        "value": "黄チームの旗（叩いて加入／しゃがみ叩きで外す）"
+      },
+      "minecraft:max_stack_size": 1
+    }
+  }
+}

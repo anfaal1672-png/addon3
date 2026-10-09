@@ -1,0 +1,1927 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "dbb:fighter",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "dbb:char": {
+          "type": "int",
+          "range": [
+            0,
+            75
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "dbb:aura": {
+          "type": "int",
+          "range": [
+            0,
+            16
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "dbb:pose": {
+          "type": "int",
+          "range": [
+            0,
+            15
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "dbb:scale": {
+          "type": "float",
+          "range": [
+            0.2,
+            8.0
+          ],
+          "default": 1.0,
+          "client_sync": true
+        },
+        "dbb:spark": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "dbb_fighter",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.9
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:movement": {
+        "value": 0.34
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true,
+        "can_open_doors": true
+      },
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:follow_range": {
+        "value": 48,
+        "max": 64
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": false
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.15
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "suffocation",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fly_into_wall",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "drowning",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "lava",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fire_tick",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:persistent": {}
+    },
+    "component_groups": {
+      "dbb:size_small": {
+        "minecraft:collision_box": {
+          "width": 0.5,
+          "height": 1.3
+        }
+      },
+      "dbb:size_normal": {
+        "minecraft:collision_box": {
+          "width": 0.6,
+          "height": 1.9
+        }
+      },
+      "dbb:size_big": {
+        "minecraft:collision_box": {
+          "width": 0.8,
+          "height": 2.2
+        }
+      },
+      "dbb:size_huge": {
+        "minecraft:collision_box": {
+          "width": 1.0,
+          "height": 2.6
+        }
+      },
+      "dbb:size_fat": {
+        "minecraft:collision_box": {
+          "width": 0.9,
+          "height": 1.9
+        }
+      },
+      "dbb:size_tall": {
+        "minecraft:collision_box": {
+          "width": 0.6,
+          "height": 2.3
+        }
+      },
+      "dbb:size_giant": {
+        "minecraft:collision_box": {
+          "width": 2.6,
+          "height": 6.0
+        }
+      },
+      "dbb:hp_20": {
+        "minecraft:health": {
+          "value": 20,
+          "max": 20
+        }
+      },
+      "dbb:hp_30": {
+        "minecraft:health": {
+          "value": 30,
+          "max": 30
+        }
+      },
+      "dbb:hp_40": {
+        "minecraft:health": {
+          "value": 40,
+          "max": 40
+        }
+      },
+      "dbb:hp_60": {
+        "minecraft:health": {
+          "value": 60,
+          "max": 60
+        }
+      },
+      "dbb:hp_80": {
+        "minecraft:health": {
+          "value": 80,
+          "max": 80
+        }
+      },
+      "dbb:hp_100": {
+        "minecraft:health": {
+          "value": 100,
+          "max": 100
+        }
+      },
+      "dbb:hp_150": {
+        "minecraft:health": {
+          "value": 150,
+          "max": 150
+        }
+      },
+      "dbb:hp_200": {
+        "minecraft:health": {
+          "value": 200,
+          "max": 200
+        }
+      },
+      "dbb:hp_300": {
+        "minecraft:health": {
+          "value": 300,
+          "max": 300
+        }
+      },
+      "dbb:hp_400": {
+        "minecraft:health": {
+          "value": 400,
+          "max": 400
+        }
+      },
+      "dbb:hp_500": {
+        "minecraft:health": {
+          "value": 500,
+          "max": 500
+        }
+      },
+      "dbb:hp_700": {
+        "minecraft:health": {
+          "value": 700,
+          "max": 700
+        }
+      },
+      "dbb:hp_1000": {
+        "minecraft:health": {
+          "value": 1000,
+          "max": 1000
+        }
+      },
+      "dbb:hp_1500": {
+        "minecraft:health": {
+          "value": 1500,
+          "max": 1500
+        }
+      },
+      "dbb:hp_2000": {
+        "minecraft:health": {
+          "value": 2000,
+          "max": 2000
+        }
+      },
+      "dbb:hp_3000": {
+        "minecraft:health": {
+          "value": 3000,
+          "max": 3000
+        }
+      },
+      "dbb:hp_4000": {
+        "minecraft:health": {
+          "value": 4000,
+          "max": 4000
+        }
+      },
+      "dbb:hp_6000": {
+        "minecraft:health": {
+          "value": 6000,
+          "max": 6000
+        }
+      },
+      "dbb:hp_8000": {
+        "minecraft:health": {
+          "value": 8000,
+          "max": 8000
+        }
+      },
+      "dbb:boss": {
+        "minecraft:boss": {
+          "should_darken_sky": false,
+          "hud_range": 64
+        }
+      },
+      "dbb:flying": {
+        "minecraft:physics": {
+          "has_gravity": false
+        },
+        "minecraft:can_fly": {}
+      },
+      "dbb:frozen": {
+        "minecraft:movement": {
+          "value": 0
+        }
+      },
+      "dbb:role_idle": {
+        "minecraft:type_family": {
+          "family": [
+            "dbb_fighter",
+            "dbb_idle",
+            "mob"
+          ]
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 2,
+          "look_distance": 10,
+          "probability": 0.6
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 5
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 6,
+          "speed_multiplier": 0.5,
+          "xz_dist": 3,
+          "interval": 240
+        },
+        "minecraft:damage_sensor": {
+          "triggers": {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        }
+      },
+      "dbb:role_battle": {
+        "minecraft:type_family": {
+          "family": [
+            "dbb_fighter",
+            "dbb_battler",
+            "mob"
+          ]
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 1,
+          "entity_types": {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "dbb_battler"
+            }
+          }
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 3,
+          "speed_multiplier": 1.4,
+          "track_target": true
+        },
+        "minecraft:attack": {
+          "damage": 3
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 8,
+          "speed_multiplier": 0.8
+        }
+      },
+      "dbb:bt_red": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbb_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbb_t_red"
+                  }
+                ]
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:bt_blue": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbb_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbb_t_blue"
+                  }
+                ]
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:bt_green": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbb_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbb_t_green"
+                  }
+                ]
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:bt_yellow": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbb_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbb_t_yellow"
+                  }
+                ]
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:bt_purple": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbb_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbb_t_purple"
+                  }
+                ]
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:bt_orange": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbb_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbb_t_orange"
+                  }
+                ]
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:bt_cyan": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbb_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbb_t_cyan"
+                  }
+                ]
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:bt_white": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "value": "dbb_bt"
+                  },
+                  {
+                    "test": "has_tag",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "dbb_t_white"
+                  }
+                ]
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:hunt_1": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbb_prey_1"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:hunt_2": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbb_prey_2"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:hunt_3": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbb_prey_3"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:hunt_4": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbb_prey_4"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:hunt_5": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbb_prey_5"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:hunt_6": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbb_prey_6"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:hunt_7": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbb_prey_7"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      },
+      "dbb:hunt_8": {
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 64,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "has_tag",
+                "subject": "other",
+                "value": "dbb_prey_8"
+              },
+              "max_dist": 64
+            }
+          ]
+        }
+      }
+    },
+    "events": {
+      "dbb:size_small": {
+        "add": {
+          "component_groups": [
+            "dbb:size_small"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:size_normal",
+            "dbb:size_big",
+            "dbb:size_huge",
+            "dbb:size_fat",
+            "dbb:size_tall",
+            "dbb:size_giant"
+          ]
+        }
+      },
+      "dbb:size_normal": {
+        "add": {
+          "component_groups": [
+            "dbb:size_normal"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:size_small",
+            "dbb:size_big",
+            "dbb:size_huge",
+            "dbb:size_fat",
+            "dbb:size_tall",
+            "dbb:size_giant"
+          ]
+        }
+      },
+      "dbb:size_big": {
+        "add": {
+          "component_groups": [
+            "dbb:size_big"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:size_small",
+            "dbb:size_normal",
+            "dbb:size_huge",
+            "dbb:size_fat",
+            "dbb:size_tall",
+            "dbb:size_giant"
+          ]
+        }
+      },
+      "dbb:size_huge": {
+        "add": {
+          "component_groups": [
+            "dbb:size_huge"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:size_small",
+            "dbb:size_normal",
+            "dbb:size_big",
+            "dbb:size_fat",
+            "dbb:size_tall",
+            "dbb:size_giant"
+          ]
+        }
+      },
+      "dbb:size_fat": {
+        "add": {
+          "component_groups": [
+            "dbb:size_fat"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:size_small",
+            "dbb:size_normal",
+            "dbb:size_big",
+            "dbb:size_huge",
+            "dbb:size_tall",
+            "dbb:size_giant"
+          ]
+        }
+      },
+      "dbb:size_tall": {
+        "add": {
+          "component_groups": [
+            "dbb:size_tall"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:size_small",
+            "dbb:size_normal",
+            "dbb:size_big",
+            "dbb:size_huge",
+            "dbb:size_fat",
+            "dbb:size_giant"
+          ]
+        }
+      },
+      "dbb:size_giant": {
+        "add": {
+          "component_groups": [
+            "dbb:size_giant"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:size_small",
+            "dbb:size_normal",
+            "dbb:size_big",
+            "dbb:size_huge",
+            "dbb:size_fat",
+            "dbb:size_tall"
+          ]
+        }
+      },
+      "dbb:hp_20": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_20"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_30": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_30"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_40": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_40"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_60": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_60"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_80": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_80"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_100": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_100"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_150": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_150"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_200": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_200"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_300": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_300"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_400": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_400"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_500": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_500"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_700": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_700"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_1000": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_1000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_1500": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_1500"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_2000": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_2000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_3000": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_3000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_4000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_4000": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_4000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_6000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_6000": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_6000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_8000"
+          ]
+        }
+      },
+      "dbb:hp_8000": {
+        "add": {
+          "component_groups": [
+            "dbb:hp_8000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:hp_20",
+            "dbb:hp_30",
+            "dbb:hp_40",
+            "dbb:hp_60",
+            "dbb:hp_80",
+            "dbb:hp_100",
+            "dbb:hp_150",
+            "dbb:hp_200",
+            "dbb:hp_300",
+            "dbb:hp_400",
+            "dbb:hp_500",
+            "dbb:hp_700",
+            "dbb:hp_1000",
+            "dbb:hp_1500",
+            "dbb:hp_2000",
+            "dbb:hp_3000",
+            "dbb:hp_4000",
+            "dbb:hp_6000"
+          ]
+        }
+      },
+      "dbb:boss_on": {
+        "add": {
+          "component_groups": [
+            "dbb:boss"
+          ]
+        }
+      },
+      "dbb:boss_off": {
+        "remove": {
+          "component_groups": [
+            "dbb:boss"
+          ]
+        }
+      },
+      "dbb:fly_on": {
+        "add": {
+          "component_groups": [
+            "dbb:flying"
+          ]
+        }
+      },
+      "dbb:fly_off": {
+        "remove": {
+          "component_groups": [
+            "dbb:flying"
+          ]
+        }
+      },
+      "dbb:freeze": {
+        "add": {
+          "component_groups": [
+            "dbb:frozen"
+          ]
+        }
+      },
+      "dbb:unfreeze": {
+        "remove": {
+          "component_groups": [
+            "dbb:frozen"
+          ]
+        }
+      },
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "dbb:size_normal",
+            "dbb:hp_20",
+            "dbb:role_idle"
+          ]
+        }
+      },
+      "dbb:role_idle": {
+        "add": {
+          "component_groups": [
+            "dbb:role_idle"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:role_battle"
+          ]
+        }
+      },
+      "dbb:role_battle": {
+        "add": {
+          "component_groups": [
+            "dbb:role_battle"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:role_idle"
+          ]
+        }
+      },
+      "dbb:bt_red": {
+        "add": {
+          "component_groups": [
+            "dbb:bt_red"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:bt_blue": {
+        "add": {
+          "component_groups": [
+            "dbb:bt_blue"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:bt_green": {
+        "add": {
+          "component_groups": [
+            "dbb:bt_green"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:bt_yellow": {
+        "add": {
+          "component_groups": [
+            "dbb:bt_yellow"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:bt_purple": {
+        "add": {
+          "component_groups": [
+            "dbb:bt_purple"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:bt_orange": {
+        "add": {
+          "component_groups": [
+            "dbb:bt_orange"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:bt_cyan": {
+        "add": {
+          "component_groups": [
+            "dbb:bt_cyan"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:bt_white": {
+        "add": {
+          "component_groups": [
+            "dbb:bt_white"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:hunt_1": {
+        "add": {
+          "component_groups": [
+            "dbb:hunt_1"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:hunt_2": {
+        "add": {
+          "component_groups": [
+            "dbb:hunt_2"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:hunt_3": {
+        "add": {
+          "component_groups": [
+            "dbb:hunt_3"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:hunt_4": {
+        "add": {
+          "component_groups": [
+            "dbb:hunt_4"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:hunt_5": {
+        "add": {
+          "component_groups": [
+            "dbb:hunt_5"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:hunt_6": {
+        "add": {
+          "component_groups": [
+            "dbb:hunt_6"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:hunt_7": {
+        "add": {
+          "component_groups": [
+            "dbb:hunt_7"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_8"
+          ]
+        }
+      },
+      "dbb:hunt_8": {
+        "add": {
+          "component_groups": [
+            "dbb:hunt_8"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7"
+          ]
+        }
+      },
+      "dbb:bt_clear": {
+        "remove": {
+          "component_groups": [
+            "dbb:bt_red",
+            "dbb:bt_blue",
+            "dbb:bt_green",
+            "dbb:bt_yellow",
+            "dbb:bt_purple",
+            "dbb:bt_orange",
+            "dbb:bt_cyan",
+            "dbb:bt_white",
+            "dbb:hunt_1",
+            "dbb:hunt_2",
+            "dbb:hunt_3",
+            "dbb:hunt_4",
+            "dbb:hunt_5",
+            "dbb:hunt_6",
+            "dbb:hunt_7",
+            "dbb:hunt_8"
+          ]
+        }
+      }
+    }
+  }
+}
