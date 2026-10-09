@@ -21,11 +21,12 @@ import particles as PT  # noqa: E402
 import sounds as SND  # noqa: E402
 
 VANILLA = os.path.join(ROOT, "tools", "vanilla")
-VERSION = [1, 0, 3]
+VERSION = [1, 0, 4]
 MIN_ENGINE = [1, 26, 30]
 # True when there is no real entity to read properties from: UI previews, and persona renders that have no
-# actor at all (query.property logs "does not have an actor" there; query.has_property is the safe check).
-NO_ACTOR = "(query.is_in_ui || !query.has_property('dbz:pose'))"
+# actor at all. query.property / query.has_property log "does not have an actor" there, while query.is_alive
+# (which the vanilla player definition evaluates every frame) quietly returns 0.
+NO_ACTOR = "(query.is_in_ui || !query.is_alive)"
 ENTITY_FMT = "1.21.50"
 ITEM_FMT = "1.21.60"
 BLOCK_FMT = "1.21.90"
