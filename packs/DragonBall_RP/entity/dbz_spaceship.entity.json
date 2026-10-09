@@ -1,0 +1,20 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dbz:spaceship",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/dbz/spaceship"
+      },
+      "geometry": {
+        "default": "geometry.dbz.spaceship"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ]
+    }
+  }
+}

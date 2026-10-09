@@ -1,0 +1,53 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dbz:beam",
+      "materials": {
+        "core": "entity_alphatest",
+        "glow": "entity_beam_additive"
+      },
+      "textures": {
+        "ki_blue": "textures/entity/dbz/ki/blue",
+        "ki_yellow": "textures/entity/dbz/ki/yellow",
+        "ki_purple": "textures/entity/dbz/ki/purple",
+        "ki_green": "textures/entity/dbz/ki/green",
+        "ki_red": "textures/entity/dbz/ki/red",
+        "ki_pink": "textures/entity/dbz/ki/pink",
+        "ki_white": "textures/entity/dbz/ki/white",
+        "ki_orange": "textures/entity/dbz/ki/orange",
+        "ki_dark": "textures/entity/dbz/ki/dark",
+        "ki_cyan": "textures/entity/dbz/ki/cyan",
+        "ki_gold": "textures/entity/dbz/ki/gold",
+        "ki_black_rose": "textures/entity/dbz/ki/black_rose",
+        "ki_blue_spiral": "textures/entity/dbz/ki/blue_spiral",
+        "ki_yellow_spiral": "textures/entity/dbz/ki/yellow_spiral",
+        "ki_purple_spiral": "textures/entity/dbz/ki/purple_spiral",
+        "ki_green_spiral": "textures/entity/dbz/ki/green_spiral",
+        "ki_red_spiral": "textures/entity/dbz/ki/red_spiral",
+        "ki_pink_spiral": "textures/entity/dbz/ki/pink_spiral",
+        "ki_white_spiral": "textures/entity/dbz/ki/white_spiral",
+        "ki_orange_spiral": "textures/entity/dbz/ki/orange_spiral",
+        "ki_dark_spiral": "textures/entity/dbz/ki/dark_spiral",
+        "ki_cyan_spiral": "textures/entity/dbz/ki/cyan_spiral",
+        "ki_gold_spiral": "textures/entity/dbz/ki/gold_spiral",
+        "ki_black_rose_spiral": "textures/entity/dbz/ki/black_rose_spiral"
+      },
+      "geometry": {
+        "beam": "geometry.dbz.beam"
+      },
+      "scripts": {
+        "animate": [
+          "beam"
+        ]
+      },
+      "animations": {
+        "beam": "animation.dbz.beam"
+      },
+      "render_controllers": [
+        "controller.render.dbz.beam_core",
+        "controller.render.dbz.beam_glow"
+      ]
+    }
+  }
+}

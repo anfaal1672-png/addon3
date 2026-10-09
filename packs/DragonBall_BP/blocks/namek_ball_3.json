@@ -1,0 +1,55 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "dbz:namek_ball_3",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "ナメック星のドラゴンボール（三星球）",
+      "minecraft:map_color": "#ff9a1a",
+      "minecraft:light_emission": 9,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.2
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 2
+      },
+      "dbz:interact": {},
+      "minecraft:geometry": "geometry.dbz.namek_ball",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "dbz_block_namek_ball_3",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -5.5,
+          0,
+          -5.5
+        ],
+        "size": [
+          11.0,
+          11.0,
+          11.0
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -5.5,
+          0,
+          -5.5
+        ],
+        "size": [
+          11.0,
+          11.0,
+          11.0
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/dbz_namek_ball_3.json"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "§6ドラゴンボール §fリソース",
+    "description": "ドラゴンボールアドオン（個人用）リソースパック",
+    "uuid": "db29d05f-9993-543a-ab8b-317c4d2b5fff",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "eabaf55e-3d06-54a3-bdf7-5542d823bbbb",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "6f54632a-37ca-57fd-8c73-e14f440cc79f",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

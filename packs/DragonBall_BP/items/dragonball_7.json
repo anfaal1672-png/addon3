@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:dragonball_7",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_dragonball_7",
+      "minecraft:display_name": {
+        "value": "七星球（ドラゴンボール）"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:block_placer": {
+        "block": "dbz:dragonball_7"
+      }
+    }
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "resource_pack_name": "dbz",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "dbz_ki_charge": {
+      "textures": "textures/items/dbz/ki_charge"
+    },
+    "dbz_skill_1": {
+      "textures": "textures/items/dbz/skill_1"
+    },
+    "dbz_skill_2": {
+      "textures": "textures/items/dbz/skill_2"
+    },
+    "dbz_skill_3": {
+      "textures": "textures/items/dbz/skill_3"
+    },
+    "dbz_skill_4": {
+      "textures": "textures/items/dbz/skill_4"
+    },
+    "dbz_transform": {
+      "textures": "textures/items/dbz/transform"
+    },
+    "dbz_guard": {
+      "textures": "textures/items/dbz/guard"
+    },
+    "dbz_menu": {
+      "textures": "textures/items/dbz/menu"
+    },
+    "dbz_senzu": {
+      "textures": "textures/items/dbz/senzu"
+    },
+    "dbz_sacred_water": {
+      "textures": "textures/items/dbz/sacred_water"
+    },
+    "dbz_dino_meat": {
+      "textures": "textures/items/dbz/dino_meat"
+    },
+    "dbz_cooked_dino_meat": {
+      "textures": "textures/items/dbz/cooked_dino_meat"
+    },
+    "dbz_dragon_radar": {
+      "textures": "textures/items/dbz/dragon_radar"
+    },
+    "dbz_capsule_house": {
+      "textures": "textures/items/dbz/capsule_house"
+    },
+    "dbz_capsule_gravity": {
+      "textures": "textures/items/dbz/capsule_gravity"
+    },
+    "dbz_capsule_aircar": {
+      "textures": "textures/items/dbz/capsule_aircar"
+    },
+    "dbz_capsule_spaceship": {
+      "textures": "textures/items/dbz/capsule_spaceship"
+    },
+    "dbz_kintoun": {
+      "textures": "textures/items/dbz/kintoun"
+    },
+    "dbz_nyoibo": {
+      "textures": "textures/items/dbz/nyoibo"
+    },
+    "dbz_z_sword": {
+      "textures": "textures/items/dbz/z_sword"
+    },
+    "dbz_potara": {
+      "textures": "textures/items/dbz/potara"
+    },
+    "dbz_gregory_hammer": {
+      "textures": "textures/items/dbz/gregory_hammer"
+    },
+    "dbz_saiyan_tail": {
+      "textures": "textures/items/dbz/saiyan_tail"
+    },
+    "dbz_training_dummy": {
+      "textures": "textures/items/dbz/training_dummy"
+    },
+    "dbz_senzu_seed": {
+      "textures": "textures/items/dbz/senzu_seed"
+    },
+    "dbz_kame_top": {
+      "textures": "textures/items/dbz/kame_top"
+    },
+    "dbz_kame_pants": {
+      "textures": "textures/items/dbz/kame_pants"
+    },
+    "dbz_kame_boots": {
+      "textures": "textures/items/dbz/kame_boots"
+    },
+    "dbz_kai_top": {
+      "textures": "textures/items/dbz/kai_top"
+    },
+    "dbz_kai_pants": {
+      "textures": "textures/items/dbz/kai_pants"
+    },
+    "dbz_kai_boots": {
+      "textures": "textures/items/dbz/kai_boots"
+    },
+    "dbz_saiyan_top": {
+      "textures": "textures/items/dbz/saiyan_top"
+    },
+    "dbz_saiyan_pants": {
+      "textures": "textures/items/dbz/saiyan_pants"
+    },
+    "dbz_saiyan_boots": {
+      "textures": "textures/items/dbz/saiyan_boots"
+    },
+    "dbz_weighted_top": {
+      "textures": "textures/items/dbz/weighted_top"
+    },
+    "dbz_weighted_pants": {
+      "textures": "textures/items/dbz/weighted_pants"
+    },
+    "dbz_weighted_boots": {
+      "textures": "textures/items/dbz/weighted_boots"
+    },
+    "dbz_broly_pants": {
+      "textures": "textures/items/dbz/broly_pants"
+    },
+    "dbz_scouter": {
+      "textures": "textures/items/dbz/scouter"
+    },
+    "dbz_piccolo_turban": {
+      "textures": "textures/items/dbz/piccolo_turban"
+    },
+    "dbz_piccolo_cape": {
+      "textures": "textures/items/dbz/piccolo_cape"
+    },
+    "dbz_turtle_shell": {
+      "textures": "textures/items/dbz/turtle_shell"
+    },
+    "dbz_gal_panties": {
+      "textures": "textures/items/dbz/gal_panties"
+    },
+    "dbz_dragonball_1": {
+      "textures": "textures/items/dbz/dragonball_1"
+    },
+    "dbz_dragonball_2": {
+      "textures": "textures/items/dbz/dragonball_2"
+    },
+    "dbz_dragonball_3": {
+      "textures": "textures/items/dbz/dragonball_3"
+    },
+    "dbz_dragonball_4": {
+      "textures": "textures/items/dbz/dragonball_4"
+    },
+    "dbz_dragonball_5": {
+      "textures": "textures/items/dbz/dragonball_5"
+    },
+    "dbz_dragonball_6": {
+      "textures": "textures/items/dbz/dragonball_6"
+    },
+    "dbz_dragonball_7": {
+      "textures": "textures/items/dbz/dragonball_7"
+    },
+    "dbz_namek_ball_1": {
+      "textures": "textures/items/dbz/namek_ball_1"
+    },
+    "dbz_namek_ball_2": {
+      "textures": "textures/items/dbz/namek_ball_2"
+    },
+    "dbz_namek_ball_3": {
+      "textures": "textures/items/dbz/namek_ball_3"
+    },
+    "dbz_namek_ball_4": {
+      "textures": "textures/items/dbz/namek_ball_4"
+    },
+    "dbz_namek_ball_5": {
+      "textures": "textures/items/dbz/namek_ball_5"
+    },
+    "dbz_namek_ball_6": {
+      "textures": "textures/items/dbz/namek_ball_6"
+    },
+    "dbz_namek_ball_7": {
+      "textures": "textures/items/dbz/namek_ball_7"
+    },
+    "dbz_super_ball_1": {
+      "textures": "textures/items/dbz/super_ball_1"
+    },
+    "dbz_super_ball_2": {
+      "textures": "textures/items/dbz/super_ball_2"
+    },
+    "dbz_super_ball_3": {
+      "textures": "textures/items/dbz/super_ball_3"
+    },
+    "dbz_super_ball_4": {
+      "textures": "textures/items/dbz/super_ball_4"
+    },
+    "dbz_super_ball_5": {
+      "textures": "textures/items/dbz/super_ball_5"
+    },
+    "dbz_super_ball_6": {
+      "textures": "textures/items/dbz/super_ball_6"
+    },
+    "dbz_super_ball_7": {
+      "textures": "textures/items/dbz/super_ball_7"
+    }
+  }
+}

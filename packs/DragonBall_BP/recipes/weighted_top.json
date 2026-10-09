@@ -1,0 +1,28 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbz:weighted_top"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "I I",
+      "IWI",
+      "III"
+    ],
+    "key": {
+      "I": {
+        "item": "minecraft:iron_block"
+      },
+      "W": {
+        "item": "minecraft:gray_wool"
+      }
+    },
+    "result": {
+      "item": "dbz:weighted_top",
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "resource_pack_name": "dbz",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "dbz_block_dragonball_1": {
+      "textures": "textures/blocks/dbz/dragonball_1"
+    },
+    "dbz_block_dragonball_2": {
+      "textures": "textures/blocks/dbz/dragonball_2"
+    },
+    "dbz_block_dragonball_3": {
+      "textures": "textures/blocks/dbz/dragonball_3"
+    },
+    "dbz_block_dragonball_4": {
+      "textures": "textures/blocks/dbz/dragonball_4"
+    },
+    "dbz_block_dragonball_5": {
+      "textures": "textures/blocks/dbz/dragonball_5"
+    },
+    "dbz_block_dragonball_6": {
+      "textures": "textures/blocks/dbz/dragonball_6"
+    },
+    "dbz_block_dragonball_7": {
+      "textures": "textures/blocks/dbz/dragonball_7"
+    },
+    "dbz_block_namek_ball_1": {
+      "textures": "textures/blocks/dbz/namek_ball_1"
+    },
+    "dbz_block_namek_ball_2": {
+      "textures": "textures/blocks/dbz/namek_ball_2"
+    },
+    "dbz_block_namek_ball_3": {
+      "textures": "textures/blocks/dbz/namek_ball_3"
+    },
+    "dbz_block_namek_ball_4": {
+      "textures": "textures/blocks/dbz/namek_ball_4"
+    },
+    "dbz_block_namek_ball_5": {
+      "textures": "textures/blocks/dbz/namek_ball_5"
+    },
+    "dbz_block_namek_ball_6": {
+      "textures": "textures/blocks/dbz/namek_ball_6"
+    },
+    "dbz_block_namek_ball_7": {
+      "textures": "textures/blocks/dbz/namek_ball_7"
+    },
+    "dbz_block_super_ball_1": {
+      "textures": "textures/blocks/dbz/super_ball_1"
+    },
+    "dbz_block_super_ball_2": {
+      "textures": "textures/blocks/dbz/super_ball_2"
+    },
+    "dbz_block_super_ball_3": {
+      "textures": "textures/blocks/dbz/super_ball_3"
+    },
+    "dbz_block_super_ball_4": {
+      "textures": "textures/blocks/dbz/super_ball_4"
+    },
+    "dbz_block_super_ball_5": {
+      "textures": "textures/blocks/dbz/super_ball_5"
+    },
+    "dbz_block_super_ball_6": {
+      "textures": "textures/blocks/dbz/super_ball_6"
+    },
+    "dbz_block_super_ball_7": {
+      "textures": "textures/blocks/dbz/super_ball_7"
+    },
+    "dbz_block_gravity_machine": {
+      "textures": "textures/blocks/dbz/gravity_machine"
+    },
+    "dbz_block_zsword_stone": {
+      "textures": "textures/blocks/dbz/zsword_stone"
+    },
+    "dbz_namek_grass_top": {
+      "textures": "textures/blocks/dbz/namek_grass_top"
+    },
+    "dbz_namek_grass_side": {
+      "textures": "textures/blocks/dbz/namek_grass_side"
+    },
+    "dbz_namek_dirt": {
+      "textures": "textures/blocks/dbz/namek_dirt"
+    },
+    "dbz_ajisa_leaves": {
+      "textures": "textures/blocks/dbz/ajisa_leaves"
+    },
+    "dbz_htc_floor": {
+      "textures": "textures/blocks/dbz/htc_floor"
+    },
+    "dbz_lookout_tile": {
+      "textures": "textures/blocks/dbz/lookout_tile"
+    },
+    "dbz_kai_grass": {
+      "textures": "textures/blocks/dbz/kai_grass"
+    }
+  }
+}

@@ -1,0 +1,379 @@
+{
+  "format_version": "1.20.20",
+  "sound_definitions": {
+    "dbz.charge": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/charge",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.aura_burst": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/aura_burst",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.blast": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/blast",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.beam_charge": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/beam_charge",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.beam_fire": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/beam_fire",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.explosion": {
+      "category": "player",
+      "max_distance": 96.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/explosion",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.big_explosion": {
+      "category": "player",
+      "max_distance": 96.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/big_explosion",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.punch": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/punch",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.punch_heavy": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/punch_heavy",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.clash": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/clash",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.dash": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/dash",
+          "volume": 0.7,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.teleport": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/teleport",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.transform": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/transform",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.lightning": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/lightning",
+          "volume": 0.7,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.scouter_beep": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/scouter_beep",
+          "volume": 0.6,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.scouter_explode": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/scouter_explode",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.radar": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/radar",
+          "volume": 0.6,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.summon": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/summon",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.roar": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/roar",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.wish": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/wish",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.senzu": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/senzu",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.capsule": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/capsule",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.boss": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/boss",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.flash": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/flash",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.disc": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/disc",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.gather": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/gather",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.wind": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/wind",
+          "volume": 0.5,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.guard": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/guard",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.just_guard": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/just_guard",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.levelup": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/levelup",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.learn": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/learn",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.click": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/click",
+          "volume": 0.5,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.fusion": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/fusion",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbz.ko": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbz/ko",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    }
+  }
+}

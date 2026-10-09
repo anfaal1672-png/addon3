@@ -1,0 +1,25 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbz:kame_pants"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "OOO",
+      "O O",
+      "O O"
+    ],
+    "key": {
+      "O": {
+        "item": "minecraft:orange_wool"
+      }
+    },
+    "result": {
+      "item": "dbz:kame_pants",
+      "count": 1
+    }
+  }
+}

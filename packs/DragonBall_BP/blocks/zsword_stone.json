@@ -1,0 +1,51 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "dbz:zsword_stone",
+      "menu_category": {
+        "category": "construction"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "Zソードが刺さった岩",
+      "minecraft:map_color": "#8a8a8a",
+      "minecraft:light_emission": 4,
+      "minecraft:destructible_by_mining": false,
+      "minecraft:destructible_by_explosion": false,
+      "dbz:interact": {},
+      "minecraft:geometry": "geometry.dbz.zsword_stone",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "dbz_block_zsword_stone",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          9,
+          14
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -7,
+          0,
+          -7
+        ],
+        "size": [
+          14,
+          9,
+          14
+        ]
+      },
+      "minecraft:loot": "loot_tables/empty.json"
+    }
+  }
+}

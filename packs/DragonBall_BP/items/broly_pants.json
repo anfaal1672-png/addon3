@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbz:broly_pants",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbz_broly_pants",
+      "minecraft:display_name": {
+        "value": "ブロリーのズボン"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:wearable": {
+        "slot": "slot.armor.legs",
+        "protection": 6
+      },
+      "minecraft:enchantable": {
+        "slot": "armor_legs",
+        "value": 10
+      },
+      "minecraft:durability": {
+        "max_durability": 400
+      }
+    }
+  }
+}

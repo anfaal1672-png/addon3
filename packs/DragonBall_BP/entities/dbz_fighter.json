@@ -1,0 +1,1423 @@
+{
+  "format_version": "1.21.50",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "dbz:fighter",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "properties": {
+        "dbz:char": {
+          "type": "int",
+          "range": [
+            0,
+            75
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "dbz:aura": {
+          "type": "int",
+          "range": [
+            0,
+            16
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "dbz:pose": {
+          "type": "int",
+          "range": [
+            0,
+            15
+          ],
+          "default": 0,
+          "client_sync": true
+        },
+        "dbz:scale": {
+          "type": "float",
+          "range": [
+            0.2,
+            8.0
+          ],
+          "default": 1.0,
+          "client_sync": true
+        },
+        "dbz:spark": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": [
+          "dbz_fighter",
+          "mob"
+        ]
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 20
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.9
+      },
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": true,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:movement": {
+        "value": 0.3
+      },
+      "minecraft:movement.basic": {},
+      "minecraft:navigation.walk": {
+        "can_path_over_water": true,
+        "avoid_damage_blocks": true,
+        "can_open_doors": true
+      },
+      "minecraft:jump.static": {},
+      "minecraft:can_climb": {},
+      "minecraft:follow_range": {
+        "value": 48,
+        "max": 64
+      },
+      "minecraft:nameable": {
+        "always_show": false,
+        "allow_name_tag_renaming": false
+      },
+      "minecraft:knockback_resistance": {
+        "value": 0.4
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": 0,
+        "breathes_water": true
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:behavior.float": {
+        "priority": 0
+      },
+      "minecraft:conditional_bandwidth_optimization": {},
+      "minecraft:is_hidden_when_invisible": {},
+      "minecraft:persistent": {}
+    },
+    "component_groups": {
+      "dbz:size_small": {
+        "minecraft:collision_box": {
+          "width": 0.5,
+          "height": 1.3
+        }
+      },
+      "dbz:size_normal": {
+        "minecraft:collision_box": {
+          "width": 0.6,
+          "height": 1.9
+        }
+      },
+      "dbz:size_big": {
+        "minecraft:collision_box": {
+          "width": 0.8,
+          "height": 2.2
+        }
+      },
+      "dbz:size_huge": {
+        "minecraft:collision_box": {
+          "width": 1.0,
+          "height": 2.6
+        }
+      },
+      "dbz:size_fat": {
+        "minecraft:collision_box": {
+          "width": 0.9,
+          "height": 1.9
+        }
+      },
+      "dbz:size_tall": {
+        "minecraft:collision_box": {
+          "width": 0.6,
+          "height": 2.3
+        }
+      },
+      "dbz:size_giant": {
+        "minecraft:collision_box": {
+          "width": 2.6,
+          "height": 6.0
+        }
+      },
+      "dbz:hp_20": {
+        "minecraft:health": {
+          "value": 20,
+          "max": 20
+        }
+      },
+      "dbz:hp_30": {
+        "minecraft:health": {
+          "value": 30,
+          "max": 30
+        }
+      },
+      "dbz:hp_40": {
+        "minecraft:health": {
+          "value": 40,
+          "max": 40
+        }
+      },
+      "dbz:hp_60": {
+        "minecraft:health": {
+          "value": 60,
+          "max": 60
+        }
+      },
+      "dbz:hp_80": {
+        "minecraft:health": {
+          "value": 80,
+          "max": 80
+        }
+      },
+      "dbz:hp_100": {
+        "minecraft:health": {
+          "value": 100,
+          "max": 100
+        }
+      },
+      "dbz:hp_150": {
+        "minecraft:health": {
+          "value": 150,
+          "max": 150
+        }
+      },
+      "dbz:hp_200": {
+        "minecraft:health": {
+          "value": 200,
+          "max": 200
+        }
+      },
+      "dbz:hp_300": {
+        "minecraft:health": {
+          "value": 300,
+          "max": 300
+        }
+      },
+      "dbz:hp_400": {
+        "minecraft:health": {
+          "value": 400,
+          "max": 400
+        }
+      },
+      "dbz:hp_500": {
+        "minecraft:health": {
+          "value": 500,
+          "max": 500
+        }
+      },
+      "dbz:hp_700": {
+        "minecraft:health": {
+          "value": 700,
+          "max": 700
+        }
+      },
+      "dbz:hp_1000": {
+        "minecraft:health": {
+          "value": 1000,
+          "max": 1000
+        }
+      },
+      "dbz:hp_1500": {
+        "minecraft:health": {
+          "value": 1500,
+          "max": 1500
+        }
+      },
+      "dbz:hp_2000": {
+        "minecraft:health": {
+          "value": 2000,
+          "max": 2000
+        }
+      },
+      "dbz:hp_3000": {
+        "minecraft:health": {
+          "value": 3000,
+          "max": 3000
+        }
+      },
+      "dbz:hp_4000": {
+        "minecraft:health": {
+          "value": 4000,
+          "max": 4000
+        }
+      },
+      "dbz:hp_6000": {
+        "minecraft:health": {
+          "value": 6000,
+          "max": 6000
+        }
+      },
+      "dbz:hp_8000": {
+        "minecraft:health": {
+          "value": 8000,
+          "max": 8000
+        }
+      },
+      "dbz:role_npc": {
+        "minecraft:type_family": {
+          "family": [
+            "dbz_fighter",
+            "dbz_npc",
+            "mob"
+          ]
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 2,
+          "look_distance": 8,
+          "probability": 0.8
+        },
+        "minecraft:behavior.random_look_around": {
+          "priority": 5
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 6,
+          "speed_multiplier": 0.5,
+          "xz_dist": 3,
+          "interval": 200
+        },
+        "minecraft:damage_sensor": {
+          "triggers": {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                "event": "dbz:interacted",
+                "target": "self"
+              },
+              "interact_text": "action.interact.dbz_talk",
+              "swing": true
+            }
+          ]
+        }
+      },
+      "dbz:role_enemy": {
+        "minecraft:type_family": {
+          "family": [
+            "dbz_fighter",
+            "dbz_enemy",
+            "monster",
+            "mob"
+          ]
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 40,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "dbz_ally"
+                  }
+                ]
+              },
+              "max_dist": 40
+            }
+          ]
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 3,
+          "speed_multiplier": 1.25,
+          "track_target": true
+        },
+        "minecraft:attack": {
+          "damage": 3
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 7,
+          "speed_multiplier": 0.8
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 8,
+          "look_distance": 12
+        }
+      },
+      "dbz:role_spar": {
+        "minecraft:type_family": {
+          "family": [
+            "dbz_fighter",
+            "dbz_spar",
+            "mob"
+          ]
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 40,
+          "entity_types": [
+            {
+              "filters": {
+                "any_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "dbz_ally"
+                  }
+                ]
+              },
+              "max_dist": 40
+            }
+          ]
+        },
+        "minecraft:behavior.hurt_by_target": {
+          "priority": 1
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 3,
+          "speed_multiplier": 1.25,
+          "track_target": true
+        },
+        "minecraft:attack": {
+          "damage": 3
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 7,
+          "speed_multiplier": 0.8
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 8,
+          "look_distance": 12
+        }
+      },
+      "dbz:role_ally": {
+        "minecraft:type_family": {
+          "family": [
+            "dbz_fighter",
+            "dbz_ally",
+            "mob"
+          ]
+        },
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 2,
+          "must_see": false,
+          "reselect_targets": true,
+          "within_radius": 24,
+          "entity_types": [
+            {
+              "filters": {
+                "all_of": [
+                  {
+                    "any_of": [
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "monster"
+                      },
+                      {
+                        "test": "is_family",
+                        "subject": "other",
+                        "value": "dbz_enemy"
+                      }
+                    ]
+                  },
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "creeper"
+                  }
+                ]
+              },
+              "max_dist": 24
+            }
+          ]
+        },
+        "minecraft:behavior.melee_box_attack": {
+          "priority": 3,
+          "speed_multiplier": 1.3,
+          "track_target": true
+        },
+        "minecraft:attack": {
+          "damage": 4
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 8,
+          "speed_multiplier": 0.7
+        },
+        "minecraft:behavior.look_at_player": {
+          "priority": 7,
+          "look_distance": 10
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "on_damage": {
+                "filters": {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                }
+              },
+              "deals_damage": "no"
+            },
+            {
+              "cause": "fall",
+              "deals_damage": "no"
+            }
+          ]
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "player"
+                },
+                "event": "dbz:interacted",
+                "target": "self"
+              },
+              "interact_text": "action.interact.dbz_talk",
+              "swing": true
+            }
+          ]
+        }
+      },
+      "dbz:role_passive": {
+        "minecraft:type_family": {
+          "family": [
+            "dbz_fighter",
+            "dbz_passive",
+            "mob"
+          ]
+        },
+        "minecraft:behavior.random_stroll": {
+          "priority": 4,
+          "speed_multiplier": 1.4,
+          "interval": 20
+        },
+        "minecraft:behavior.panic": {
+          "priority": 1,
+          "speed_multiplier": 1.6
+        },
+        "minecraft:damage_sensor": {
+          "triggers": {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        }
+      },
+      "dbz:role_dummy": {
+        "minecraft:type_family": {
+          "family": [
+            "dbz_fighter",
+            "dbz_dummy"
+          ]
+        },
+        "minecraft:movement": {
+          "value": 0
+        },
+        "minecraft:knockback_resistance": {
+          "value": 1.0
+        },
+        "minecraft:damage_sensor": {
+          "triggers": [
+            {
+              "cause": "fall",
+              "deals_damage": "no"
+            },
+            {
+              "cause": "suffocation",
+              "deals_damage": "no"
+            }
+          ]
+        }
+      },
+      "dbz:boss": {
+        "minecraft:boss": {
+          "should_darken_sky": false,
+          "hud_range": 64
+        }
+      },
+      "dbz:mob": {
+        "minecraft:despawn": {
+          "despawn_from_distance": {
+            "min_distance": 48,
+            "max_distance": 96
+          }
+        }
+      },
+      "dbz:flying": {
+        "minecraft:physics": {
+          "has_gravity": false
+        },
+        "minecraft:can_fly": {}
+      },
+      "dbz:frozen": {
+        "minecraft:movement": {
+          "value": 0
+        }
+      }
+    },
+    "events": {
+      "dbz:size_small": {
+        "add": {
+          "component_groups": [
+            "dbz:size_small"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:size_normal",
+            "dbz:size_big",
+            "dbz:size_huge",
+            "dbz:size_fat",
+            "dbz:size_tall",
+            "dbz:size_giant"
+          ]
+        }
+      },
+      "dbz:size_normal": {
+        "add": {
+          "component_groups": [
+            "dbz:size_normal"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:size_small",
+            "dbz:size_big",
+            "dbz:size_huge",
+            "dbz:size_fat",
+            "dbz:size_tall",
+            "dbz:size_giant"
+          ]
+        }
+      },
+      "dbz:size_big": {
+        "add": {
+          "component_groups": [
+            "dbz:size_big"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:size_small",
+            "dbz:size_normal",
+            "dbz:size_huge",
+            "dbz:size_fat",
+            "dbz:size_tall",
+            "dbz:size_giant"
+          ]
+        }
+      },
+      "dbz:size_huge": {
+        "add": {
+          "component_groups": [
+            "dbz:size_huge"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:size_small",
+            "dbz:size_normal",
+            "dbz:size_big",
+            "dbz:size_fat",
+            "dbz:size_tall",
+            "dbz:size_giant"
+          ]
+        }
+      },
+      "dbz:size_fat": {
+        "add": {
+          "component_groups": [
+            "dbz:size_fat"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:size_small",
+            "dbz:size_normal",
+            "dbz:size_big",
+            "dbz:size_huge",
+            "dbz:size_tall",
+            "dbz:size_giant"
+          ]
+        }
+      },
+      "dbz:size_tall": {
+        "add": {
+          "component_groups": [
+            "dbz:size_tall"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:size_small",
+            "dbz:size_normal",
+            "dbz:size_big",
+            "dbz:size_huge",
+            "dbz:size_fat",
+            "dbz:size_giant"
+          ]
+        }
+      },
+      "dbz:size_giant": {
+        "add": {
+          "component_groups": [
+            "dbz:size_giant"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:size_small",
+            "dbz:size_normal",
+            "dbz:size_big",
+            "dbz:size_huge",
+            "dbz:size_fat",
+            "dbz:size_tall"
+          ]
+        }
+      },
+      "dbz:hp_20": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_20"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_30": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_30"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_40": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_40"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_60": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_60"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_80": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_80"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_100": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_100"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_150": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_150"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_200": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_200"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_300": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_300"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_400": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_400"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_500": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_500"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_700": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_700"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_1000": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_1000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_1500": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_1500"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_2000": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_2000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_3000": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_3000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_4000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_4000": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_4000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_6000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_6000": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_6000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_8000"
+          ]
+        }
+      },
+      "dbz:hp_8000": {
+        "add": {
+          "component_groups": [
+            "dbz:hp_8000"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:hp_20",
+            "dbz:hp_30",
+            "dbz:hp_40",
+            "dbz:hp_60",
+            "dbz:hp_80",
+            "dbz:hp_100",
+            "dbz:hp_150",
+            "dbz:hp_200",
+            "dbz:hp_300",
+            "dbz:hp_400",
+            "dbz:hp_500",
+            "dbz:hp_700",
+            "dbz:hp_1000",
+            "dbz:hp_1500",
+            "dbz:hp_2000",
+            "dbz:hp_3000",
+            "dbz:hp_4000",
+            "dbz:hp_6000"
+          ]
+        }
+      },
+      "dbz:role_npc": {
+        "add": {
+          "component_groups": [
+            "dbz:role_npc"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:role_enemy",
+            "dbz:role_spar",
+            "dbz:role_ally",
+            "dbz:role_passive",
+            "dbz:role_dummy"
+          ]
+        }
+      },
+      "dbz:role_enemy": {
+        "add": {
+          "component_groups": [
+            "dbz:role_enemy"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:role_npc",
+            "dbz:role_spar",
+            "dbz:role_ally",
+            "dbz:role_passive",
+            "dbz:role_dummy"
+          ]
+        }
+      },
+      "dbz:role_spar": {
+        "add": {
+          "component_groups": [
+            "dbz:role_spar"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:role_npc",
+            "dbz:role_enemy",
+            "dbz:role_ally",
+            "dbz:role_passive",
+            "dbz:role_dummy"
+          ]
+        }
+      },
+      "dbz:role_ally": {
+        "add": {
+          "component_groups": [
+            "dbz:role_ally"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:role_npc",
+            "dbz:role_enemy",
+            "dbz:role_spar",
+            "dbz:role_passive",
+            "dbz:role_dummy"
+          ]
+        }
+      },
+      "dbz:role_passive": {
+        "add": {
+          "component_groups": [
+            "dbz:role_passive"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:role_npc",
+            "dbz:role_enemy",
+            "dbz:role_spar",
+            "dbz:role_ally",
+            "dbz:role_dummy"
+          ]
+        }
+      },
+      "dbz:role_dummy": {
+        "add": {
+          "component_groups": [
+            "dbz:role_dummy"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "dbz:role_npc",
+            "dbz:role_enemy",
+            "dbz:role_spar",
+            "dbz:role_ally",
+            "dbz:role_passive"
+          ]
+        }
+      },
+      "dbz:boss_on": {
+        "add": {
+          "component_groups": [
+            "dbz:boss"
+          ]
+        }
+      },
+      "dbz:boss_off": {
+        "remove": {
+          "component_groups": [
+            "dbz:boss"
+          ]
+        }
+      },
+      "dbz:mob": {
+        "add": {
+          "component_groups": [
+            "dbz:mob"
+          ]
+        }
+      },
+      "dbz:fly_on": {
+        "add": {
+          "component_groups": [
+            "dbz:flying"
+          ]
+        }
+      },
+      "dbz:fly_off": {
+        "remove": {
+          "component_groups": [
+            "dbz:flying"
+          ]
+        }
+      },
+      "dbz:freeze": {
+        "add": {
+          "component_groups": [
+            "dbz:frozen"
+          ]
+        }
+      },
+      "dbz:unfreeze": {
+        "remove": {
+          "component_groups": [
+            "dbz:frozen"
+          ]
+        }
+      },
+      "dbz:interacted": {},
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "dbz:size_normal",
+            "dbz:hp_20",
+            "dbz:role_npc"
+          ]
+        }
+      }
+    }
+  }
+}

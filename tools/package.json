@@ -1,0 +1,13 @@
+{
+  "name": "dbz-addon-tools",
+  "private": true,
+  "description": "Type checking for the Dragon Ball addon scripts",
+  "scripts": {
+    "check": "tsc -p jsconfig.json"
+  },
+  "devDependencies": {
+    "@minecraft/server": "2.4.0",
+    "@minecraft/server-ui": "2.0.0",
+    "typescript": "^5.6.0"
+  }
+}

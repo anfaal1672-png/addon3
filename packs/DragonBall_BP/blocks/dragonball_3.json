@@ -1,0 +1,55 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "dbz:dragonball_3",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:display_name": "三星球（ドラゴンボール）",
+      "minecraft:map_color": "#ff9a1a",
+      "minecraft:light_emission": 9,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.2
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 2
+      },
+      "dbz:interact": {},
+      "minecraft:geometry": "geometry.dbz.dragonball",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "dbz_block_dragonball_3",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:collision_box": {
+        "origin": [
+          -3.5,
+          0,
+          -3.5
+        ],
+        "size": [
+          7.0,
+          7.0,
+          7.0
+        ]
+      },
+      "minecraft:selection_box": {
+        "origin": [
+          -3.5,
+          0,
+          -3.5
+        ],
+        "size": [
+          7.0,
+          7.0,
+          7.0
+        ]
+      },
+      "minecraft:loot": "loot_tables/blocks/dbz_dragonball_3.json"
+    }
+  }
+}

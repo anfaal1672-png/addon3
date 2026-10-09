@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dbz:dinosaur",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "default": "textures/entity/dbz/dinosaur"
+      },
+      "geometry": {
+        "default": "geometry.dbz.dinosaur"
+      },
+      "render_controllers": [
+        "controller.render.default"
+      ],
+      "scripts": {
+        "animate": [
+          "a"
+        ]
+      },
+      "animations": {
+        "a": "animation.dbz.dino.walk"
+      }
+    }
+  }
+}

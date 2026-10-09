@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dbz:dragon",
+      "materials": {
+        "default": "entity_alphatest"
+      },
+      "textures": {
+        "shenron": "textures/entity/dbz/shenron",
+        "porunga": "textures/entity/dbz/porunga",
+        "super": "textures/entity/dbz/super_shenron"
+      },
+      "geometry": {
+        "shenron": "geometry.dbz.shenron",
+        "porunga": "geometry.dbz.porunga"
+      },
+      "scripts": {
+        "scale": "query.property('dbz:scale')",
+        "animate": [
+          {
+            "shen": "query.property('dbz:variant') != 1"
+          },
+          {
+            "poru": "query.property('dbz:variant') == 1"
+          }
+        ]
+      },
+      "animations": {
+        "shen": "animation.dbz.shenron.idle",
+        "poru": "animation.dbz.porunga.idle"
+      },
+      "render_controllers": [
+        "controller.render.dbz.dragon"
+      ]
+    }
+  }
+}

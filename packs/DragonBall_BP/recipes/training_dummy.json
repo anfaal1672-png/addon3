@@ -1,0 +1,31 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "dbz:training_dummy"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "pattern": [
+      "L",
+      "H",
+      "S"
+    ],
+    "key": {
+      "L": {
+        "item": "minecraft:leather"
+      },
+      "H": {
+        "item": "minecraft:hay_block"
+      },
+      "S": {
+        "item": "minecraft:stick"
+      }
+    },
+    "result": {
+      "item": "dbz:training_dummy",
+      "count": 1
+    }
+  }
+}

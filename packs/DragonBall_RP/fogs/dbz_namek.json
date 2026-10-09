@@ -1,0 +1,22 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "dbz:namek"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 18,
+        "fog_end": 110,
+        "fog_color": "#7fd28a",
+        "render_distance_type": "fixed"
+      },
+      "weather": {
+        "fog_start": 18,
+        "fog_end": 110,
+        "fog_color": "#7fd28a",
+        "render_distance_type": "fixed"
+      }
+    }
+  }
+}
