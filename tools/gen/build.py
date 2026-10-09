@@ -21,7 +21,7 @@ import particles as PT  # noqa: E402
 import sounds as SND  # noqa: E402
 
 VANILLA = os.path.join(ROOT, "tools", "vanilla")
-VERSION = [1, 0, 1]
+VERSION = [1, 0, 2]
 MIN_ENGINE = [1, 26, 30]
 ENTITY_FMT = "1.21.50"
 ITEM_FMT = "1.21.60"
@@ -86,13 +86,13 @@ def pose_animations(prefix):
         if "head" in bones:
             bones["dbz_head"] = bones["head"]
         anims[f"animation.{prefix}.pose.{name}"] = {"loop": True, "bones": bones}
-    states = {"default": {"transitions": [{f"p{i}": f"query.property('dbz:pose') == {i}"} for i in range(1, len(POSES))],
+    states = {"default": {"transitions": [{f"p{i}": f"query.is_in_ui ? 0.0 : query.property('dbz:pose') == {i}"} for i in range(1, len(POSES))],
                           "blend_transition": 0.15}}
     for i, name in enumerate(POSES):
         if name == "none":
             continue
         states[f"p{i}"] = {"animations": [f"{prefix}_pose_{name}"],
-                           "transitions": [{"default": f"query.property('dbz:pose') != {i}"}], "blend_transition": 0.15}
+                           "transitions": [{"default": f"query.is_in_ui ? 1.0 : query.property('dbz:pose') != {i}"}], "blend_transition": 0.15}
     ctrl = {f"controller.animation.{prefix}.pose": {"initial_state": "default", "states": states}}
     keys = {f"{prefix}_pose_{name}": f"animation.{prefix}.pose.{name}" for name in POSES if name != "none"}
     return anims, ctrl, keys
@@ -404,27 +404,45 @@ def build_player_rp(p_keys, ov_ids):
     geo["dbz_oozaru"] = "geometry.dbz.oozaru"
     geo["dbz_aura"] = "geometry.dbz.aura"
     geo["dbz_spark"] = "geometry.dbz.spark"
-    d["scripts"]["scale"] = "0.9375 * query.property('dbz:scale')"
+    # query.property has no actor when the player is drawn in UI (inventory / persona preview), so every
+    # use is guarded with query.is_in_ui through a ternary (only the taken branch is evaluated).
+    d["scripts"]["scale"] = "query.is_in_ui ? 0.9375 : 0.9375 * query.property('dbz:scale')"
     pre = d["scripts"].setdefault("pre_animation", [])
     if not any("melee_spear_equipped" in x for x in pre):
         pre.append("variable.melee_spear_equipped = query.equipped_item_any_tag('slot.weapon.mainhand', 'minecraft:is_spear');")
-    d["scripts"]["animate"].append({"dbz_pose_ctrl": "!variable.is_first_person"})
+    # variables the game's own player definition provides but the sample copy lacks
+    init = d["scripts"].setdefault("initialize", [])
+    defaults = {"first_person_item_rotation_factor": 1.0}
+    for side in ("fp", "tp"):
+        for kind in ("use", "attack"):
+            for part in ("item_position_x", "item_position_y", "item_position_z", "item_rotation_x", "item_rotation_y",
+                         "item_rotation_z", "arm_rotation_x", "arm_rotation_y", "arm_rotation_z", "attachable_rotation_z",
+                         "attachable_position_z"):
+                defaults[f"{side}_melee_spear_{kind}_{part}"] = 0.0
+    defaults["tp_melee_spear_base_arm_rotation_x"] = -30.0
+    text = json.dumps(d)
+    for k, v in defaults.items():
+        if f"variable.{k} =" not in text and f"v.{k} =" not in text:
+            init.append(f"variable.{k} = {v};")
+    d["scripts"]["animate"].append({"dbz_pose_ctrl": "query.is_in_ui ? 0.0 : !variable.is_first_person"})
     d["animations"]["dbz_pose_ctrl"] = "controller.animation.dbz.pose"
     d["animations"].update(p_keys)
     third = "!variable.is_first_person && !variable.map_face_icon && !query.is_spectator"
     new_rc = []
     for entry in d["render_controllers"]:
         if isinstance(entry, dict) and "controller.render.player.third_person" in entry:
-            entry = {"controller.render.player.third_person": entry["controller.render.player.third_person"] +
-                     " && query.property('dbz:model') == 0"}
+            entry = {"controller.render.player.third_person": "(" + entry["controller.render.player.third_person"] +
+                     ") && (query.is_in_ui ? 1.0 : query.property('dbz:model') == 0)"}
         new_rc.append(entry)
+    def guard(cond):
+        return f"query.is_in_ui ? 0.0 : ({third} && {cond})"
     new_rc += [
-        {"controller.render.dbz.overlay": f"{third} && query.property('dbz:body') > 0 && query.property('dbz:model') == 0"},
-        {"controller.render.dbz.hair": f"{third} && query.property('dbz:hair') > 0 && query.property('dbz:model') == 0"},
-        {"controller.render.dbz.tail": f"{third} && query.property('dbz:tail') && query.property('dbz:model') == 0"},
-        {"controller.render.dbz.oozaru": f"{third} && query.property('dbz:model') > 0"},
-        {"controller.render.dbz.aura": f"{third} && query.property('dbz:aura') > 0"},
-        {"controller.render.dbz.spark": f"{third} && query.property('dbz:spark')"},
+        {"controller.render.dbz.overlay": guard("query.property('dbz:body') > 0 && query.property('dbz:model') == 0")},
+        {"controller.render.dbz.hair": guard("query.property('dbz:hair') > 0 && query.property('dbz:model') == 0")},
+        {"controller.render.dbz.tail": guard("query.property('dbz:tail') && query.property('dbz:model') == 0")},
+        {"controller.render.dbz.oozaru": guard("query.property('dbz:model') > 0")},
+        {"controller.render.dbz.aura": guard("query.property('dbz:aura') > 0")},
+        {"controller.render.dbz.spark": guard("query.property('dbz:spark')")},
     ]
     d["render_controllers"] = new_rc
     write_json(os.path.join(RP, "entity/player.entity.json"), pl)
@@ -928,8 +946,8 @@ def recipes():
     shaped("kame_pants", ["OOO", "O O", "O O"], {"O": "minecraft:orange_wool"}, "dbz:kame_pants")
     shaped("kame_boots", ["B B", "B B"], {"B": "minecraft:blue_wool"}, "dbz:kame_boots")
     shaped("weighted_top", ["I I", "IWI", "III"], {"I": "minecraft:iron_block", "W": "minecraft:gray_wool"}, "dbz:weighted_top")
-    shaped("weighted_pants", ["III", "I I", "I I"], {"I": "minecraft:iron_ingot"}, "dbz:weighted_pants")
-    shaped("weighted_boots", ["I I", "I I"], {"I": "minecraft:iron_block"}, "dbz:weighted_boots")
+    shaped("weighted_pants", ["IWI", "I I", "I I"], {"I": "minecraft:iron_block", "W": "minecraft:gray_wool"}, "dbz:weighted_pants")
+    shaped("weighted_boots", ["W W", "I I"], {"I": "minecraft:iron_block", "W": "minecraft:gray_wool"}, "dbz:weighted_boots")
     shaped("turtle_shell_gear", ["SSS", "SPS", "SSS"], {"S": "minecraft:turtle_scute", "P": "minecraft:leather"}, "dbz:turtle_shell")
     furnace("cooked_dino_meat", "dbz:dino_meat", "dbz:cooked_dino_meat")
 

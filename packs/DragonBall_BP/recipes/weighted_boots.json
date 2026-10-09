@@ -8,12 +8,15 @@
       "crafting_table"
     ],
     "pattern": [
-      "I I",
+      "W W",
       "I I"
     ],
     "key": {
       "I": {
         "item": "minecraft:iron_block"
+      },
+      "W": {
+        "item": "minecraft:gray_wool"
       }
     },
     "unlock": {
