@@ -32,7 +32,7 @@
         }
       ],
       "textures": [
-        "Array.aura[query.property('dbz:aura')]"
+        "Array.aura[(query.is_in_ui || !query.has_property('dbz:pose')) ? 0 : query.property('dbz:aura')]"
       ],
       "uv_anim": {
         "offset": [
@@ -273,14 +273,14 @@
           ]
         }
       },
-      "geometry": "Array.geo[query.property('dbz:hair_style')]",
+      "geometry": "Array.geo[(query.is_in_ui || !query.has_property('dbz:pose')) ? 0 : query.property('dbz:hair_style')]",
       "materials": [
         {
           "*": "Material.dbz_solid"
         }
       ],
       "textures": [
-        "Array.tex[query.property('dbz:hair')]"
+        "Array.tex[(query.is_in_ui || !query.has_property('dbz:pose')) ? 0 : query.property('dbz:hair')]"
       ],
       "ignore_lighting": true
     },
@@ -327,14 +327,14 @@
           ]
         }
       },
-      "geometry": "Array.geo[query.property('dbz:body')]",
+      "geometry": "Array.geo[(query.is_in_ui || !query.has_property('dbz:pose')) ? 0 : query.property('dbz:body')]",
       "materials": [
         {
           "*": "Material.dbz_solid"
         }
       ],
       "textures": [
-        "Array.tex[query.property('dbz:body')]"
+        "Array.tex[(query.is_in_ui || !query.has_property('dbz:pose')) ? 0 : query.property('dbz:body')]"
       ]
     },
     "controller.render.dbz.tail": {
@@ -365,7 +365,7 @@
         }
       ],
       "textures": [
-        "Array.tex[query.property('dbz:model')]"
+        "Array.tex[(query.is_in_ui || !query.has_property('dbz:pose')) ? 0 : query.property('dbz:model')]"
       ]
     },
     "controller.render.dbz.ki_core": {

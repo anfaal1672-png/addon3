@@ -21,8 +21,11 @@ import particles as PT  # noqa: E402
 import sounds as SND  # noqa: E402
 
 VANILLA = os.path.join(ROOT, "tools", "vanilla")
-VERSION = [1, 0, 2]
+VERSION = [1, 0, 3]
 MIN_ENGINE = [1, 26, 30]
+# True when there is no real entity to read properties from: UI previews, and persona renders that have no
+# actor at all (query.property logs "does not have an actor" there; query.has_property is the safe check).
+NO_ACTOR = "(query.is_in_ui || !query.has_property('dbz:pose'))"
 ENTITY_FMT = "1.21.50"
 ITEM_FMT = "1.21.60"
 BLOCK_FMT = "1.21.90"
@@ -86,13 +89,13 @@ def pose_animations(prefix):
         if "head" in bones:
             bones["dbz_head"] = bones["head"]
         anims[f"animation.{prefix}.pose.{name}"] = {"loop": True, "bones": bones}
-    states = {"default": {"transitions": [{f"p{i}": f"query.is_in_ui ? 0.0 : query.property('dbz:pose') == {i}"} for i in range(1, len(POSES))],
+    states = {"default": {"transitions": [{f"p{i}": f"{NO_ACTOR} ? 0.0 : query.property('dbz:pose') == {i}"} for i in range(1, len(POSES))],
                           "blend_transition": 0.15}}
     for i, name in enumerate(POSES):
         if name == "none":
             continue
         states[f"p{i}"] = {"animations": [f"{prefix}_pose_{name}"],
-                           "transitions": [{"default": f"query.is_in_ui ? 1.0 : query.property('dbz:pose') != {i}"}], "blend_transition": 0.15}
+                           "transitions": [{"default": f"{NO_ACTOR} ? 1.0 : query.property('dbz:pose') != {i}"}], "blend_transition": 0.15}
     ctrl = {f"controller.animation.{prefix}.pose": {"initial_state": "default", "states": states}}
     keys = {f"{prefix}_pose_{name}": f"animation.{prefix}.pose.{name}" for name in POSES if name != "none"}
     return anims, ctrl, keys
@@ -135,7 +138,7 @@ def build_rp(data):
     rcs["controller.render.dbz.aura"] = {
         "arrays": {"textures": {"Array.aura": aura_arr}},
         "geometry": "Geometry.dbz_aura", "materials": [{"*": "Material.dbz_aura"}],
-        "textures": ["Array.aura[query.property('dbz:aura')]"], "uv_anim": uv_anim, "ignore_lighting": True,
+        "textures": ["Array.aura[" + NO_ACTOR + " ? 0 : query.property('dbz:aura')]"], "uv_anim": uv_anim, "ignore_lighting": True,
     }
     rcs["controller.render.dbz.spark"] = {
         "geometry": "Geometry.dbz_spark", "materials": [{"*": "Material.dbz_aura"}], "textures": ["Texture.aura_spark"],
@@ -199,22 +202,22 @@ def build_rp(data):
         "arrays": {"geometries": {"Array.geo": [f"Geometry.dbz_hair_{s}" for s in PV.HAIR_STYLES]},
                    "textures": {"Array.tex": ["Texture.dbz_hair_" + PV.HAIR_COLORS[1][0]] +
                                 [f"Texture.dbz_hair_{n}" for n, _ in PV.HAIR_COLORS[1:]]}},
-        "geometry": "Array.geo[query.property('dbz:hair_style')]", "materials": [{"*": "Material.dbz_solid"}],
-        "textures": ["Array.tex[query.property('dbz:hair')]"], "ignore_lighting": True,
+        "geometry": "Array.geo[" + NO_ACTOR + " ? 0 : query.property('dbz:hair_style')]", "materials": [{"*": "Material.dbz_solid"}],
+        "textures": ["Array.tex[" + NO_ACTOR + " ? 0 : query.property('dbz:hair')]"], "ignore_lighting": True,
     }
     ov_ids = [o for o, _, _ in ovs]
     rcs["controller.render.dbz.overlay"] = {
         "arrays": {"geometries": {"Array.geo": [f"Geometry.dbz_ov_{ov_ids[0]}"] + [f"Geometry.dbz_ov_{o}" for o in ov_ids]},
                    "textures": {"Array.tex": [f"Texture.dbz_ov_{ov_ids[0]}"] + [f"Texture.dbz_ov_{o}" for o in ov_ids]}},
-        "geometry": "Array.geo[query.property('dbz:body')]", "materials": [{"*": "Material.dbz_solid"}],
-        "textures": ["Array.tex[query.property('dbz:body')]"],
+        "geometry": "Array.geo[" + NO_ACTOR + " ? 0 : query.property('dbz:body')]", "materials": [{"*": "Material.dbz_solid"}],
+        "textures": ["Array.tex[" + NO_ACTOR + " ? 0 : query.property('dbz:body')]"],
     }
     rcs["controller.render.dbz.tail"] = {"geometry": "Geometry.dbz_tail", "materials": [{"*": "Material.dbz_solid"}],
                                          "textures": ["Texture.dbz_tail"]}
     rcs["controller.render.dbz.oozaru"] = {
         "arrays": {"textures": {"Array.tex": ["Texture.dbz_oozaru", "Texture.dbz_oozaru", "Texture.dbz_oozaru_golden"]}},
         "geometry": "Geometry.dbz_oozaru", "materials": [{"*": "Material.dbz_solid"}],
-        "textures": ["Array.tex[query.property('dbz:model')]"],
+        "textures": ["Array.tex[" + NO_ACTOR + " ? 0 : query.property('dbz:model')]"],
     }
     build_player_rp(p_keys, ov_ids)
 
@@ -404,9 +407,8 @@ def build_player_rp(p_keys, ov_ids):
     geo["dbz_oozaru"] = "geometry.dbz.oozaru"
     geo["dbz_aura"] = "geometry.dbz.aura"
     geo["dbz_spark"] = "geometry.dbz.spark"
-    # query.property has no actor when the player is drawn in UI (inventory / persona preview), so every
-    # use is guarded with query.is_in_ui through a ternary (only the taken branch is evaluated).
-    d["scripts"]["scale"] = "query.is_in_ui ? 0.9375 : 0.9375 * query.property('dbz:scale')"
+    # every query.property use is behind a NO_ACTOR ternary (only the taken branch is evaluated)
+    d["scripts"]["scale"] = NO_ACTOR + " ? 0.9375 : 0.9375 * query.property('dbz:scale')"
     pre = d["scripts"].setdefault("pre_animation", [])
     if not any("melee_spear_equipped" in x for x in pre):
         pre.append("variable.melee_spear_equipped = query.equipped_item_any_tag('slot.weapon.mainhand', 'minecraft:is_spear');")
@@ -424,7 +426,7 @@ def build_player_rp(p_keys, ov_ids):
     for k, v in defaults.items():
         if f"variable.{k} =" not in text and f"v.{k} =" not in text:
             init.append(f"variable.{k} = {v};")
-    d["scripts"]["animate"].append({"dbz_pose_ctrl": "query.is_in_ui ? 0.0 : !variable.is_first_person"})
+    d["scripts"]["animate"].append({"dbz_pose_ctrl": NO_ACTOR + " ? 0.0 : !variable.is_first_person"})
     d["animations"]["dbz_pose_ctrl"] = "controller.animation.dbz.pose"
     d["animations"].update(p_keys)
     third = "!variable.is_first_person && !variable.map_face_icon && !query.is_spectator"
@@ -432,10 +434,10 @@ def build_player_rp(p_keys, ov_ids):
     for entry in d["render_controllers"]:
         if isinstance(entry, dict) and "controller.render.player.third_person" in entry:
             entry = {"controller.render.player.third_person": "(" + entry["controller.render.player.third_person"] +
-                     ") && (query.is_in_ui ? 1.0 : query.property('dbz:model') == 0)"}
+                     ") && (" + NO_ACTOR + " ? 1.0 : query.property('dbz:model') == 0)"}
         new_rc.append(entry)
     def guard(cond):
-        return f"query.is_in_ui ? 0.0 : ({third} && {cond})"
+        return f"{NO_ACTOR} ? 0.0 : ({third} && {cond})"
     new_rc += [
         {"controller.render.dbz.overlay": guard("query.property('dbz:body') > 0 && query.property('dbz:model') == 0")},
         {"controller.render.dbz.hair": guard("query.property('dbz:hair') > 0 && query.property('dbz:model') == 0")},
