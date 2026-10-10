@@ -26,7 +26,7 @@ SRC_RP = os.path.join(ROOT, "packs", "DragonBall_RP")
 SRC_BP = os.path.join(ROOT, "packs", "DragonBall_BP")
 RP = os.path.join(ROOT, "packs", "DragonBattle_RP")
 BP = os.path.join(ROOT, "packs", "DragonBattle_BP")
-VERSION = [1, 0, 0]
+VERSION = [1, 0, 1]
 MIN_ENGINE = [1, 26, 30]
 ITEM_FMT = "1.21.60"
 

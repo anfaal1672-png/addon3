@@ -50,6 +50,10 @@ bus.on("hurt", (v, a) => {
   if (a?.typeId === "dbb:fighter") dealt.set(a.id, (dealt.get(a.id) ?? 0) + 1);
 });
 bus.on("special", (s, sp) => specials.add(sp.type));
+const combos = new Map();
+let teamCombos = 0;
+bus.on("combo", (s, name) => combos.set(name, (combos.get(name) ?? 0) + 1));
+bus.on("teamCombo", () => teamCombos++);
 const transforms = [];
 bus.on("transformed", (s, from, to) => transforms.push(`${from}->${to}`));
 
@@ -106,6 +110,49 @@ await step("tools: welcome kit + spawn eggs + free team battle + duel + heal/kil
   await tickAsync(500);
   for (const e of [a, b, c, d]) if (e.isValid) e.remove();
   await tickAsync(20);
+});
+
+await step("altitude: ceiling while fighting, gravity back after the fight and after a reload", async () => {
+  const tools = await import(`${S}/battle/tools.js`);
+  const ai = await import(`${S}/fighters/ai.js`);
+  const a = tools.useEgg(p, "dbb:egg_goku", { x: 6, y: 64, z: 6 });
+  await tickAsync(6);
+  const b = tools.useEgg(p, "dbb:egg_vegeta", { x: 10, y: 64, z: 6 });
+  const events = [];
+  for (const e of [a, b]) {
+    const orig = e.triggerEvent.bind(e);
+    e.triggerEvent = (ev) => {
+      events.push(`${e.id}:${ev}`);
+      return orig(ev);
+    };
+  }
+  tools.useOnFighter(p, "dbb:team_red", a);
+  tools.useOnFighter(p, "dbb:team_blue", b);
+  const sa = fighterMod.fighters.get(a.id);
+  fighterMod.setFlying(sa, true);
+  a.teleport({ x: 6, y: 63 + 45, z: 6 });
+  await tickAsync(8);
+  if (a.location.y > 63 + ai.MAX_ALT + 0.5) throw new Error("no ceiling: y=" + a.location.y);
+  // the fight ends: the flyer must get its gravity back
+  fighterMod.leaveBattle(a);
+  fighterMod.leaveBattle(b);
+  await tickAsync(4);
+  if (sa.flying || !events.includes(`${a.id}:dbb:fly_off`)) throw new Error("did not land after leaving the fight");
+  // a reload leaves the engine-side flight group on while the script state starts grounded
+  events.length = 0;
+  fighterMod.fighters.delete(b.id);
+  fighterMod.adopt(b);
+  if (!events.includes(`${b.id}:dbb:fly_off`)) throw new Error("reload did not restore gravity");
+  // idle fighter stuck in the air keeps getting its gravity back
+  events.length = 0;
+  a.isOnGround = false;
+  await tickAsync(24);
+  a.isOnGround = true;
+  if (!events.includes(`${a.id}:dbb:fly_off`)) throw new Error("airborne idle fighter not grounded");
+  for (const e of [a, b]) e.remove();
+  await tickAsync(20);
+  const m = match.currentMatch();
+  if (m) match.endMatch(m, true);
 });
 
 await step("1v1 on the tournament ring: intro, countdown, fight, final blow, records, stage restored", async () => {
@@ -168,6 +215,8 @@ await step("every character fights (royales of 6, start in final form for some)"
   }
   console.log(`   specials seen: ${[...specials].sort().join(", ")}`);
   console.log(`   transformations: ${transforms.length}`);
+  console.log(`   combos: ${[...combos].map(([k, n]) => `${k}×${n}`).join(", ")}  team follow-ups: ${teamCombos}`);
+  if (combos.size < 5) throw new Error("too few kinds of combo: " + [...combos.keys()].join(", "));
   if (silent.size > 6) throw new Error("too many fighters never attacked: " + [...silent].join(", "));
   if (silent.size) console.log("   (never landed a hit before being knocked out:", [...silent].join(", "), ")");
 });

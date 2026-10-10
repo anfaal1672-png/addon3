@@ -164,8 +164,9 @@ export function leaveBattle(e) {
   }
 }
 
-export function setFlying(s, on) {
-  if (s.flying === on) return;
+/** force: send the event even if the state says it's already so (the engine side may disagree, e.g. after a reload). */
+export function setFlying(s, on, force = false) {
+  if (s.flying === on && !force) return;
   s.flying = on;
   try {
     s.e.triggerEvent(on ? "dbb:fly_on" : "dbb:fly_off");
@@ -173,6 +174,15 @@ export function setFlying(s, on) {
     // ignore
   }
   setPose(s.e, on ? "fly" : "none");
+}
+
+/** Make sure the engine-side flight group (no gravity) is off, without touching the pose. */
+export function ensureGravity(e) {
+  try {
+    e.triggerEvent("dbb:fly_off");
+  } catch {
+    // ignore
+  }
 }
 
 /** Swap the model / stats to another form, keeping the health fraction (plus a heal when transforming). */
@@ -402,6 +412,8 @@ export function adopt(e) {
   setPL(e, statsFor(cid).pl);
   const s = newState(e, cid, {});
   fighters.set(e.id, s);
+  // the flight group (no gravity) survives a reload while the state starts grounded: put gravity back
+  setFlying(s, false, true);
   // a fighter left over from an unfinished match goes back to standing around
   if (teamOf(e)) leaveBattle(e);
   if (isKO(e)) revive(e);

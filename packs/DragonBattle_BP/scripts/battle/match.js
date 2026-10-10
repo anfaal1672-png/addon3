@@ -8,7 +8,7 @@ import { isKO, hurt, powerOf } from "../combat/damage.js";
 import { isBattler, teamOf, huntSlots, preySlots, TEAMS, TEAM_STYLE, SLOTS } from "../combat/teams.js";
 import { setDigRule } from "../combat/terrain.js";
 import { clearAll, cleanupStray } from "../combat/projectiles.js";
-import { fighters, spawnFighter, leaveBattle, setPose, setAura, speak, charName, hpFrac, revive } from "../fighters/fighter.js";
+import { fighters, spawnFighter, leaveBattle, setPose, setAura, setFlying, speak, charName, hpFrac, revive } from "../fighters/fighter.js";
 import { setGate } from "../fighters/ai.js";
 import { profileOf, rivalLines } from "../fighters/roster.js";
 import { buildStage, snapshot, restore, groundY, inArea, outOfRing, stageName, STAGES } from "./stage.js";
@@ -340,6 +340,9 @@ function finish(m, side) {
     } catch {
       // ignore
     }
+    // land for the victory pose instead of hanging (or drifting) in the air
+    const s = fighters.get(e.id);
+    if (s) setFlying(s, false, true);
   }
   if (winners[0]) winnerShot(winners[0], 90);
   system.runTimeout(() => {
@@ -352,6 +355,7 @@ function finish(m, side) {
       const s = fighters.get(e.id);
       if (!s) continue;
       setAura(e, true, s.cid);
+      setFlying(s, false, true);
       setPose(e, "none");
       particle(e.dimension, "dbb:aura_rise", e.location, "gold", 1.5);
       speak(s, "win");

@@ -1,5 +1,5 @@
 import { system, world } from "@minecraft/server";
-import { V, isValid, chance, rand } from "../core/util.js";
+import { V, isValid, chance, rand, clamp } from "../core/util.js";
 import { particle, deco, sound, shakeArea, afterimage } from "../core/fx.js";
 import { emit } from "../core/bus.js";
 import { paceFactor } from "../core/settings.js";
@@ -7,11 +7,12 @@ import { isKO, isHeld, hold, powerOf } from "../combat/damage.js";
 import { crackGround } from "../combat/terrain.js";
 import { isBattler, nearestEnemy } from "../combat/teams.js";
 import { activeBeamOf } from "../combat/projectiles.js";
-import { fighters, setFlying, setPose, setAura, speak, transform, hpFrac } from "./fighter.js";
+import { fighters, setFlying, ensureGravity, setPose, setAura, speak, transform, hpFrac } from "./fighter.js";
 import { profileOf, styleOf, SPECIALS } from "./roster.js";
 import {
   face, rushCombo, fistClash, pursue, dashTo, leapBack, strafe, teleportBehind, tryDeflect, kiAttack, startAct, stepAct,
 } from "./moves.js";
+import { tryCombo } from "./combos.js";
 
 /* The fighting brain. Every fighter in a battle thinks every 2 ticks: keep moving, read the distance, and pick
  * from blows, rushes, clashes, chases, ki attacks, transformations and signature moves according to its
@@ -56,7 +57,8 @@ function brain(s) {
   }
   const target = pickTarget(s);
   if (!target) {
-    if (s.flying && s.tick % 20 === 0) setFlying(s, false);
+    if (s.flying) setFlying(s, false);
+    else if (s.tick % 20 === 0) ensureGravity(e);
     return;
   }
   const ts = fighters.get(target.id);
@@ -170,6 +172,7 @@ function closeRange(s, ts, target, style, prof, pace, t) {
   }
   if (t - (s.cd.melee ?? -99) > 14 * pace) {
     s.cd.melee = t;
+    if (tryCombo(s, target, pace)) return;
     const rush = chance(0.22 + style.aggro * 0.18);
     rushCombo(s, target, rush ? 3 + Math.floor(rand(0, 3)) : 1 + Math.floor(rand(0, 2)));
     return;
@@ -199,6 +202,8 @@ function useAtk(s, target, pick, t) {
 }
 
 function midRange(s, target, style, prof, pace, t) {
+  // rush in and open with a combo
+  if (V.dist(s.e.location, target.location) < 8 && chance(0.04 + style.aggro * 0.06) && tryCombo(s, target, pace)) return;
   const ready = readyAttacks(s, prof, pace, t);
   if (ready.length && chance(0.16 + style.range * 0.22)) {
     useAtk(s, target, ready[Math.floor(Math.random() * ready.length)], t);
@@ -231,12 +236,15 @@ function farRange(s, target, style, prof, pace, t) {
   if (!s.flying && chance(0.15 + style.aggro * 0.25)) dashTo(s, target, 2.2);
 }
 
-/** Flying: close in to a comfortable distance and drift around the target. */
+/** Flying: close in to a comfortable distance and drift around the target, never above the ceiling. */
 function moveFly(s, target, dist) {
   const e = s.e;
   const style = styleOf(s.cid);
   const keep = 3 + style.range * 6;
-  const want = V.add(target.location, { x: 0, y: 1.2, z: 0 });
+  // level with a flying target (aiming above it makes two flyers climb after each other forever)
+  const ts = fighters.get(target.id);
+  const want = V.add(target.location, { x: 0, y: ts?.flying ? 0 : 1.2, z: 0 });
+  if (s.floor !== undefined) want.y = Math.min(want.y, s.floor + MAX_ALT - 2);
   const to = V.sub(want, e.location);
   const prof = profileOf(s.cid);
   const sp = (prof.fast ? 0.55 : 0.38) * (dist > keep + 6 ? 1 : 0.5);
@@ -247,13 +255,71 @@ function moveFly(s, target, dist) {
     } else if (s.tick % 6 === 0) {
       const n = V.norm(to);
       const side = s.tick % 24 < 12 ? { x: -n.z, y: 0, z: n.x } : { x: n.z, y: 0, z: -n.x };
-      e.applyImpulse(V.mul(side, 0.25));
+      e.applyImpulse(V.add(V.mul(side, 0.25), { x: 0, y: clamp(to.y * 0.08, -0.15, 0.15), z: 0 }));
     }
   } catch {
     // ignore
   }
   if (s.tick % 6 === 0 && dist > keep + 6) deco(e.dimension, "dbb:trail", e.location, "white", 0.8);
 }
+
+/* ------------------------------------------------------------------------------- the ceiling */
+
+/** How high above the ground a fighter may go while fighting. */
+export const MAX_ALT = 12;
+
+/** y of the ground under a fighter (top of the first solid block below), or undefined if there is none near. */
+function floorBelow(e) {
+  const dim = e.dimension;
+  try {
+    if (typeof dim.getBlockBelow === "function") {
+      const b = dim.getBlockBelow(e.location, { maxDistance: 48, includeLiquidBlocks: true, includePassableBlocks: false });
+      return b ? b.location.y + 1 : undefined;
+    }
+    const b = dim.getTopmostBlock({ x: e.location.x, z: e.location.z });
+    return b && b.location.y < e.location.y ? b.location.y + 1 : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/** Keep fighters out of the sky: no endless climbing while fighting, and gravity back on whenever they're not. */
+function altitude(s) {
+  const e = s.e;
+  if (!isValid(e)) return;
+  if (!isBattler(e) || isKO(e)) {
+    // out of the fight (match over, knocked out, waiting): always fall back to the ground
+    if (s.flying) setFlying(s, false);
+    else if (s.tick % 10 === 0 && !e.isOnGround) ensureGravity(e);
+    return;
+  }
+  const v = e.getVelocity();
+  if (!gate(e)) {
+    // paused, intro, result: hang where it is, never drift upwards
+    if (v.y > 0.02) e.applyImpulse({ x: 0, y: -v.y, z: 0 });
+    return;
+  }
+  if (s.floor === undefined || s.tick % 3 === 0) s.floor = floorBelow(e);
+  const alt = s.floor === undefined ? MAX_ALT * 3 : e.location.y - s.floor;
+  // flight has no gravity: give upward motion some drag so knock-ups and dashes don't carry on forever
+  if (s.flying && v.y > 0.1) e.applyImpulse({ x: 0, y: -v.y * 0.3, z: 0 });
+  if (alt > MAX_ALT + 10 && s.floor !== undefined) {
+    e.teleport({ x: e.location.x, y: s.floor + MAX_ALT, z: e.location.z }, { checkForBlocks: true });
+    e.clearVelocity();
+  } else if (alt > MAX_ALT) {
+    e.applyImpulse({ x: 0, y: -Math.max(0, v.y) - 0.12, z: 0 });
+  }
+}
+
+system.runInterval(() => {
+  for (const s of fighters.values()) {
+    try {
+      altitude(s);
+    } catch {
+      // ignore
+    }
+  }
+}, 2);
 
 /** Roar, flare the aura, crack the ground: a bit of health back and a short boost. */
 function powerUp(s) {
