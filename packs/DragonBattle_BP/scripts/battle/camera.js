@@ -193,6 +193,21 @@ on("fistClash", (s, t) => {
   }, () => (isValid(a) && isValid(b) ? V.up(V.lerp(a.location, b.location, 0.5), 1.2) : undefined));
 });
 
+on("combo", (s, comboName, target) => {
+  const a = s.e;
+  if (!target || !isValid(target)) return;
+  // a side-on shot that follows the pair, pulled back a little so the whole string stays in view
+  const len = Math.max(20, (s.comboRun?.until ?? system.currentTick + 30) - system.currentTick);
+  let side = null;
+  cut(len, () => {
+    if (!isValid(a) || !isValid(target)) return undefined;
+    const mid = V.lerp(a.location, target.location, 0.5);
+    const line = V.norm(V.sub(target.location, a.location));
+    side ??= { x: -line.z, y: 0, z: line.x };
+    return V.add(mid, { x: side.x * 6, y: 2.2, z: side.z * 6 });
+  }, () => (isValid(a) && isValid(target) ? V.up(V.lerp(a.location, target.location, 0.5), 1.1) : undefined));
+});
+
 on("hurt", (victim, attacker) => {
   if (attacker && attacker.typeId === "dbb:fighter" && victim.typeId === "dbb:fighter") setFocus(attacker, victim);
 });
@@ -203,7 +218,9 @@ export function winnerShot(e, ticks = 80) {
   const d = e.getViewDirection();
   const base = e.location;
   shot = null;
-  cut(ticks, () => V.add(base, { x: d.x * 4, y: 1.7, z: d.z * 4 }), () => (isValid(e) ? V.up(e.location, 1.5) : V.up(base, 1.5)));
+  // follows the winner down if it was in the air
+  const pos = () => (isValid(e) ? e.location : base);
+  cut(ticks, () => V.add(pos(), { x: d.x * 4, y: 1.7, z: d.z * 4 }), () => V.up(pos(), 1.5));
 }
 
 /** Face-on shot of a fighter (match intros). */

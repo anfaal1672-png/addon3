@@ -173,6 +173,20 @@ on("fistClash", (s, t) => {
   say(m, pick(["目にも止まらぬ拳の打ち合いだー！", "速い、速すぎるー！ 拳と拳がぶつかり合う！"]), 40);
 });
 
+on("combo", (s, comboName) => {
+  const m = currentMatch();
+  if (!m) return;
+  flashLine(m, `${teamColor(s.e)}${charName(s.cid)}  §6§l${comboName}！！`, 30);
+  say(m, pick([`出たー！ ${charName(s.cid)}の${comboName}だー！`, `${charName(s.cid)}、流れるような連続攻撃！`, `止まらない！ ${comboName}が決まっていくー！`]), 70);
+});
+
+on("teamCombo", (s, as) => {
+  const m = currentMatch();
+  if (!m) return;
+  flashLine(m, `${teamColor(as.e)}${charName(s.cid)} ＆ ${charName(as.cid)}  §b§l連携攻撃！！`, 30);
+  say(m, pick([`${charName(as.cid)}が飛び込んだー！ 見事な連携だ！`, "息の合ったコンビネーションだー！"]), 0, true);
+});
+
 on("pursuit", (s) => {
   const m = currentMatch();
   if (!m) return;
