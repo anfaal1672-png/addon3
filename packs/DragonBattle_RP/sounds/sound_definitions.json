@@ -1,0 +1,467 @@
+{
+  "format_version": "1.20.20",
+  "sound_definitions": {
+    "dbb.charge": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/charge",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.aura_burst": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/aura_burst",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.blast": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/blast",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.beam_charge": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/beam_charge",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.beam_fire": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/beam_fire",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.explosion": {
+      "category": "player",
+      "max_distance": 96.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/explosion",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.big_explosion": {
+      "category": "player",
+      "max_distance": 96.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/big_explosion",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.punch": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/punch",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.punch_heavy": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/punch_heavy",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.clash": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/clash",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.dash": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/dash",
+          "volume": 0.7,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.teleport": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/teleport",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.transform": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/transform",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.lightning": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/lightning",
+          "volume": 0.7,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.scouter_beep": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/scouter_beep",
+          "volume": 0.6,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.scouter_explode": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/scouter_explode",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.radar": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/radar",
+          "volume": 0.6,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.summon": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/summon",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.roar": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/roar",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.wish": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/wish",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.senzu": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/senzu",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.capsule": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/capsule",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.boss": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/boss",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.flash": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/flash",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.disc": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/disc",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.gather": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/gather",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.wind": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/wind",
+          "volume": 0.5,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.guard": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/guard",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.just_guard": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/just_guard",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.levelup": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/levelup",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.learn": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/learn",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.click": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/click",
+          "volume": 0.5,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.fusion": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/fusion",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.ko": {
+      "category": "player",
+      "max_distance": 48.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/ko",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.whoosh": {
+      "category": "player",
+      "max_distance": 64.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/whoosh",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.gong": {
+      "category": "player",
+      "max_distance": 96.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/gong",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.cheer": {
+      "category": "player",
+      "max_distance": 96.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/cheer",
+          "volume": 0.8,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.countdown": {
+      "category": "player",
+      "max_distance": 64.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/countdown",
+          "volume": 0.7,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.go": {
+      "category": "player",
+      "max_distance": 64.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/go",
+          "volume": 0.9,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.rumble": {
+      "category": "player",
+      "max_distance": 96.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/rumble",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.struggle": {
+      "category": "player",
+      "max_distance": 64.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/struggle",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    },
+    "dbb.impact": {
+      "category": "player",
+      "max_distance": 64.0,
+      "sounds": [
+        {
+          "name": "sounds/dbb/impact",
+          "volume": 1.0,
+          "load_on_low_memory": true
+        }
+      ]
+    }
+  }
+}

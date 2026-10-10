@@ -1,0 +1,39 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "§6ドラゴンボール §cバトル §fリソース",
+    "description": "キャラクター同士の戦いを観るアドオン（個人用）",
+    "uuid": "a825641a-756d-5cd9-a9b4-679d216c755c",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "da6f2a80-403b-50f8-9273-627d11dedd73",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "194691ca-7240-56a7-8f66-0c3ad136318f",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

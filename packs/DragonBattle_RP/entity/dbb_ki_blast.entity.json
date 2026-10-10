@@ -1,0 +1,54 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "dbb:ki_blast",
+      "materials": {
+        "core": "entity_alphatest",
+        "glow": "entity_beam_additive"
+      },
+      "textures": {
+        "ki_blue": "textures/entity/dbb/ki/blue",
+        "ki_yellow": "textures/entity/dbb/ki/yellow",
+        "ki_purple": "textures/entity/dbb/ki/purple",
+        "ki_green": "textures/entity/dbb/ki/green",
+        "ki_red": "textures/entity/dbb/ki/red",
+        "ki_pink": "textures/entity/dbb/ki/pink",
+        "ki_white": "textures/entity/dbb/ki/white",
+        "ki_orange": "textures/entity/dbb/ki/orange",
+        "ki_dark": "textures/entity/dbb/ki/dark",
+        "ki_cyan": "textures/entity/dbb/ki/cyan",
+        "ki_gold": "textures/entity/dbb/ki/gold",
+        "ki_black_rose": "textures/entity/dbb/ki/black_rose",
+        "ki_blue_spiral": "textures/entity/dbb/ki/blue_spiral",
+        "ki_yellow_spiral": "textures/entity/dbb/ki/yellow_spiral",
+        "ki_purple_spiral": "textures/entity/dbb/ki/purple_spiral",
+        "ki_green_spiral": "textures/entity/dbb/ki/green_spiral",
+        "ki_red_spiral": "textures/entity/dbb/ki/red_spiral",
+        "ki_pink_spiral": "textures/entity/dbb/ki/pink_spiral",
+        "ki_white_spiral": "textures/entity/dbb/ki/white_spiral",
+        "ki_orange_spiral": "textures/entity/dbb/ki/orange_spiral",
+        "ki_dark_spiral": "textures/entity/dbb/ki/dark_spiral",
+        "ki_cyan_spiral": "textures/entity/dbb/ki/cyan_spiral",
+        "ki_gold_spiral": "textures/entity/dbb/ki/gold_spiral",
+        "ki_black_rose_spiral": "textures/entity/dbb/ki/black_rose_spiral"
+      },
+      "geometry": {
+        "orb": "geometry.dbb.ki_orb",
+        "disc": "geometry.dbb.ki_disc"
+      },
+      "scripts": {
+        "animate": [
+          "spin"
+        ]
+      },
+      "animations": {
+        "spin": "animation.dbb.ki.orb"
+      },
+      "render_controllers": [
+        "controller.render.dbb.ki_core",
+        "controller.render.dbb.ki_glow"
+      ]
+    }
+  }
+}

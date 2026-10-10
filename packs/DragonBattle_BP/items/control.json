@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbb:control",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbb_control",
+      "minecraft:display_name": {
+        "value": "試合コントローラー（一時停止／しゃがみ＋使用で終了）"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:cooldown": {
+        "category": "dbb_ctl",
+        "duration": 0.4
+      }
+    }
+  }
+}

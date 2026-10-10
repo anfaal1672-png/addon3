@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbb:egg_goku_ui",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbb_egg_goku_ui",
+      "minecraft:display_name": {
+        "value": "孫悟空(身勝手の極意)のスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

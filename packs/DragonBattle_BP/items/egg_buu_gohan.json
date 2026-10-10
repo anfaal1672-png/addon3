@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbb:egg_buu_gohan",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbb_egg_buu_gohan",
+      "minecraft:display_name": {
+        "value": "魔人ブウ(悟飯吸収)のスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

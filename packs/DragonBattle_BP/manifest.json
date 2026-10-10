@@ -1,0 +1,58 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "§6ドラゴンボール §cバトル §fビヘイビア",
+    "description": "キャラクター同士の戦いを観るアドオン（個人用）",
+    "uuid": "194691ca-7240-56a7-8f66-0c3ad136318f",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      30
+    ]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "b5ff72a5-32f9-57e3-a1cc-6faef2df2c99",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "311458c2-656a-5df9-8f7c-89ae6a2b8b91",
+      "version": [
+        1,
+        0,
+        0
+      ],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "a825641a-756d-5cd9-a9b4-679d216c755c",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.4.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.0.0"
+    }
+  ]
+}

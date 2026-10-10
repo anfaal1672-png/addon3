@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbb:camera",
+      "menu_category": {
+        "category": "equipment"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbb_camera",
+      "minecraft:display_name": {
+        "value": "カメラ切り替え（しゃがみ＋使用で自由視点）"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:cooldown": {
+        "category": "dbb_cam",
+        "duration": 0.3
+      }
+    }
+  }
+}

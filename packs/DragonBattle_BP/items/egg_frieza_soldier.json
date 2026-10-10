@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbb:egg_frieza_soldier",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbb_egg_frieza_soldier",
+      "minecraft:display_name": {
+        "value": "フリーザ軍の兵士のスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

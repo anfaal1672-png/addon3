@@ -48,6 +48,7 @@ export const EntityComponentTypes = { Inventory: "minecraft:inventory", Equippab
 export const GameMode = { Survival: "Survival", Creative: "Creative", Adventure: "Adventure", Spectator: "Spectator" };
 export const WeatherType = { Clear: "Clear", Rain: "Rain", Thunder: "Thunder" };
 export const CommandPermissionLevel = { Any: 0 };
+export const StructureSaveMode = { Memory: "Memory", World: "World" };
 
 export class MolangVariableMap { setColorRGB() {} setFloat() {} setVector3() {} }
 export class BlockVolume { constructor(a, b) { this.from = a; this.to = b; } }
@@ -109,7 +110,7 @@ export class Entity {
       this.families = ["dbz_fighter", "mob", r === "enemy" ? "dbz_enemy" : r === "ally" ? "dbz_ally" : r === "npc" ? "dbz_npc" : r === "spar" ? "dbz_spar" : r === "dummy" ? "dbz_dummy" : r === "battle" ? "dbz_battler" : "dbz_passive"];
       if (r === "enemy") this.families.push("monster");
     }
-    const h = /^dbz:hp_(\d+)$/.exec(e);
+    const h = /^db[zb]:hp_(\d+)$/.exec(e);
     if (h) { this.hp.effectiveMax = Number(h[1]); this.hp.currentValue = Number(h[1]); }
   }
   teleport(loc, opts) { if (!loc || !isFinite(loc.x) || !isFinite(loc.y) || !isFinite(loc.z)) throw new Error("bad teleport " + JSON.stringify(loc)); this.location = { ...loc }; }
@@ -221,6 +222,13 @@ export const world = {
   getMoonPhase() { return 0; },
   getDay() { return 3; },
   sendMessage() {},
+  structureManager: {
+    saved: new Map(), placed: 0,
+    createFromWorld(id, dim, from, to) { if (!isFinite(from.x + to.z)) throw new Error("bad structure area"); this.saved.set(id, { from, to }); return { id }; },
+    place(id) { if (!this.saved.has(typeof id === "string" ? id : id.id)) throw new Error("no structure " + id); this.placed++; },
+    delete(id) { return this.saved.delete(typeof id === "string" ? id : id.id); },
+    get(id) { return this.saved.get(id); },
+  },
 };
 
 export { dims, entities, Container };

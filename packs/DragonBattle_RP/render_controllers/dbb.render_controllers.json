@@ -1,0 +1,605 @@
+{
+  "format_version": "1.10.0",
+  "render_controllers": {
+    "controller.render.dbb.aura": {
+      "arrays": {
+        "textures": {
+          "Array.aura": [
+            "Texture.aura_white",
+            "Texture.aura_white",
+            "Texture.aura_gold",
+            "Texture.aura_gold_bright",
+            "Texture.aura_red",
+            "Texture.aura_cyan",
+            "Texture.aura_silver",
+            "Texture.aura_purple",
+            "Texture.aura_green",
+            "Texture.aura_rose",
+            "Texture.aura_pink",
+            "Texture.aura_violet",
+            "Texture.aura_golden",
+            "Texture.aura_dark",
+            "Texture.aura_orange",
+            "Texture.aura_blue_kaioken",
+            "Texture.aura_white_hot"
+          ]
+        }
+      },
+      "geometry": "Geometry.dbb_aura",
+      "materials": [
+        {
+          "*": "Material.dbb_aura"
+        }
+      ],
+      "textures": [
+        "Array.aura[(query.is_in_ui || !query.is_alive) ? 0 : query.property('dbb:aura')]"
+      ],
+      "uv_anim": {
+        "offset": [
+          0.0,
+          "math.mod(math.floor(query.life_time * 12.0), 4.0) * 0.25"
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "ignore_lighting": true
+    },
+    "controller.render.dbb.spark": {
+      "geometry": "Geometry.dbb_spark",
+      "materials": [
+        {
+          "*": "Material.dbb_aura"
+        }
+      ],
+      "textures": [
+        "Texture.aura_spark"
+      ],
+      "uv_anim": {
+        "offset": [
+          0.0,
+          "math.mod(math.floor(query.life_time * 16.0), 4.0) * 0.25"
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "ignore_lighting": true
+    },
+    "controller.render.dbb.fighter": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.ch_goku",
+            "Geometry.ch_goku_ssj",
+            "Geometry.ch_goku_ssj3",
+            "Geometry.ch_goku_god",
+            "Geometry.ch_goku_blue",
+            "Geometry.ch_goku_ui",
+            "Geometry.ch_gohan",
+            "Geometry.ch_gohan_ssj2",
+            "Geometry.ch_goten",
+            "Geometry.ch_goten_ssj",
+            "Geometry.ch_vegeta",
+            "Geometry.ch_vegeta_ssj",
+            "Geometry.ch_vegeta_blue",
+            "Geometry.ch_vegeta_ue",
+            "Geometry.ch_trunks",
+            "Geometry.ch_trunks_ssj",
+            "Geometry.ch_piccolo",
+            "Geometry.ch_piccolo_orange",
+            "Geometry.ch_krillin",
+            "Geometry.ch_tien",
+            "Geometry.ch_yamcha",
+            "Geometry.ch_roshi",
+            "Geometry.ch_bulma",
+            "Geometry.ch_karin",
+            "Geometry.ch_yajirobe",
+            "Geometry.ch_kaio",
+            "Geometry.ch_bubbles",
+            "Geometry.ch_gregory",
+            "Geometry.ch_elder_kai",
+            "Geometry.ch_guru",
+            "Geometry.ch_namekian",
+            "Geometry.ch_announcer",
+            "Geometry.ch_whis",
+            "Geometry.ch_beerus",
+            "Geometry.ch_raditz",
+            "Geometry.ch_nappa",
+            "Geometry.ch_saibaman",
+            "Geometry.ch_ginyu",
+            "Geometry.ch_recoome",
+            "Geometry.ch_burter",
+            "Geometry.ch_jeice",
+            "Geometry.ch_guldo",
+            "Geometry.ch_frieza1",
+            "Geometry.ch_frieza2",
+            "Geometry.ch_frieza3",
+            "Geometry.ch_frieza4",
+            "Geometry.ch_frieza_golden",
+            "Geometry.ch_android17",
+            "Geometry.ch_android18",
+            "Geometry.ch_android16",
+            "Geometry.ch_android19",
+            "Geometry.ch_android20",
+            "Geometry.ch_cell1",
+            "Geometry.ch_cell2",
+            "Geometry.ch_cell",
+            "Geometry.ch_cell_super",
+            "Geometry.ch_cell_jr",
+            "Geometry.ch_dabura",
+            "Geometry.ch_spopovich",
+            "Geometry.ch_yamu",
+            "Geometry.ch_buu_fat",
+            "Geometry.ch_buu_super",
+            "Geometry.ch_buu_gohan",
+            "Geometry.ch_buu_kid",
+            "Geometry.ch_broly",
+            "Geometry.ch_broly_lssj",
+            "Geometry.ch_goku_black",
+            "Geometry.ch_goku_black_rose",
+            "Geometry.ch_zamasu",
+            "Geometry.ch_hit",
+            "Geometry.ch_jiren",
+            "Geometry.ch_frieza_soldier",
+            "Geometry.ch_rr_soldier",
+            "Geometry.ch_rr_robot",
+            "Geometry.ch_oozaru",
+            "Geometry.ch_training_dummy"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.ch_goku",
+            "Texture.ch_goku_ssj",
+            "Texture.ch_goku_ssj3",
+            "Texture.ch_goku_god",
+            "Texture.ch_goku_blue",
+            "Texture.ch_goku_ui",
+            "Texture.ch_gohan",
+            "Texture.ch_gohan_ssj2",
+            "Texture.ch_goten",
+            "Texture.ch_goten_ssj",
+            "Texture.ch_vegeta",
+            "Texture.ch_vegeta_ssj",
+            "Texture.ch_vegeta_blue",
+            "Texture.ch_vegeta_ue",
+            "Texture.ch_trunks",
+            "Texture.ch_trunks_ssj",
+            "Texture.ch_piccolo",
+            "Texture.ch_piccolo_orange",
+            "Texture.ch_krillin",
+            "Texture.ch_tien",
+            "Texture.ch_yamcha",
+            "Texture.ch_roshi",
+            "Texture.ch_bulma",
+            "Texture.ch_karin",
+            "Texture.ch_yajirobe",
+            "Texture.ch_kaio",
+            "Texture.ch_bubbles",
+            "Texture.ch_gregory",
+            "Texture.ch_elder_kai",
+            "Texture.ch_guru",
+            "Texture.ch_namekian",
+            "Texture.ch_announcer",
+            "Texture.ch_whis",
+            "Texture.ch_beerus",
+            "Texture.ch_raditz",
+            "Texture.ch_nappa",
+            "Texture.ch_saibaman",
+            "Texture.ch_ginyu",
+            "Texture.ch_recoome",
+            "Texture.ch_burter",
+            "Texture.ch_jeice",
+            "Texture.ch_guldo",
+            "Texture.ch_frieza1",
+            "Texture.ch_frieza2",
+            "Texture.ch_frieza3",
+            "Texture.ch_frieza4",
+            "Texture.ch_frieza_golden",
+            "Texture.ch_android17",
+            "Texture.ch_android18",
+            "Texture.ch_android16",
+            "Texture.ch_android19",
+            "Texture.ch_android20",
+            "Texture.ch_cell1",
+            "Texture.ch_cell2",
+            "Texture.ch_cell",
+            "Texture.ch_cell_super",
+            "Texture.ch_cell_jr",
+            "Texture.ch_dabura",
+            "Texture.ch_spopovich",
+            "Texture.ch_yamu",
+            "Texture.ch_buu_fat",
+            "Texture.ch_buu_super",
+            "Texture.ch_buu_gohan",
+            "Texture.ch_buu_kid",
+            "Texture.ch_broly",
+            "Texture.ch_broly_lssj",
+            "Texture.ch_goku_black",
+            "Texture.ch_goku_black_rose",
+            "Texture.ch_zamasu",
+            "Texture.ch_hit",
+            "Texture.ch_jiren",
+            "Texture.ch_frieza_soldier",
+            "Texture.ch_rr_soldier",
+            "Texture.ch_rr_robot",
+            "Texture.ch_oozaru",
+            "Texture.ch_training_dummy"
+          ]
+        }
+      },
+      "geometry": "Array.geo[query.property('dbb:char')]",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.tex[query.property('dbb:char')]"
+      ]
+    },
+    "controller.render.dbb.hair": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.dbb_hair_goku",
+            "Geometry.dbb_hair_ssj",
+            "Geometry.dbb_hair_ssj2",
+            "Geometry.dbb_hair_ssj3",
+            "Geometry.dbb_hair_ssj4",
+            "Geometry.dbb_hair_lssj",
+            "Geometry.dbb_hair_vegeta",
+            "Geometry.dbb_hair_gohan",
+            "Geometry.dbb_hair_trunks"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.dbb_hair_black",
+            "Texture.dbb_hair_black",
+            "Texture.dbb_hair_gold",
+            "Texture.dbb_hair_pale_gold",
+            "Texture.dbb_hair_red",
+            "Texture.dbb_hair_cyan",
+            "Texture.dbb_hair_silver",
+            "Texture.dbb_hair_purple",
+            "Texture.dbb_hair_pink",
+            "Texture.dbb_hair_green_gold",
+            "Texture.dbb_hair_lavender",
+            "Texture.dbb_hair_white"
+          ]
+        }
+      },
+      "geometry": "Array.geo[(query.is_in_ui || !query.is_alive) ? 0 : query.property('dbb:hair_style')]",
+      "materials": [
+        {
+          "*": "Material.dbb_solid"
+        }
+      ],
+      "textures": [
+        "Array.tex[(query.is_in_ui || !query.is_alive) ? 0 : query.property('dbb:hair')]"
+      ],
+      "ignore_lighting": true
+    },
+    "controller.render.dbb.overlay": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.dbb_ov_namek",
+            "Geometry.dbb_ov_namek",
+            "Geometry.dbb_ov_namek_orange",
+            "Geometry.dbb_ov_majin",
+            "Geometry.dbb_ov_majin_super",
+            "Geometry.dbb_ov_frieza1",
+            "Geometry.dbb_ov_frieza2",
+            "Geometry.dbb_ov_frieza3",
+            "Geometry.dbb_ov_frieza4",
+            "Geometry.dbb_ov_frieza_golden",
+            "Geometry.dbb_ov_frieza_black",
+            "Geometry.dbb_ov_ssj4",
+            "Geometry.dbb_ov_vegito",
+            "Geometry.dbb_ov_gogeta",
+            "Geometry.dbb_ov_fusion_fat",
+            "Geometry.dbb_ov_lssj"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.dbb_ov_namek",
+            "Texture.dbb_ov_namek",
+            "Texture.dbb_ov_namek_orange",
+            "Texture.dbb_ov_majin",
+            "Texture.dbb_ov_majin_super",
+            "Texture.dbb_ov_frieza1",
+            "Texture.dbb_ov_frieza2",
+            "Texture.dbb_ov_frieza3",
+            "Texture.dbb_ov_frieza4",
+            "Texture.dbb_ov_frieza_golden",
+            "Texture.dbb_ov_frieza_black",
+            "Texture.dbb_ov_ssj4",
+            "Texture.dbb_ov_vegito",
+            "Texture.dbb_ov_gogeta",
+            "Texture.dbb_ov_fusion_fat",
+            "Texture.dbb_ov_lssj"
+          ]
+        }
+      },
+      "geometry": "Array.geo[(query.is_in_ui || !query.is_alive) ? 0 : query.property('dbb:body')]",
+      "materials": [
+        {
+          "*": "Material.dbb_solid"
+        }
+      ],
+      "textures": [
+        "Array.tex[(query.is_in_ui || !query.is_alive) ? 0 : query.property('dbb:body')]"
+      ]
+    },
+    "controller.render.dbb.tail": {
+      "geometry": "Geometry.dbb_tail",
+      "materials": [
+        {
+          "*": "Material.dbb_solid"
+        }
+      ],
+      "textures": [
+        "Texture.dbb_tail"
+      ]
+    },
+    "controller.render.dbb.oozaru": {
+      "arrays": {
+        "textures": {
+          "Array.tex": [
+            "Texture.dbb_oozaru",
+            "Texture.dbb_oozaru",
+            "Texture.dbb_oozaru_golden"
+          ]
+        }
+      },
+      "geometry": "Geometry.dbb_oozaru",
+      "materials": [
+        {
+          "*": "Material.dbb_solid"
+        }
+      ],
+      "textures": [
+        "Array.tex[(query.is_in_ui || !query.is_alive) ? 0 : query.property('dbb:model')]"
+      ]
+    },
+    "controller.render.dbb.ki_core": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.orb",
+            "Geometry.disc"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.ki_blue",
+            "Texture.ki_yellow",
+            "Texture.ki_purple",
+            "Texture.ki_green",
+            "Texture.ki_red",
+            "Texture.ki_pink",
+            "Texture.ki_white",
+            "Texture.ki_orange",
+            "Texture.ki_dark",
+            "Texture.ki_cyan",
+            "Texture.ki_gold",
+            "Texture.ki_black_rose"
+          ]
+        }
+      },
+      "geometry": "Array.geo[query.property('dbb:shape')]",
+      "materials": [
+        {
+          "*": "Material.core"
+        }
+      ],
+      "textures": [
+        "Array.tex[query.property('dbb:color')]"
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "glow": false
+        }
+      ],
+      "ignore_lighting": true
+    },
+    "controller.render.dbb.ki_glow": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.orb",
+            "Geometry.disc"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.ki_blue",
+            "Texture.ki_yellow",
+            "Texture.ki_purple",
+            "Texture.ki_green",
+            "Texture.ki_red",
+            "Texture.ki_pink",
+            "Texture.ki_white",
+            "Texture.ki_orange",
+            "Texture.ki_dark",
+            "Texture.ki_cyan",
+            "Texture.ki_gold",
+            "Texture.ki_black_rose"
+          ]
+        }
+      },
+      "geometry": "Array.geo[query.property('dbb:shape')]",
+      "materials": [
+        {
+          "*": "Material.glow"
+        }
+      ],
+      "textures": [
+        "Array.tex[query.property('dbb:color')]"
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "core": false
+        }
+      ],
+      "ignore_lighting": true
+    },
+    "controller.render.dbb.beam_core": {
+      "arrays": {
+        "textures": {
+          "Array.tex": [
+            "Texture.ki_blue",
+            "Texture.ki_yellow",
+            "Texture.ki_purple",
+            "Texture.ki_green",
+            "Texture.ki_red",
+            "Texture.ki_pink",
+            "Texture.ki_white",
+            "Texture.ki_orange",
+            "Texture.ki_dark",
+            "Texture.ki_cyan",
+            "Texture.ki_gold",
+            "Texture.ki_black_rose"
+          ],
+          "Array.sp": [
+            "Texture.ki_blue_spiral",
+            "Texture.ki_yellow_spiral",
+            "Texture.ki_purple_spiral",
+            "Texture.ki_green_spiral",
+            "Texture.ki_red_spiral",
+            "Texture.ki_pink_spiral",
+            "Texture.ki_white_spiral",
+            "Texture.ki_orange_spiral",
+            "Texture.ki_dark_spiral",
+            "Texture.ki_cyan_spiral",
+            "Texture.ki_gold_spiral",
+            "Texture.ki_black_rose_spiral"
+          ]
+        }
+      },
+      "geometry": "Geometry.beam",
+      "materials": [
+        {
+          "*": "Material.core"
+        }
+      ],
+      "textures": [
+        "query.property('dbb:spiral') ? Array.sp[query.property('dbb:color')] : Array.tex[query.property('dbb:color')]"
+      ],
+      "part_visibility": [
+        {
+          "*": true
+        },
+        {
+          "body_glow": false
+        },
+        {
+          "tip_glow": false
+        }
+      ],
+      "uv_anim": {
+        "offset": [
+          "query.life_time * 3.0",
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ]
+      },
+      "ignore_lighting": true
+    },
+    "controller.render.dbb.beam_glow": {
+      "arrays": {
+        "textures": {
+          "Array.tex": [
+            "Texture.ki_blue",
+            "Texture.ki_yellow",
+            "Texture.ki_purple",
+            "Texture.ki_green",
+            "Texture.ki_red",
+            "Texture.ki_pink",
+            "Texture.ki_white",
+            "Texture.ki_orange",
+            "Texture.ki_dark",
+            "Texture.ki_cyan",
+            "Texture.ki_gold",
+            "Texture.ki_black_rose"
+          ]
+        }
+      },
+      "geometry": "Geometry.beam",
+      "materials": [
+        {
+          "*": "Material.glow"
+        }
+      ],
+      "textures": [
+        "Array.tex[query.property('dbb:color')]"
+      ],
+      "part_visibility": [
+        {
+          "*": false
+        },
+        {
+          "body_glow": true
+        },
+        {
+          "tip_glow": true
+        }
+      ],
+      "ignore_lighting": true
+    },
+    "controller.render.dbb.dragon": {
+      "arrays": {
+        "geometries": {
+          "Array.geo": [
+            "Geometry.shenron",
+            "Geometry.porunga",
+            "Geometry.shenron"
+          ]
+        },
+        "textures": {
+          "Array.tex": [
+            "Texture.shenron",
+            "Texture.porunga",
+            "Texture.super"
+          ]
+        }
+      },
+      "geometry": "Array.geo[query.property('dbb:variant')]",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Array.tex[query.property('dbb:variant')]"
+      ],
+      "ignore_lighting": true
+    },
+    "controller.render.dbb.armor": {
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.default"
+      ]
+    }
+  }
+}

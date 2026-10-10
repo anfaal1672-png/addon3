@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "dbb:egg_oozaru",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.mobEgg"
+      }
+    },
+    "components": {
+      "minecraft:icon": "dbb_egg_oozaru",
+      "minecraft:display_name": {
+        "value": "大猿のスポーンエッグ"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}
